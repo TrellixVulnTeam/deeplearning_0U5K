@@ -145,15 +145,16 @@ class RPN(snt.AbstractModule):
 
         # Get the RPN feature using a simple conv net. Activation function
         # can be set to empty.
-        rpn_conv_feature = self._rpn(conv_feature_map)
-        rpn_feature = self._rpn_activation(rpn_conv_feature) # single slide window to 512-d
+        rpn_conv_feature = self._rpn(conv_feature_map) # ccx bad name, just a conv2d layer (3,3,512,512)
+        rpn_feature = self._rpn_activation(rpn_conv_feature) # ccx single slide window to 512-d
 
         # Then we apply separate conv layers for classification and regression.
-        rpn_cls_score_original = self._rpn_cls(rpn_feature)
-        rpn_bbox_pred_original = self._rpn_bbox(rpn_feature)
+        rpn_cls_score_original = self._rpn_cls(rpn_feature) # ccx 2*anchors
+        rpn_bbox_pred_original = self._rpn_bbox(rpn_feature) # ccx 4*anchors
         # rpn_cls_score_original has shape (1, H, W, num_anchors * 2)
         # rpn_bbox_pred_original has shape (1, H, W, num_anchors * 4)
         # where H, W are height and width of the pretrained feature map.
+        # TODO literally, H and W are the height and width of cls or reg,same padding this time.
 
         # Convert (flatten) `rpn_cls_score_original` which has two scalars per
         # anchor per location to be able to apply softmax.

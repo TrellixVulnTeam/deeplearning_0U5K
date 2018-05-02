@@ -170,14 +170,16 @@ class RCNN(snt.AbstractModule):
                 'cls': proposals_target,
                 'bbox_offsets': bbox_offsets_target,
             }
-
+        # TODO RoI pooling resize to 14x14 and then stack a (2, 2)max pooling to get 7x7 feature
         roi_prediction = self._roi_pool(proposals, conv_feature_map, im_shape)
 
         if self._debug:
             # Save raw roi prediction in debug mode.
             prediction_dict['_debug']['roi'] = roi_prediction
 
-        pooled_features = roi_prediction['roi_pool']
+        pooled_features = roi_prediction['roi_pool'] # ccx 7x7?
+        # ccx base_network: resnet_v1_101,output_stride 16
+        # TODO features now?
         features = base_network._build_tail(
             pooled_features, is_training=is_training
         )
@@ -216,7 +218,7 @@ class RCNN(snt.AbstractModule):
             variable_summaries(net, 'fc_{}_out'.format(i), 'reduced')
             if is_training:
                 net = tf.nn.dropout(net, keep_prob=self._dropout_keep_prob)
-
+        # TODO final output?
         cls_score = self._classifier_layer(net)
         cls_prob = tf.nn.softmax(cls_score, axis=1)
         bbox_offsets = self._bbox_layer(net)

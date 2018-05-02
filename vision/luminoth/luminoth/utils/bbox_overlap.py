@@ -3,7 +3,7 @@
 import numpy as np
 import tensorflow as tf
 
-
+# TODO IoU implements, back to read
 def bbox_overlap_tf(bboxes1, bboxes2):
     """Calculate Intersection over Union (IoU) between two sets of bounding
     boxes.
