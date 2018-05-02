@@ -1,0 +1,776 @@
+Namespace(batch_size=2, decay_rate=0.7, decay_step=200000, gpu=0, learning_rate=0.001, log_dir='log', max_epoch=250, model='pointnet_cls', momentum=0.9, num_point=10000, optimizer='adam')
+**** EPOCH 000 ****
+mean loss: 1879.246948
+eval mean loss: 1879.393913
+Model saved in file: log/model.ckpt
+**** EPOCH 001 ****
+mean loss: 144.391682
+eval mean loss: 1879.357681
+**** EPOCH 002 ****
+mean loss: 1919.539757
+eval mean loss: 1879.356598
+**** EPOCH 003 ****
+mean loss: 1879.350037
+eval mean loss: 1897.956131
+**** EPOCH 004 ****
+mean loss: 1897.957726
+eval mean loss: 1879.368668
+**** EPOCH 005 ****
+mean loss: 1879.337227
+eval mean loss: 144.386581
+**** EPOCH 006 ****
+mean loss: 1897.941879
+eval mean loss: 1897.964859
+**** EPOCH 007 ****
+mean loss: 1919.477097
+eval mean loss: 1897.927380
+**** EPOCH 008 ****
+mean loss: 1879.345749
+eval mean loss: 144.383099
+**** EPOCH 009 ****
+mean loss: 1919.462105
+eval mean loss: 1904.636703
+**** EPOCH 010 ****
+mean loss: 1919.453568
+eval mean loss: 1919.446976
+Model saved in file: log/model.ckpt
+**** EPOCH 011 ****
+mean loss: 1919.443848
+eval mean loss: 1897.896687
+**** EPOCH 012 ****
+mean loss: 1919.438828
+eval mean loss: 1897.886936
+**** EPOCH 013 ****
+mean loss: 1879.279556
+eval mean loss: 1919.421341
+**** EPOCH 014 ****
+mean loss: 1897.878620
+eval mean loss: 1919.414780
+**** EPOCH 015 ****
+mean loss: 1904.569649
+eval mean loss: 1897.861675
+**** EPOCH 016 ****
+mean loss: 1897.858501
+eval mean loss: 144.373810
+**** EPOCH 017 ****
+mean loss: 1904.549011
+eval mean loss: 1919.412605
+**** EPOCH 018 ****
+mean loss: 1919.385056
+eval mean loss: 1904.535896
+**** EPOCH 019 ****
+mean loss: 1919.400101
+eval mean loss: 1897.830925
+**** EPOCH 020 ****
+mean loss: 1904.526718
+eval mean loss: 1879.249794
+Model saved in file: log/model.ckpt
+**** EPOCH 021 ****
+mean loss: 1879.224579
+eval mean loss: 1919.379227
+**** EPOCH 022 ****
+mean loss: 1879.238625
+eval mean loss: 144.366592
+**** EPOCH 023 ****
+mean loss: 1904.522575
+eval mean loss: 1879.228088
+**** EPOCH 024 ****
+mean loss: 144.366226
+eval mean loss: 1904.484268
+**** EPOCH 025 ****
+mean loss: 1897.807858
+eval mean loss: 144.363575
+**** EPOCH 026 ****
+mean loss: 1897.778366
+eval mean loss: 1904.497231
+**** EPOCH 027 ****
+mean loss: 1904.478203
+eval mean loss: 1904.488647
+**** EPOCH 028 ****
+mean loss: 1897.785278
+eval mean loss: 1919.300316
+**** EPOCH 029 ****
+mean loss: 1904.480164
+eval mean loss: 1904.472755
+**** EPOCH 030 ****
+mean loss: 1904.452591
+eval mean loss: 144.357910
+Model saved in file: log/model.ckpt
+**** EPOCH 031 ****
+mean loss: 1897.737022
+eval mean loss: 1897.732170
+**** EPOCH 032 ****
+mean loss: 1904.452858
+eval mean loss: 1879.163635
+**** EPOCH 033 ****
+mean loss: 1904.444221
+eval mean loss: 1919.282372
+**** EPOCH 034 ****
+mean loss: 1919.255150
+eval mean loss: 1919.274406
+**** EPOCH 035 ****
+mean loss: 1897.728401
+eval mean loss: 1897.697876
+**** EPOCH 036 ****
+mean loss: 1897.696175
+eval mean loss: 144.351562
+**** EPOCH 037 ****
+mean loss: 1897.707344
+eval mean loss: 1919.250099
+**** EPOCH 038 ****
+mean loss: 144.349655
+eval mean loss: 1897.686550
+**** EPOCH 039 ****
+mean loss: 1897.674469
+eval mean loss: 1904.369896
+**** EPOCH 040 ****
+mean loss: 144.347687
+eval mean loss: 1879.083405
+Model saved in file: log/model.ckpt
+**** EPOCH 041 ****
+mean loss: 144.346931
+eval mean loss: 1897.654671
+**** EPOCH 042 ****
+mean loss: 144.345913
+eval mean loss: 144.345230
+**** EPOCH 043 ****
+mean loss: 1879.095024
+eval mean loss: 1879.074928
+**** EPOCH 044 ****
+mean loss: 1919.203804
+eval mean loss: 144.344109
+**** EPOCH 045 ****
+mean loss: 1919.202629
+eval mean loss: 1919.198738
+**** EPOCH 046 ****
+mean loss: 1904.355614
+eval mean loss: 1904.342579
+**** EPOCH 047 ****
+mean loss: 1897.645164
+eval mean loss: 1897.617340
+**** EPOCH 048 ****
+mean loss: 1879.050293
+eval mean loss: 1897.629036
+**** EPOCH 049 ****
+mean loss: 1904.330841
+eval mean loss: 1897.622795
+**** EPOCH 050 ****
+mean loss: 1904.314907
+eval mean loss: 1897.599068
+Model saved in file: log/model.ckpt
+**** EPOCH 051 ****
+mean loss: 1879.028854
+eval mean loss: 144.335522
+**** EPOCH 052 ****
+mean loss: 1904.288338
+eval mean loss: 1897.599068
+**** EPOCH 053 ****
+mean loss: 1897.578758
+eval mean loss: 1904.296059
+**** EPOCH 054 ****
+mean loss: 144.334469
+eval mean loss: 1904.277199
+**** EPOCH 055 ****
+mean loss: 1879.018799
+eval mean loss: 144.333530
+**** EPOCH 056 ****
+mean loss: 1897.574280
+eval mean loss: 1919.113907
+**** EPOCH 057 ****
+mean loss: 1919.111534
+eval mean loss: 1878.999874
+**** EPOCH 058 ****
+mean loss: 144.330986
+eval mean loss: 1919.091377
+**** EPOCH 059 ****
+mean loss: 1904.248474
+eval mean loss: 1904.253288
+**** EPOCH 060 ****
+mean loss: 144.328938
+eval mean loss: 144.328354
+Model saved in file: log/model.ckpt
+**** EPOCH 061 ****
+mean loss: 1919.088531
+eval mean loss: 144.327187
+**** EPOCH 062 ****
+mean loss: 1919.066986
+eval mean loss: 1878.961620
+**** EPOCH 063 ****
+mean loss: 1919.072685
+eval mean loss: 1897.501175
+**** EPOCH 064 ****
+mean loss: 1878.963936
+eval mean loss: 1878.943111
+**** EPOCH 065 ****
+mean loss: 1904.198547
+eval mean loss: 1919.054108
+**** EPOCH 066 ****
+mean loss: 144.325882
+eval mean loss: 1897.499542
+**** EPOCH 067 ****
+mean loss: 1919.031540
+eval mean loss: 1897.478577
+**** EPOCH 068 ****
+mean loss: 1897.469688
+eval mean loss: 144.321873
+**** EPOCH 069 ****
+mean loss: 144.321892
+eval mean loss: 1919.025818
+**** EPOCH 070 ****
+mean loss: 144.320412
+eval mean loss: 1919.020874
+Model saved in file: log/model.ckpt
+**** EPOCH 071 ****
+mean loss: 144.320206
+eval mean loss: 1919.003578
+**** EPOCH 072 ****
+mean loss: 144.319698
+eval mean loss: 1904.159927
+**** EPOCH 073 ****
+mean loss: 1897.444817
+eval mean loss: 1897.457321
+**** EPOCH 074 ****
+mean loss: 1878.893623
+eval mean loss: 144.316872
+**** EPOCH 075 ****
+mean loss: 1878.902870
+eval mean loss: 1878.891483
+**** EPOCH 076 ****
+mean loss: 1897.432930
+eval mean loss: 1918.979584
+**** EPOCH 077 ****
+mean loss: 1897.436432
+eval mean loss: 144.314705
+**** EPOCH 078 ****
+mean loss: 1878.888336
+eval mean loss: 1904.135010
+**** EPOCH 079 ****
+mean loss: 144.313660
+eval mean loss: 1878.874588
+**** EPOCH 080 ****
+mean loss: 1878.862049
+eval mean loss: 144.311569
+Model saved in file: log/model.ckpt
+**** EPOCH 081 ****
+mean loss: 1904.118660
+eval mean loss: 1904.114685
+**** EPOCH 082 ****
+mean loss: 144.310799
+eval mean loss: 1904.107750
+**** EPOCH 083 ****
+mean loss: 1918.946144
+eval mean loss: 1878.852486
+**** EPOCH 084 ****
+mean loss: 1918.933678
+eval mean loss: 1918.934883
+**** EPOCH 085 ****
+mean loss: 1918.934250
+eval mean loss: 1897.372814
+**** EPOCH 086 ****
+mean loss: 1878.830460
+eval mean loss: 1878.814667
+**** EPOCH 087 ****
+mean loss: 1897.356117
+eval mean loss: 1878.809052
+**** EPOCH 088 ****
+mean loss: 144.305893
+eval mean loss: 144.305462
+**** EPOCH 089 ****
+mean loss: 1918.903397
+eval mean loss: 1918.885986
+**** EPOCH 090 ****
+mean loss: 1904.040894
+eval mean loss: 144.303829
+Model saved in file: log/model.ckpt
+**** EPOCH 091 ****
+mean loss: 1897.335609
+eval mean loss: 1878.797680
+**** EPOCH 092 ****
+mean loss: 1878.785774
+eval mean loss: 1918.875328
+**** EPOCH 093 ****
+mean loss: 1878.788403
+eval mean loss: 1904.029106
+**** EPOCH 094 ****
+mean loss: 1897.310867
+eval mean loss: 1878.775398
+**** EPOCH 095 ****
+mean loss: 1904.018524
+eval mean loss: 144.299236
+**** EPOCH 096 ****
+mean loss: 1918.844879
+eval mean loss: 1897.278229
+**** EPOCH 097 ****
+mean loss: 1878.759624
+eval mean loss: 1918.833420
+**** EPOCH 098 ****
+mean loss: 1903.991768
+eval mean loss: 144.297127
+**** EPOCH 099 ****
+mean loss: 1897.270676
+eval mean loss: 1903.969658
+**** EPOCH 100 ****
+mean loss: 1897.257488
+eval mean loss: 1878.728168
+Model saved in file: log/model.ckpt
+**** EPOCH 101 ****
+mean loss: 144.294746
+eval mean loss: 1897.242840
+**** EPOCH 102 ****
+mean loss: 1878.707123
+eval mean loss: 1878.702812
+**** EPOCH 103 ****
+mean loss: 144.293140
+eval mean loss: 1878.709511
+**** EPOCH 104 ****
+mean loss: 1897.216988
+eval mean loss: 1918.778160
+**** EPOCH 105 ****
+mean loss: 1903.939270
+eval mean loss: 1918.763657
+**** EPOCH 106 ****
+mean loss: 144.290413
+eval mean loss: 1878.681335
+**** EPOCH 107 ****
+mean loss: 1878.683605
+eval mean loss: 1918.759491
+**** EPOCH 108 ****
+mean loss: 1903.907059
+eval mean loss: 144.289448
+**** EPOCH 109 ****
+mean loss: 144.288940
+eval mean loss: 1903.902641
+**** EPOCH 110 ****
+mean loss: 144.287910
+eval mean loss: 1878.669243
+Model saved in file: log/model.ckpt
+**** EPOCH 111 ****
+mean loss: 1903.900284
+eval mean loss: 1878.664299
+**** EPOCH 112 ****
+mean loss: 1918.733521
+eval mean loss: 144.286285
+**** EPOCH 113 ****
+mean loss: 1903.889030
+eval mean loss: 1878.646839
+**** EPOCH 114 ****
+mean loss: 1878.637444
+eval mean loss: 1897.146378
+**** EPOCH 115 ****
+mean loss: 144.283810
+eval mean loss: 1918.709030
+**** EPOCH 116 ****
+mean loss: 1897.154350
+eval mean loss: 144.282486
+**** EPOCH 117 ****
+mean loss: 1918.700516
+eval mean loss: 144.277779
+**** EPOCH 118 ****
+mean loss: 1897.139702
+eval mean loss: 1897.135582
+**** EPOCH 119 ****
+mean loss: 1903.849274
+eval mean loss: 1903.834106
+**** EPOCH 120 ****
+mean loss: 1918.677643
+eval mean loss: 1878.610092
+Model saved in file: log/model.ckpt
+**** EPOCH 121 ****
+mean loss: 1903.832668
+eval mean loss: 1878.602348
+**** EPOCH 122 ****
+mean loss: 1918.665504
+eval mean loss: 1918.651619
+**** EPOCH 123 ****
+mean loss: 144.277634
+eval mean loss: 1897.092857
+**** EPOCH 124 ****
+mean loss: 1918.643265
+eval mean loss: 1878.572987
+**** EPOCH 125 ****
+mean loss: 1903.803566
+eval mean loss: 1897.071907
+**** EPOCH 126 ****
+mean loss: 1897.076721
+eval mean loss: 144.274921
+**** EPOCH 127 ****
+mean loss: 1903.780132
+eval mean loss: 144.273964
+**** EPOCH 128 ****
+mean loss: 1903.782860
+eval mean loss: 1903.774548
+**** EPOCH 129 ****
+mean loss: 1918.608475
+eval mean loss: 1918.602753
+**** EPOCH 130 ****
+mean loss: 144.272293
+eval mean loss: 144.271198
+Model saved in file: log/model.ckpt
+**** EPOCH 131 ****
+mean loss: 1878.528004
+eval mean loss: 1918.587830
+**** EPOCH 132 ****
+mean loss: 1878.523685
+eval mean loss: 144.270187
+**** EPOCH 133 ****
+mean loss: 1897.008942
+eval mean loss: 144.269554
+**** EPOCH 134 ****
+mean loss: 1897.002991
+eval mean loss: 1897.009094
+**** EPOCH 135 ****
+mean loss: 1878.500195
+eval mean loss: 1918.549210
+**** EPOCH 136 ****
+mean loss: 1896.987373
+eval mean loss: 1918.538734
+**** EPOCH 137 ****
+mean loss: 1878.488926
+eval mean loss: 1896.983665
+**** EPOCH 138 ****
+mean loss: 1903.703232
+eval mean loss: 1878.470474
+**** EPOCH 139 ****
+mean loss: 1896.967354
+eval mean loss: 1896.968391
+**** EPOCH 140 ****
+mean loss: 1903.683235
+eval mean loss: 144.263237
+Model saved in file: log/model.ckpt
+**** EPOCH 141 ****
+mean loss: 144.263947
+eval mean loss: 1903.671913
+**** EPOCH 142 ****
+mean loss: 144.263050
+eval mean loss: 144.262512
+**** EPOCH 143 ****
+mean loss: 1878.450596
+eval mean loss: 1896.925423
+**** EPOCH 144 ****
+mean loss: 1903.660019
+eval mean loss: 1903.639893
+**** EPOCH 145 ****
+mean loss: 144.260811
+eval mean loss: 144.260254
+**** EPOCH 146 ****
+mean loss: 1918.480408
+eval mean loss: 1896.919296
+**** EPOCH 147 ****
+mean loss: 1878.420658
+eval mean loss: 1896.906479
+**** EPOCH 148 ****
+mean loss: 1903.627926
+eval mean loss: 1896.906410
+**** EPOCH 149 ****
+mean loss: 144.258522
+eval mean loss: 144.257347
+**** EPOCH 150 ****
+mean loss: 1878.407681
+eval mean loss: 1878.407761
+Model saved in file: log/model.ckpt
+**** EPOCH 151 ****
+mean loss: 144.256470
+eval mean loss: 144.256290
+**** EPOCH 152 ****
+mean loss: 1896.887894
+eval mean loss: 1878.399456
+**** EPOCH 153 ****
+mean loss: 1918.441498
+eval mean loss: 1878.384254
+**** EPOCH 154 ****
+mean loss: 1903.592697
+eval mean loss: 144.253876
+**** EPOCH 155 ****
+mean loss: 1903.588158
+eval mean loss: 144.252975
+**** EPOCH 156 ****
+mean loss: 144.252880
+eval mean loss: 144.252449
+**** EPOCH 157 ****
+mean loss: 144.251610
+eval mean loss: 1896.849487
+**** EPOCH 158 ****
+mean loss: 144.252403
+eval mean loss: 1896.844978
+**** EPOCH 159 ****
+mean loss: 144.249172
+eval mean loss: 1903.564590
+**** EPOCH 160 ****
+mean loss: 1878.348228
+eval mean loss: 144.250160
+Model saved in file: log/model.ckpt
+**** EPOCH 161 ****
+mean loss: 1896.833153
+eval mean loss: 1878.352776
+**** EPOCH 162 ****
+mean loss: 1878.352909
+eval mean loss: 1903.534279
+**** EPOCH 163 ****
+mean loss: 1918.373329
+eval mean loss: 1918.376495
+**** EPOCH 164 ****
+mean loss: 1903.528763
+eval mean loss: 1896.798080
+**** EPOCH 165 ****
+mean loss: 144.248631
+eval mean loss: 1918.362907
+**** EPOCH 166 ****
+mean loss: 1903.513443
+eval mean loss: 1918.346344
+**** EPOCH 167 ****
+mean loss: 1896.785458
+eval mean loss: 144.246742
+**** EPOCH 168 ****
+mean loss: 1903.503235
+eval mean loss: 1896.780815
+**** EPOCH 169 ****
+mean loss: 144.246170
+eval mean loss: 1903.503166
+**** EPOCH 170 ****
+mean loss: 1878.305332
+eval mean loss: 1896.763756
+Model saved in file: log/model.ckpt
+**** EPOCH 171 ****
+mean loss: 1903.493782
+eval mean loss: 1896.762142
+**** EPOCH 172 ****
+mean loss: 1903.490467
+eval mean loss: 1918.316689
+**** EPOCH 173 ****
+mean loss: 1903.479145
+eval mean loss: 1896.749336
+**** EPOCH 174 ****
+mean loss: 1918.298523
+eval mean loss: 1878.267891
+**** EPOCH 175 ****
+mean loss: 144.241562
+eval mean loss: 1903.454048
+**** EPOCH 176 ****
+mean loss: 144.240822
+eval mean loss: 1878.258652
+**** EPOCH 177 ****
+mean loss: 1878.263374
+eval mean loss: 1903.450302
+**** EPOCH 178 ****
+mean loss: 144.239777
+eval mean loss: 1896.717903
+**** EPOCH 179 ****
+mean loss: 1903.431648
+eval mean loss: 1896.711700
+**** EPOCH 180 ****
+mean loss: 1918.264961
+eval mean loss: 1918.254173
+Model saved in file: log/model.ckpt
+**** EPOCH 181 ****
+mean loss: 144.237041
+eval mean loss: 1918.258080
+**** EPOCH 182 ****
+mean loss: 1878.234982
+eval mean loss: 1896.694817
+**** EPOCH 183 ****
+mean loss: 1903.416649
+eval mean loss: 1878.222538
+**** EPOCH 184 ****
+mean loss: 1903.409477
+eval mean loss: 1896.678299
+**** EPOCH 185 ****
+mean loss: 1896.681694
+eval mean loss: 144.234428
+**** EPOCH 186 ****
+mean loss: 144.234840
+eval mean loss: 1896.666756
+**** EPOCH 187 ****
+mean loss: 144.234154
+eval mean loss: 1878.202553
+**** EPOCH 188 ****
+mean loss: 1896.659096
+eval mean loss: 1918.217621
+**** EPOCH 189 ****
+mean loss: 1918.217422
+eval mean loss: 1903.380283
+**** EPOCH 190 ****
+mean loss: 1896.650665
+eval mean loss: 144.233231
+Model saved in file: log/model.ckpt
+**** EPOCH 191 ****
+mean loss: 1896.643852
+eval mean loss: 144.232822
+**** EPOCH 192 ****
+mean loss: 1903.366840
+eval mean loss: 1896.635914
+**** EPOCH 193 ****
+mean loss: 1903.355972
+eval mean loss: 1896.620827
+**** EPOCH 194 ****
+mean loss: 1878.163860
+eval mean loss: 1918.179939
+**** EPOCH 195 ****
+mean loss: 1896.613220
+eval mean loss: 144.229530
+**** EPOCH 196 ****
+mean loss: 144.228962
+eval mean loss: 144.228729
+**** EPOCH 197 ****
+mean loss: 1918.152657
+eval mean loss: 144.228333
+**** EPOCH 198 ****
+mean loss: 144.228176
+eval mean loss: 144.227707
+**** EPOCH 199 ****
+mean loss: 1903.306137
+eval mean loss: 1878.127399
+**** EPOCH 200 ****
+mean loss: 1903.301956
+eval mean loss: 1918.127251
+Model saved in file: log/model.ckpt
+**** EPOCH 201 ****
+mean loss: 1896.566879
+eval mean loss: 144.225235
+**** EPOCH 202 ****
+mean loss: 1903.291000
+eval mean loss: 1878.105675
+**** EPOCH 203 ****
+mean loss: 1903.286846
+eval mean loss: 1896.547821
+**** EPOCH 204 ****
+mean loss: 144.223713
+eval mean loss: 1896.536148
+**** EPOCH 205 ****
+mean loss: 1918.100883
+eval mean loss: 144.222660
+**** EPOCH 206 ****
+mean loss: 1878.085693
+eval mean loss: 1878.069721
+**** EPOCH 207 ****
+mean loss: 1903.245991
+eval mean loss: 1878.076729
+**** EPOCH 208 ****
+mean loss: 144.221550
+eval mean loss: 1878.069645
+**** EPOCH 209 ****
+mean loss: 1878.066837
+eval mean loss: 144.220276
+**** EPOCH 210 ****
+mean loss: 144.220047
+eval mean loss: 144.220093
+Model saved in file: log/model.ckpt
+**** EPOCH 211 ****
+mean loss: 1896.499222
+eval mean loss: 1903.226204
+**** EPOCH 212 ****
+mean loss: 1903.225746
+eval mean loss: 144.218643
+**** EPOCH 213 ****
+mean loss: 1903.217194
+eval mean loss: 1896.478333
+**** EPOCH 214 ****
+mean loss: 1896.476112
+eval mean loss: 144.217590
+**** EPOCH 215 ****
+mean loss: 1903.189835
+eval mean loss: 1878.027283
+**** EPOCH 216 ****
+mean loss: 1918.027176
+eval mean loss: 1896.451900
+**** EPOCH 217 ****
+mean loss: 144.215965
+eval mean loss: 1918.013664
+**** EPOCH 218 ****
+mean loss: 1903.172729
+eval mean loss: 1903.177681
+**** EPOCH 219 ****
+mean loss: 1896.442383
+eval mean loss: 144.214119
+**** EPOCH 220 ****
+mean loss: 1903.160561
+eval mean loss: 1917.994873
+Model saved in file: log/model.ckpt
+**** EPOCH 221 ****
+mean loss: 1877.990921
+eval mean loss: 1917.984665
+**** EPOCH 222 ****
+mean loss: 1903.154243
+eval mean loss: 1896.411072
+**** EPOCH 223 ****
+mean loss: 1896.410622
+eval mean loss: 144.211819
+**** EPOCH 224 ****
+mean loss: 1903.137405
+eval mean loss: 144.211475
+**** EPOCH 225 ****
+mean loss: 1903.124409
+eval mean loss: 1896.384312
+**** EPOCH 226 ****
+mean loss: 1903.115948
+eval mean loss: 144.209202
+**** EPOCH 227 ****
+mean loss: 144.209808
+eval mean loss: 1877.942253
+**** EPOCH 228 ****
+mean loss: 144.209438
+eval mean loss: 1877.928524
+**** EPOCH 229 ****
+mean loss: 1903.084908
+eval mean loss: 1877.923004
+**** EPOCH 230 ****
+mean loss: 144.208839
+eval mean loss: 1896.352882
+Model saved in file: log/model.ckpt
+**** EPOCH 231 ****
+mean loss: 144.207603
+eval mean loss: 144.207336
+**** EPOCH 232 ****
+mean loss: 1917.900627
+eval mean loss: 1903.078644
+**** EPOCH 233 ****
+mean loss: 1903.062218
+eval mean loss: 1917.902313
+**** EPOCH 234 ****
+mean loss: 1903.071037
+eval mean loss: 1903.067276
+**** EPOCH 235 ****
+mean loss: 1917.888351
+eval mean loss: 144.205566
+**** EPOCH 236 ****
+mean loss: 1896.319534
+eval mean loss: 1896.310028
+**** EPOCH 237 ****
+mean loss: 1877.881195
+eval mean loss: 144.204174
+**** EPOCH 238 ****
+mean loss: 1896.287842
+eval mean loss: 1917.866470
+**** EPOCH 239 ****
+mean loss: 1896.282112
+eval mean loss: 1903.014008
+**** EPOCH 240 ****
+mean loss: 1917.858582
+eval mean loss: 144.202766
+Model saved in file: log/model.ckpt
+**** EPOCH 241 ****
+mean loss: 1917.837959
+eval mean loss: 1917.833534
+**** EPOCH 242 ****
+mean loss: 144.201622
+eval mean loss: 1896.263313
+**** EPOCH 243 ****
+mean loss: 144.200981
+eval mean loss: 1903.003372
+**** EPOCH 244 ****
+mean loss: 1917.831741
+eval mean loss: 1917.813675
+**** EPOCH 245 ****
+mean loss: 144.200905
+eval mean loss: 1877.824741
+**** EPOCH 246 ****
+mean loss: 1902.974144
+eval mean loss: 1917.804001
+**** EPOCH 247 ****
+mean loss: 144.198784
+eval mean loss: 1896.239220
+**** EPOCH 248 ****
+mean loss: 1917.801964
+eval mean loss: 1877.821884
+**** EPOCH 249 ****
+mean loss: 1902.966949
+eval mean loss: 144.197372
