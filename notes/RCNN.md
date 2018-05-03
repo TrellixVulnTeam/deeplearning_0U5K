@@ -93,3 +93,93 @@ output_stride spatial shape [(height - 1) / output_stride + 1, (width - 1) / out
 **Mask RCNN的RoI Align**
 
 降低池化像素偏差
+
+
+
+## 实现
+
+For Faster RCNN, we can get a pipeline like this:
+
+Image -(
+
+pertrained cnn
+
+) ->feature map-(
+
+RPN(rpn proposals - rpn targets)
+
+)->proposals-(
+
+fast RCNN(rcnn targets - roi pooling - rcnn proposals)
+
+)->classification(type), regression(box)
+
+### rpn
+
+
+
+```python
+input：
+conv_feature_map: [1, feature_map_height, feature_map_width, depth] 预训练CNN网络的输出，depth 512 for the default layer in VGG and 1024 for the defaultlayer in ResNet.
+im_shape: A Tensor with the shape of the original image.
+all_anchors: [feature_map_height * feature_map_width * total_anchors, 4]
+gt_boxes: A Tensor with the ground-truth boxes for the image.
+    Its dimensions should be `[total_gt_boxes, 5]`, and it should
+    consist of [x1, y1, x2, y2, label], being (x1, y1) -> top left
+    point, and (x2, y2) -> bottom right point of the bounding box.
+```
+
+
+
+
+
+初始anchors数为WxHxn^ 2（W,H分别特征图的宽和高，本文为3）
+
+#### rpn proposals
+
+
+
+### rcnn
+
+#### **rcnn targets**
+
+
+
+```python
+input:
+    proposals (num_proposals, 4)
+    gt_boxes (num_gt, 5) index 4 for truth label 
+```
+
+
+
+```python
+output:
+    proposals_label 从rpn选取的proposals中与基准值gt_boxes相比较，给定标签从-1，0，···，n，
+-1表示未达到设定阈值的区域，将被忽略，0表示bg，1，···，n表示真实类别
+	bbox_targets (num_proposals, 4)为正类标签的proposals返回边界回归结果，其他返回0
+```
+
+判别标准：IoU（overlap）
+
+并且在每一次得到新的proposals之后，都需要重新判定该边界是否满足边界的约束条件
+
+#### RoI Pooling
+
+```
+resize to 14x14 and then stack a (2, 2)max pooling to get 7x7 feature
+```
+
+
+
+#### rcnn proposals
+
+主要的操作是NMS(No Maxium Suppresion)
+
+Step by Step
+
+使用pointnet训练适应流体粒子个数的网络，我需要得到粒子下一时刻加速度
+
+将粒子以加载模型，使用随机生成的数据填充tensor，得到粒子的输出（对于这种粒子数可变的情况，还是建议使用voxelnet，对某一帧粒子数据进行分组）
+
+**从vexel对粒子进行分组开始。**
