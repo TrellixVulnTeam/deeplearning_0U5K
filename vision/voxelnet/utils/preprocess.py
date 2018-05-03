@@ -34,11 +34,11 @@ def process_pointcloud(point_cloud, cls=cfg.DETECT_OBJ):
         max_point_number = 45
 
         np.random.shuffle(point_cloud)
-    # FIXME AWESOME
+    # FIXME  ccx AWESOME
     shifted_coord = point_cloud[:, :3] + lidar_coord
     # reverse the point cloud coordinate (X, Y, Z) -> (Z, Y, X)
     voxel_index = np.floor(
-        shifted_coord[:, ::-1] / voxel_size).astype(np.int)
+        shifted_coord[:, ::-1] / voxel_size).astype(np.int) # int lower than num
 
     bound_x = np.logical_and(
         voxel_index[:, 2] >= 0, voxel_index[:, 2] < grid_size[2])
@@ -55,8 +55,8 @@ def process_pointcloud(point_cloud, cls=cfg.DETECT_OBJ):
     # [K, 3] coordinate buffer as described in the paper
     coordinate_buffer = np.unique(voxel_index, axis=0)
 
-    K = len(coordinate_buffer)
-    T = max_point_number
+    K = len(coordinate_buffer) # K record the number of voxels
+    T = max_point_number # TODO ccx set T reasonable?
 
     # [K, 1] store number of points in each voxel grid
     number_buffer = np.zeros(shape=(K), dtype=np.int64)

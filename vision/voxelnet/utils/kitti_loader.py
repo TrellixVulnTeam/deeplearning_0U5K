@@ -36,7 +36,7 @@ class Processor:
             else:
                 labels = ['']
             tag = self.data_tag[load_index]
-            # TODO voxel(key point in feature learning)
+            # TODO ccx voxel(key point in feature learning)
             voxel = process_pointcloud(raw_lidar)
             ret = [tag, rgb, raw_lidar, voxel, labels]
         return ret

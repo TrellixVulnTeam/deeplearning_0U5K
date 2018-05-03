@@ -99,7 +99,7 @@ def main(_):
             for epoch in range(start_epoch, args.max_epoch):
                 counter = 0
                 batch_time = time.time()
-                # TODO get batch data(read data from file)
+                # TODO ccx get batch data(read data from file)
                 for batch in iterate_data(train_dir, shuffle=True, aug=True, is_testset=False, batch_size=args.single_batch_size * cfg.GPU_USE_COUNT, multi_gpu_sum=cfg.GPU_USE_COUNT):
                     
                     counter += 1

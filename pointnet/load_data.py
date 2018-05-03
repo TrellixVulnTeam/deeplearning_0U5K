@@ -18,6 +18,7 @@ if not os.path.exists(DATA_DIR):
 
 def get_data_files():
     filenames = []
+    # TODO multi folders for different frames
     allfiles = os.listdir(DATA_DIR)
     for filename in allfiles:
         if filename.endswith('.csv'): 

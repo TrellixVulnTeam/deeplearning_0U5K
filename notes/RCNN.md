@@ -10,9 +10,9 @@
 
 R-CNN的三个步骤：
 
-1. 为边界框生成一组提案
-2. 将边界框输入CNN进行特征提取，并通过svm判定边界框内图像的目标
-3. 将边框代入线性回归模型，一旦目标完成分类，输出边框的更紧密坐标，（即在边界框中找到了目标，能否使边框适应真实目标的尺寸）
+1. 为边界框生成一组提案(选择性搜索算法)
+2. 将边界框输入CNN进行特征提取，并通过svm判定边界框内图像的目标(How many object)
+3. 将边框代入线性回归模型，一旦目标完成分类，输出边框的更紧密坐标，（即在边界框中找到了标，能否使边框适应真实目标的尺寸）
 
 R-CNN的缺陷，性能很棒（预测结果），但是运行很慢，主要体现在两个方面：
 
@@ -21,17 +21,26 @@ R-CNN的缺陷，性能很棒（预测结果），但是运行很慢，主要体
 
 
 
+
+>- 借助一个可以生成约2000个region proposal 的「选择性搜索」（Selective Search）算法，R-CNN 可以对输入图像进行扫描，来获取可能出现的目标。
+>- 在每个region proposal上都运行一个卷积神经网络（CNN）。
+>- 将每个CNN的输出都输入进：a）一个支持向量机（SVM），以对上述区域进行分类。b）一个线性回归器，以收缩目标周围的边界框，前提是这样的目标存在。
+
+![/images_md/rcnn.png](/images_md/rcnn.png)
+
 **Fast RCNN**
 
 为解决这一问题，R-CNN 的第一作者 Ross Girshick提出fast RCNN
 
-1. ROI Pooling
+1. 在推荐区域之前，先对图像执行特征提取工作，通过这种办法，后面只用对整个图像使用一个 CNN（之前的 R-CNN 网络需要在 2000 个重叠的区域上分别运行 2000 个 CNN）。
+2. 将支持向量机替换成了一个 softmax 层，这种变化并没有创建新的模型，而是将神经网络进行了扩展以用于预测工作。
 
-   最初在RCNN中，每一个提案都要单独的前向卷积运算，那么2000个左右的提案总共需要进行2000次前向卷积运算，那么是否可以只对原始图像进行一次卷积运算，然后在不同的2000个区域提案中共享	，即**创建了图像的完整前向传递，并从获得的前向传递中提取每个兴趣区域的转换特征。**
+不用针对每一个类训练很多的svm分类器，但仍然有一个瓶颈，即生成region proposal的selective search algorithm.
 
-   那么如何通过从CNN的特征映射选择相应的区域来获取每个区域的CNN特征？
+![/images_md/frcnn.png](/images_md/frcnn.png)
 
-2. 将所有模型并入一个网络
+
+
 
 
 
@@ -41,10 +50,14 @@ R-CNN的缺陷，性能很棒（预测结果），但是运行很慢，主要体
 
 （第一个真正意义上的端到端训练，主要是指RPN和主干网络一起训练）
 
+![/images_md/faster_rcnn.png](/images_md/faster_rcnn.png)
+
 **Mask R-CNN**
 扩展Faster RCNN以用于像素级分割
 
 RoiAlign——**准确地将原始图像的相关区域映射到特征图上**
+
+**F-RCN**
 
 
 
@@ -128,10 +141,6 @@ gt_boxes: A Tensor with the ground-truth boxes for the image.
     consist of [x1, y1, x2, y2, label], being (x1, y1) -> top left
     point, and (x2, y2) -> bottom right point of the bounding box.
 ```
-
-
-
-
 
 初始anchors数为WxHxn^ 2（W,H分别特征图的宽和高，本文为3）
 
