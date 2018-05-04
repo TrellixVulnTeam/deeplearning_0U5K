@@ -81,9 +81,11 @@ def iterate_data(data_dir, shuffle=False, aug=False, is_testset=False, batch_siz
 
         # only for voxel -> [gpu, k_single_batch, ...]
         vox_feature, vox_number, vox_coordinate = [], [], []
+        # TODO ccx if bach_size smalls than multi_gpu_sum
         single_batch_size = int(batch_size / multi_gpu_sum)
         for idx in range(multi_gpu_sum):
             _, per_vox_feature, per_vox_number, per_vox_coordinate = build_input(voxel[idx * single_batch_size:(idx + 1) * single_batch_size])
+            # a batch concate all files together ∑K
             vox_feature.append(per_vox_feature)
             vox_number.append(per_vox_number)
             vox_coordinate.append(per_vox_coordinate)
@@ -168,7 +170,7 @@ def build_input(voxel_dict_list):
         coordinate = voxel_dict['coordinate_buffer']
         coordinate_list.append(
             np.pad(coordinate, ((0, 0), (1, 0)),
-                   mode='constant', constant_values=i))
+                   mode='constant', constant_values=i)) # ccx add index for [[i, x1, y1, z1], [i, x2, y2, z2],...,]
 
     feature = np.concatenate(feature_list)
     number = np.concatenate(number_list)
