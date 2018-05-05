@@ -25,7 +25,7 @@ class VFELayer(object):
         pointwise = self.batch_norm.apply(self.dense.v(inputs), training)
 
         #n [K, 1, units]( TODO haha,just like the max polling of conv2d)
-        aggregated = tf.reduce_max(pointwise, axis=1, keep_dims=True) # pooling points in voxel
+        aggregated = tf.reduce_max(pointwise, axis=1, keep_dims=True) # pooling points in a voxel
         """
         change all above to conv2D
         """
@@ -35,11 +35,11 @@ class VFELayer(object):
         # [K, T, 2 * units]
         concatenated = tf.concat([pointwise, repeated], axis=2)
         # TODO pointwise + aggregated(global features) the same as the pointnet
-        mask = tf.tile(mask, [1, 1, 2 * self.units])
+        mask = tf.tile(mask, [1, 1, 2 * self.units]) # ccx (ΣK, T, output_channels) here
         # TODO use shared mlp,in other means ,expand input as [K, T, 2 * units, 1] conv2d [1, 2 * units, 1, 2 * units]
         concatenated = tf.multiply(concatenated, tf.cast(mask, tf.float32)) # ccx item corresponded
         # [K, T, out_channels]
-        return concatenated
+        return concatenated # ccx (ΣK, T, output_channels)
 
 
 class FeatureNet(object):
@@ -65,7 +65,7 @@ class FeatureNet(object):
 
         # boolean mask [K, T, 2 * units] # FIXME: ccx fatal  from different file we get different K.
         mask = tf.not_equal(tf.reduce_max(
-            self.feature, axis=2, keep_dims=True), 0)   # (ΣK, T, 1) now
+            self.feature, axis=2, keep_dims=True), 0)   # (ΣK, T, 1) here
         x = self.vfe1.apply(self.feature, mask, self.training)
         x = self.vfe2.apply(x, mask, self.training)
 
@@ -81,6 +81,8 @@ class FeatureNet(object):
         scatter_nd()
         incidices, updates, shape
         return a tensor
+        
+        locate voxel by fileid and coordinate, the others padding 0, so a 5-D tensor with shape [2, 10, height, width, 128] returned
         """
 
 

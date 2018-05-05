@@ -31,17 +31,20 @@ class MiddleAndRPN:
         self.neg_equal_one_sum = tf.placeholder(tf.float32, [None, 1, 1, 1])
 
         with tf.variable_scope('MiddleAndRPN_' + name):
-            # convolutinal middle layers
+            # convolutinal middle layers  (?, 10, 400, 352, 64)
             temp_conv = ConvMD(3, 128, 64, 3, (2, 1, 1),
                                (1, 1, 1), self.input, name='conv1')
+            # (?, 5, 400, 352, 64)
             temp_conv = ConvMD(3, 64, 64, 3, (1, 1, 1),
                                (0, 1, 1), temp_conv, name='conv2')
+            # (?, 3, 400, 352, 64)
             temp_conv = ConvMD(3, 64, 64, 3, (2, 1, 1),
                                (1, 1, 1), temp_conv, name='conv3')
+            # (?, 2, 400, 352, 64)
             temp_conv = tf.transpose(temp_conv, perm=[0, 2, 3, 4, 1])
             temp_conv = tf.reshape(
                 temp_conv, [-1, cfg.INPUT_HEIGHT, cfg.INPUT_WIDTH, 128])
-            # TODO in other word, above all for 5D tensor
+            # TODO ccx in other word, above all for 5D tensor
             # rpn
             # block1:
             temp_conv = ConvMD(2, 128, 128, 3, (2, 2), (1, 1),
@@ -133,8 +136,23 @@ def smooth_l1(deltas, targets, sigma=3.0):
 
 
 def ConvMD(M, Cin, Cout, k, s, p, input, training=True, activation=True, bn=True, name='conv'):
+    """ConvMD(3, 128, 64, 3, (2, 1, 1),
+                               (1, 1, 1), self.input, name='conv1')
+    :param M: dimention
+    :param Cin: input channels
+    :param Cout: output channels
+    :param k: kernel size
+    :param s: stride
+    :param p: padding # why padding manual
+    :param input:
+    :param training:
+    :param activation:
+    :param bn:
+    :param name:
+    :return:
+    """
     temp_p = np.array(p)
-    temp_p = np.lib.pad(temp_p, (1, 1), 'constant', constant_values=(0, 0)) # [0, 1, 1, 0]
+    temp_p = np.lib.pad(temp_p, (1, 1), 'constant', constant_values=(0, 0)) # if M=2 [0, 1, 1, 0] else M=3 [0, 1, 1, 1, 0]
     with tf.variable_scope(name) as scope:
         if(M == 2):
             paddings = (np.array(temp_p)).repeat(2).reshape(4, 2) # [[0, 0], [1, 1], [1, 1], [0, 0]]
