@@ -17,7 +17,7 @@ x,y,z(21,21,26) (-1, -1, -1) (1, 1, 1.5)
 theoreticlly, 
 """
 
-def fluid_process_pointcloud(point_cloud, cls=cfg.DETECT_OBJ):
+def fluid_process_pointcloud(point_cloud, fluid_identification,cls=cfg.DETECT_OBJ):
     if cls == 'Fluid':
         print('Fluid')
         scene_size = np.array([16, 16, 20], dtype=np.float32)
@@ -28,9 +28,8 @@ def fluid_process_pointcloud(point_cloud, cls=cfg.DETECT_OBJ):
         # return
     # FIXME  ccx AWESOME
     shifted_coord = point_cloud[:, :3] + lidar_coord
-    # reverse the point cloud coordinate (X, Y, Z) -> (Z, Y, X)
     voxel_index = np.floor(
-        shifted_coord[:, ::-1] / voxel_size).astype(np.int)  # int lower than num
+        shifted_coord[:, :] / voxel_size).astype(np.int)  # int lower than num
 
     print(voxel_index.shape)
     bound_x = np.logical_and(

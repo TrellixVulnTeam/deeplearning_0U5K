@@ -18,5 +18,5 @@ setup(
     include_dirs=[numpy.get_include()]
 )
 
-# solution for potential error rela ted to numpy/arrayobject.h
+# solution for potential error related to numpy/arrayobject.h
 # export CFLAGS="-I /home/rcf-40/qianguih/.local/lib/python2.7/site-packages/numpy/core/include $CFLAGS"

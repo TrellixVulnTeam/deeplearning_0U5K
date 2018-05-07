@@ -11,7 +11,6 @@ $$
 log\frac{p(Y=1|X)}{1-p(Y=1|X)}=\vec{\omega}\cdot \vec{x}
 $$
 输出Y=1的对数几率是输入x的线性模型，使用极大似然估计法估计参数模型，求的似然函数最大时，$\vec\omega$的值.
-hi
 
 ## CNN
 

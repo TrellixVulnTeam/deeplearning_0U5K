@@ -56,6 +56,7 @@ elif __C.DETECT_OBJ == 'Fluid':
     __C.VOXEL_POINT_FEATURE = 11
     __C.INPUT_WIDTH = int((__C.X_MAX - __C.X_MIN) / __C.VOXEL_X_SIZE)
     __C.INPUT_HEIGHT = int((__C.Y_MAX - __C.Y_MIN) / __C.VOXEL_Y_SIZE)
+    __C.INPUT_DEPTH = int((__C.Z_MAX - __C.Z_MIN) / __C.VOXEL_Z_SIZE)
 else:
     __C.Y_MIN = -20
     __C.Y_MAX = 20

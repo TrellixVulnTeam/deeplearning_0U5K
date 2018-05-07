@@ -11,32 +11,54 @@
 from __future__ import print_function
 from __future__ import division
 
-import time
+import math
+import multiprocessing
 import operator
 import os
+import time
 
 from nose.tools import assert_equal
 import numpy as np
 import pandas as pd
 
+from utils.preprocess import fluid_process_pointcloud
+
 BASE_DIR = '/data/datasets/simulation_data'
-DATA_DIR = os.path.join(BASE_DIR, 'water/0')
+DATA_DIR = os.path.join(BASE_DIR, 'water')
 
 if not os.path.exists(DATA_DIR):
     os.mkdir(DATA_DIR)
 
-def get_data_files():
-    filenames = []
-    # TODO multi folders for different frames
-    allfiles = os.listdir(DATA_DIR)
-    for filename in allfiles:
-        if filename.endswith('.csv'):
-            filenames.append(filename)
-    return map(lambda x: os.path.join(DATA_DIR, x), filenames)
+class Processor(object):
+    def __int__(self, particles, labels, index, data_dir, aug, is_testset):
+        self.particles = particles
+        self.labels = labels
+        self.index = index
+        self.data_dir = data_dir
+        self.aug = aug
+        self.is_testset = is_testset
 
+    def __call__(self, load_index):
+        label = self.labels[self.index]
+        voxel = fluid_process_pointcloud(self.particles, load_index)
+        ret = [voxel, label]
+
+        return ret
+
+
+def get_all_frames(data_dir=DATA_DIR):
+    dirs = os.listdir(data_dir)
+    frames = []
+    for item in dirs:
+        screen_path = os.path.join(data_dir, item)
+        allfiles = os.listdir(screen_path)
+        frames.extend(map(lambda x:os.path.join(item, x), allfiles))
+    return map(lambda x:os.path.join(data_dir, x), frames)
+
+# for test return subset of frames
 def create_train_files(max_num):
     TRAIN_FILES = []
-    files_map = get_data_files()
+    files_map = get_all_frames()
     i = 0
     max_count = 2
     for item in files_map:
@@ -70,11 +92,16 @@ def load_data_file(filename):
 def load_data_label(filename):
     particles = load_data_file(filename)
     cols = particles.columns
-    data_cols = operator.add(list(cols[0:6]), list(cols[7:9]))
+    data_cols = operator.add(list(cols[0:6]), list(cols[7:9])) # extrat timestep
     label_cols = cols[15:18]
+
+    isfluid = cols[7]
+    fluid_parts = particles[particles[isfluid] == 0]
+    index = fluid_parts.index
     data = particles[data_cols].values
-    label = particles[label_cols].values
-    return data, label
+    label = fluid_parts[label_cols].values
+
+    return data, label, index
 
 def shuffle_data(data, labels):
     """ Shuffle data and labels.
@@ -142,6 +169,68 @@ def concat_data_label_all(train_files, dimention_data, dimention_label):
     running = time.clock() - start
     print("runtime: %s" % str(running))
     return current_data, current_label
+
+# global pool
+TRAIN_POOL = multiprocessing.Pool(4)
+
+def iterate_data(data_dir, shuffle=False, aug=False, is_testset=False, batch_size=1, multi_gpu_sum=1):
+    TRAIN_FILES = get_all_frames(data_dir)
+    for f in TRAIN_FILES:
+        data, label, index = load_data_label(f)
+        # TODO the common part of feature
+        nums = len(index)
+        indices = list(range(nums))
+        num_batches = int(math.floor( nums / float(batch_size)))
+
+        proc = Processor(data, label, index, data_dir, aug, is_testset)
+
+        for batch_idx in range(num_batches):
+            start_idx = batch_idx * batch_size
+            excerpt = indices[start_idx:start_idx + batch_size]
+            rets = TRAIN_POOL.map(proc, excerpt)
+
+            voxel = [ret[3] for ret in rets]
+            labels = [ret[4] for ret in rets]
+
+            # only for voxel -> [gpu, k_single_batch, ...]
+            vox_feature, vox_number, vox_coordinate = [], [], []
+            # TODO ccx if bach_size smalls than multi_gpu_sum
+            single_batch_size = int(batch_size / multi_gpu_sum)
+            for idx in range(multi_gpu_sum):
+                _, per_vox_feature, per_vox_number, per_vox_coordinate = build_input(
+                    voxel[idx * single_batch_size:(idx + 1) * single_batch_size])
+                # a batch concate all files together ∑K
+                vox_feature.append(per_vox_feature)
+                vox_number.append(per_vox_number)
+                vox_coordinate.append(per_vox_coordinate)
+
+            ret = (
+                np.array(labels),
+                np.array(vox_feature),
+                np.array(vox_number),
+                np.array(vox_coordinate),
+            )
+
+            yield ret
+
+def build_input(voxel_dict_list):
+    batch_size = len(voxel_dict_list)
+
+    feature_list = []
+    number_list = []
+    coordinate_list = []
+    for i, voxel_dict in zip(range(batch_size), voxel_dict_list):
+        feature_list.append(voxel_dict['feature_buffer'])
+        number_list.append(voxel_dict['number_buffer'])
+        coordinate = voxel_dict['coordinate_buffer']
+        coordinate_list.append(
+            np.pad(coordinate, ((0, 0), (1, 0)),
+                   mode='constant', constant_values=i)) # ccx add index for [[i, x1, y1, z1], [i, x2, y2, z2],...,]
+
+    feature = np.concatenate(feature_list)
+    number = np.concatenate(number_list)
+    coordinate = np.concatenate(coordinate_list)
+    return batch_size, feature, number, coordinate
 
 if __name__ == '__main__':
     BATCH_SIZE = 2
