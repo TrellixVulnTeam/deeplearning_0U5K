@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python
 # encoding: utf-8
 
@@ -21,7 +20,7 @@ from nose.tools import assert_equal
 import numpy as np
 import pandas as pd
 
-from utils.preprocess import fluid_process_pointcloud
+from  utils.preprocess import fluid_process_pointcloud
 
 BASE_DIR = '/data/datasets/simulation_data'
 DATA_DIR = os.path.join(BASE_DIR, 'water')
@@ -30,7 +29,7 @@ if not os.path.exists(DATA_DIR):
     os.mkdir(DATA_DIR)
 
 class Processor(object):
-    def __int__(self, particles, labels, index, data_dir, aug, is_testset):
+    def __init__(self, particles, labels, index, data_dir, aug, is_testset):
         self.particles = particles
         self.labels = labels
         self.index = index
@@ -39,7 +38,7 @@ class Processor(object):
         self.is_testset = is_testset
 
     def __call__(self, load_index):
-        label = self.labels[self.index]
+        label = self.labels[load_index]
         voxel = fluid_process_pointcloud(self.particles, load_index)
         ret = [voxel, label]
 
@@ -189,8 +188,8 @@ def iterate_data(data_dir, shuffle=False, aug=False, is_testset=False, batch_siz
             excerpt = indices[start_idx:start_idx + batch_size]
             rets = TRAIN_POOL.map(proc, excerpt)
 
-            voxel = [ret[3] for ret in rets]
-            labels = [ret[4] for ret in rets]
+            voxel = [ret[0] for ret in rets]
+            labels = [ret[1] for ret in rets]
 
             # only for voxel -> [gpu, k_single_batch, ...]
             vox_feature, vox_number, vox_coordinate = [], [], []

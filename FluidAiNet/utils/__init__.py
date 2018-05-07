@@ -13,3 +13,4 @@ from utils.kitti_loader import *
 from utils.utils import *
 from utils.preprocess import *
 from utils.data_aug import *
+from utils.fluid_loader import *

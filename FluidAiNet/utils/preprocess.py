@@ -18,6 +18,8 @@ theoreticlly,
 """
 
 def fluid_process_pointcloud(point_cloud, fluid_identification,cls=cfg.DETECT_OBJ):
+    centroid = point_cloud[fluid_identification][:3]
+    print(centroid)
     if cls == 'Fluid':
         print('Fluid')
         scene_size = np.array([16, 16, 20], dtype=np.float32)
@@ -27,6 +29,7 @@ def fluid_process_pointcloud(point_cloud, fluid_identification,cls=cfg.DETECT_OB
         max_point_number = 64
         # return
     # FIXME  ccx AWESOME
+    print(point_cloud)
     shifted_coord = point_cloud[:, :3] + lidar_coord
     voxel_index = np.floor(
         shifted_coord[:, :] / voxel_size).astype(np.int)  # int lower than num
@@ -67,11 +70,11 @@ def fluid_process_pointcloud(point_cloud, fluid_identification,cls=cfg.DETECT_OB
         index = index_buffer[tuple(voxel)]
         number = number_buffer[index]
         if number < T:
-            feature_buffer[index, number, :4] = point
+            feature_buffer[index, number, :8] = point
             number_buffer[index] += 1
 
-    feature_buffer[:, :, -3:] = feature_buffer[:, :, :3] - \
-                                feature_buffer[:, :, :3].sum(axis=1, keepdims=True) / number_buffer.reshape(K, 1, 1)
+    feature_buffer[:, :, -3:] = feature_buffer[:, :, :3] - centroid
+
 
     voxel_dict = {'feature_buffer': feature_buffer,  # (K, T, 7)
                   'coordinate_buffer': coordinate_buffer,  # (K, 3)
@@ -156,10 +159,11 @@ def process_pointcloud(point_cloud, cls=cfg.DETECT_OBJ):
     return voxel_dict
 
 if __name__ == "__main__":
-    import fluid_loader
+#     import fluid_loader
 
-    BATCH_SIZE = 2
-    TRAIN_FILES = fluid_loader.create_train_files(BATCH_SIZE)
-    print(TRAIN_FILES)
-    pointcloud, _ = fluid_loader.concat_data_label_all(TRAIN_FILES, 8, 3)
-    voxel_index = fluid_process_pointcloud(pointcloud[0])
+#     BATCH_SIZE = 2
+#     TRAIN_FILES = fluid_loader.create_train_files(BATCH_SIZE)
+#     print(TRAIN_FILES)
+#     pointcloud, _, _ = fluid_loader.concat_data_label_all(TRAIN_FILES, 8, 3)
+#     voxel_index = fluid_process_pointcloud(pointcloud[0],1)
+    pass
