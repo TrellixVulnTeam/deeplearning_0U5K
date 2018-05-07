@@ -17,9 +17,6 @@ from utils import *
 from utils.kitti_loader import iterate_data, sample_test_data
 from train_hook import check_if_should_pause
 
-
-
-
 parser = argparse.ArgumentParser(description='training')
 parser.add_argument('-i', '--max-epoch', type=int, nargs='?', default=160,
                     help='max epoch')
@@ -39,10 +36,9 @@ parser.add_argument('-v', '--vis', type=bool, nargs='?', default=False,
                     help='set the flag to True if dumping visualizations')
 args = parser.parse_args()
 
-
 dataset_dir = cfg.DATA_DIR
-train_dir = os.path.join(cfg.DATA_DIR, 'training') # ccx need to change
-val_dir = os.path.join(cfg.DATA_DIR, 'validation') # ccx need to change
+train_dir = os.path.join(cfg.DATA_DIR, 'training')  # ccx need to change
+val_dir = os.path.join(cfg.DATA_DIR, 'validation')  # ccx need to change
 log_dir = os.path.join('./log', args.tag)
 save_model_dir = os.path.join('./save_model', args.tag)
 os.makedirs(log_dir, exist_ok=True)
@@ -94,105 +90,116 @@ def main(_):
             summary_val_interval = 10
             summary_writer = tf.summary.FileWriter(log_dir, sess.graph)
 
-
             # training
             for epoch in range(start_epoch, args.max_epoch):
                 counter = 0
                 batch_time = time.time()
                 # TODO ccx get batch data(read data from file)
-                for batch in iterate_data(train_dir, shuffle=True, aug=True, is_testset=False, batch_size=args.single_batch_size * cfg.GPU_USE_COUNT, multi_gpu_sum=cfg.GPU_USE_COUNT):
-                    
+                for batch in iterate_data(train_dir, shuffle=True, aug=True, is_testset=False,
+                                          batch_size=args.single_batch_size * cfg.GPU_USE_COUNT,
+                                          multi_gpu_sum=cfg.GPU_USE_COUNT):
+
                     counter += 1
                     global_counter += 1
-                    
+
                     if counter % summary_interval == 0:
                         is_summary = True
                     else:
                         is_summary = False
-                    
+
                     start_time = time.time()
-                    ret = model.train_step( sess, batch, train=True, summary = is_summary )
+                    ret = model.train_step(sess, batch, train=True, summary=is_summary)
                     forward_time = time.time() - start_time
                     batch_time = time.time() - batch_time
 
-                    
-                    print('train: {} @ epoch:{}/{} loss: {:.4f} reg_loss: {:.4f} cls_loss: {:.4f} cls_pos_loss: {:.4f} cls_neg_loss: {:.4f} forward time: {:.4f} batch time: {:.4f}'.format(counter,epoch, args.max_epoch, ret[0], ret[1], ret[2], ret[3], ret[4], forward_time, batch_time))
+                    print(
+                        'train: {} @ epoch:{}/{} loss: {:.4f} reg_loss: {:.4f} cls_loss: {:.4f} cls_pos_loss: {:.4f} cls_neg_loss: {:.4f} forward time: {:.4f} batch time: {:.4f}'.format(
+                            counter, epoch, args.max_epoch, ret[0], ret[1], ret[2], ret[3], ret[4], forward_time,
+                            batch_time))
                     with open('log/train.txt', 'a') as f:
-                        f.write( 'train: {} @ epoch:{}/{} loss: {:.4f} reg_loss: {:.4f} cls_loss: {:.4f} cls_pos_loss: {:.4f} cls_neg_loss: {:.4f} forward time: {:.4f} batch time: {:.4f} \n'.format(counter, epoch, args.max_epoch, ret[0], ret[1], ret[2], ret[3], ret[4], forward_time, batch_time) )
-                    
-                    #print(counter, summary_interval, counter % summary_interval)
+                        f.write(
+                            'train: {} @ epoch:{}/{} loss: {:.4f} reg_loss: {:.4f} cls_loss: {:.4f} cls_pos_loss: {:.4f} cls_neg_loss: {:.4f} forward time: {:.4f} batch time: {:.4f} \n'.format(
+                                counter, epoch, args.max_epoch, ret[0], ret[1], ret[2], ret[3], ret[4], forward_time,
+                                batch_time))
+
+                    # print(counter, summary_interval, counter % summary_interval)
                     if counter % summary_interval == 0:
                         print("summary_interval now")
                         summary_writer.add_summary(ret[-1], global_counter)
-                            
-                    #print(counter, summary_val_interval, counter % summary_val_interval)
+
+                    # print(counter, summary_val_interval, counter % summary_val_interval)
                     if counter % summary_val_interval == 0:
                         print("summary_val_interval now")
-                        batch = sample_test_data(val_dir, args.single_batch_size * cfg.GPU_USE_COUNT, multi_gpu_sum=cfg.GPU_USE_COUNT)
-                        
+                        batch = sample_test_data(val_dir, args.single_batch_size * cfg.GPU_USE_COUNT,
+                                                 multi_gpu_sum=cfg.GPU_USE_COUNT)
+
                         ret = model.validate_step(sess, batch, summary=True)
                         summary_writer.add_summary(ret[-1], global_counter)
-                        
+
                         try:
                             ret = model.predict_step(sess, batch, summary=True)
                             summary_writer.add_summary(ret[-1], global_counter)
                         except:
                             print("prediction skipped due to error")
-                    
+
                     if check_if_should_pause(args.tag):
-                        model.saver.save(sess, os.path.join(save_model_dir, 'checkpoint'), global_step=model.global_step)
+                        model.saver.save(sess, os.path.join(save_model_dir, 'checkpoint'),
+                                         global_step=model.global_step)
                         print('pause and save model @ {} steps:{}'.format(save_model_dir, model.global_step.eval()))
                         sys.exit(0)
-                            
+
                     batch_time = time.time()
-                
+
                 sess.run(model.epoch_add_op)
-                
+
                 model.saver.save(sess, os.path.join(save_model_dir, 'checkpoint'), global_step=model.global_step)
-        
+
                 # dump test data every 10 epochs
-                if ( epoch + 1 ) % 10 == 0:
+                if (epoch + 1) % 10 == 0:
                     # create output folder
                     os.makedirs(os.path.join(args.output_path, str(epoch)), exist_ok=True)
                     os.makedirs(os.path.join(args.output_path, str(epoch), 'data'), exist_ok=True)
                     if args.vis:
                         os.makedirs(os.path.join(args.output_path, str(epoch), 'vis'), exist_ok=True)
-                    
-                    for batch in iterate_data(val_dir, shuffle=False, aug=False, is_testset=False, batch_size=args.single_batch_size * cfg.GPU_USE_COUNT, multi_gpu_sum=cfg.GPU_USE_COUNT):
-                        
+
+                    for batch in iterate_data(val_dir, shuffle=False, aug=False, is_testset=False,
+                                              batch_size=args.single_batch_size * cfg.GPU_USE_COUNT,
+                                              multi_gpu_sum=cfg.GPU_USE_COUNT):
+
                         if args.vis:
-                            tags, results, front_images, bird_views, heatmaps = model.predict_step(sess, batch, summary=False, vis=True)
+                            tags, results, front_images, bird_views, heatmaps = model.predict_step(sess, batch,
+                                                                                                   summary=False,
+                                                                                                   vis=True)
                         else:
                             tags, results = model.predict_step(sess, batch, summary=False, vis=False)
-                                
+
                         for tag, result in zip(tags, results):
                             of_path = os.path.join(args.output_path, str(epoch), 'data', tag + '.txt')
                             with open(of_path, 'w+') as f:
-                                labels = box3d_to_label([result[:, 1:8]], [result[:, 0]], [result[:, -1]], coordinate='lidar')[0]
+                                labels = \
+                                box3d_to_label([result[:, 1:8]], [result[:, 0]], [result[:, -1]], coordinate='lidar')[0]
                                 for line in labels:
                                     f.write(line)
                                 print('write out {} objects to {}'.format(len(labels), tag))
                         # dump visualizations
                         if args.vis:
                             for tag, front_image, bird_view, heatmap in zip(tags, front_images, bird_views, heatmaps):
-                                front_img_path = os.path.join( args.output_path, str(epoch),'vis', tag + '_front.jpg'  )
-                                bird_view_path = os.path.join( args.output_path, str(epoch), 'vis', tag + '_bv.jpg'  )
-                                heatmap_path = os.path.join( args.output_path, str(epoch), 'vis', tag + '_heatmap.jpg'  )
-                                cv2.imwrite( front_img_path, front_image )
-                                cv2.imwrite( bird_view_path, bird_view )
-                                cv2.imwrite( heatmap_path, heatmap )
-        
+                                front_img_path = os.path.join(args.output_path, str(epoch), 'vis', tag + '_front.jpg')
+                                bird_view_path = os.path.join(args.output_path, str(epoch), 'vis', tag + '_bv.jpg')
+                                heatmap_path = os.path.join(args.output_path, str(epoch), 'vis', tag + '_heatmap.jpg')
+                                cv2.imwrite(front_img_path, front_image)
+                                cv2.imwrite(bird_view_path, bird_view)
+                                cv2.imwrite(heatmap_path, heatmap)
+
                     # execute evaluation code
                     cmd_1 = "./kitti_eval/launch_test.sh"
-                    cmd_2 = os.path.join( args.output_path, str(epoch) )
-                    cmd_3 = os.path.join( args.output_path, str(epoch), 'log' )
-                    os.system( " ".join( [cmd_1, cmd_2, cmd_3] ) )
-                        
-                        
+                    cmd_2 = os.path.join(args.output_path, str(epoch))
+                    cmd_3 = os.path.join(args.output_path, str(epoch), 'log')
+                    os.system(" ".join([cmd_1, cmd_2, cmd_3]))
 
             print('train done. total epoch:{} iter:{}'.format(
                 epoch, model.global_step.eval()))
-                
+
             # finallly save model
             model.saver.save(sess, os.path.join(
                 save_model_dir, 'checkpoint'), global_step=model.global_step)

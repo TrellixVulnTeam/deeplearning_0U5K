@@ -22,7 +22,7 @@ class VFELayer(object):
 
     def apply(self, inputs, mask, training):
         # [K, T, 7] tensordot [7, units] = [K, T, units]
-        pointwise = self.batch_norm.apply(self.dense.v(inputs), training)
+        pointwise = self.batch_norm.apply(self.dense.apply(inputs), training)
 
         #n [K, 1, units]( TODO haha,just like the max polling of conv2d)
         aggregated = tf.reduce_max(pointwise, axis=1, keep_dims=True) # pooling points in a voxel
