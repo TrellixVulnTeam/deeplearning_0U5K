@@ -189,22 +189,26 @@ def iterate_data(data_dir, shuffle=False, aug=False, is_testset=False, batch_siz
             rets = TRAIN_POOL.map(proc, excerpt)
 
             voxel = [ret[0] for ret in rets]
+            assert_equal(len(voxel), batch_size)
             labels = [ret[1] for ret in rets]
 
             # only for voxel -> [gpu, k_single_batch, ...]
             vox_feature, vox_number, vox_coordinate = [], [], []
+            vox_labels = []
             # TODO ccx if bach_size smalls than multi_gpu_sum
             single_batch_size = int(batch_size / multi_gpu_sum)
             for idx in range(multi_gpu_sum):
+                label = labels[idx * single_batch_size:(idx + 1) * single_batch_size]
                 _, per_vox_feature, per_vox_number, per_vox_coordinate = build_input(
                     voxel[idx * single_batch_size:(idx + 1) * single_batch_size])
                 # a batch concate all files together ∑K
+                vox_labels.append(label)
                 vox_feature.append(per_vox_feature)
                 vox_number.append(per_vox_number)
                 vox_coordinate.append(per_vox_coordinate)
 
             ret = (
-                np.array(labels),
+                np.array(vox_labels),
                 np.array(vox_feature),
                 np.array(vox_number),
                 np.array(vox_coordinate),

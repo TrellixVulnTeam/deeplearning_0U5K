@@ -19,7 +19,7 @@ theoreticlly,
 
 def fluid_process_pointcloud(point_cloud, fluid_identification,cls=cfg.DETECT_OBJ):
     centroid = point_cloud[fluid_identification][:3]
-    print(centroid)
+    print('centroid:', centroid)
     if cls == 'Fluid':
         print('Fluid')
         scene_size = np.array([16, 16, 20], dtype=np.float32)
@@ -29,12 +29,10 @@ def fluid_process_pointcloud(point_cloud, fluid_identification,cls=cfg.DETECT_OB
         max_point_number = 64
         # return
     # FIXME  ccx AWESOME
-    print(point_cloud)
     shifted_coord = point_cloud[:, :3] + lidar_coord
     voxel_index = np.floor(
         shifted_coord[:, :] / voxel_size).astype(np.int)  # int lower than num
 
-    print(voxel_index.shape)
     bound_x = np.logical_and(
         voxel_index[:, 2] >= 0, voxel_index[:, 2] < grid_size[2])
     bound_y = np.logical_and(
@@ -52,13 +50,13 @@ def fluid_process_pointcloud(point_cloud, fluid_identification,cls=cfg.DETECT_OB
 
     K = len(coordinate_buffer)  # K record the number of voxels
     T = max_point_number
-    print(K)
+    print('The count of voxel:', K)
     assert_equal(T, 64)
     # [K, 1] store number of points in each voxel grid
     number_buffer = np.zeros(shape=(K), dtype=np.int64)
 
     # [K, T, 7] feature buffer as described in the paper
-    feature_buffer = np.zeros(shape=(K, T, 11), dtype=np.float32) # position, velocity, isFluid, index, relative position
+    feature_buffer = np.zeros(shape=(K, T, cfg.VOXEL_POINT_FEATURE), dtype=np.float32) # position, velocity, isFluid, index, relative position
 
     # build a reverse index for coordinate buffer
     index_buffer = {}

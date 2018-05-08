@@ -16,19 +16,20 @@ class MiddleAndRPN:
         # scale = [batchsize, 10, 400/200, 352/240, 128] should be the output of feature learning network
         self.input = input
         self.training = training
+        self.y = tf.placeholder(tf.float32, [None, 3])
         # groundtruth(target) - each anchor box, represent as △x, △y, △z, △l, △w, △h, rotation
-        self.targets = tf.placeholder(
-            tf.float32, [None, cfg.FEATURE_HEIGHT, cfg.FEATURE_WIDTH, 14])
-        # postive anchors equal to one and others equal to zero(2 anchors in 1 position)
-        self.pos_equal_one = tf.placeholder(
-            tf.float32, [None, cfg.FEATURE_HEIGHT, cfg.FEATURE_WIDTH, 2])
-        self.pos_equal_one_sum = tf.placeholder(tf.float32, [None, 1, 1, 1])
-        self.pos_equal_one_for_reg = tf.placeholder(
-            tf.float32, [None, cfg.FEATURE_HEIGHT, cfg.FEATURE_WIDTH, 14])
-        # negative anchors equal to one and others equal to zero
-        self.neg_equal_one = tf.placeholder(
-            tf.float32, [None, cfg.FEATURE_HEIGHT, cfg.FEATURE_WIDTH, 2])
-        self.neg_equal_one_sum = tf.placeholder(tf.float32, [None, 1, 1, 1])
+        # self.targets = tf.placeholder(
+        #     tf.float32, [None, cfg.FEATURE_HEIGHT, cfg.FEATURE_WIDTH, 14])
+        # # postive anchors equal to one and others equal to zero(2 anchors in 1 position)
+        # self.pos_equal_one = tf.placeholder(
+        #     tf.float32, [None, cfg.FEATURE_HEIGHT, cfg.FEATURE_WIDTH, 2])
+        # self.pos_equal_one_sum = tf.placeholder(tf.float32, [None, 1, 1, 1])
+        # self.pos_equal_one_for_reg = tf.placeholder(
+        #     tf.float32, [None, cfg.FEATURE_HEIGHT, cfg.FEATURE_WIDTH, 14])
+        # # negative anchors equal to one and others equal to zero
+        # self.neg_equal_one = tf.placeholder(
+        #     tf.float32, [None, cfg.FEATURE_HEIGHT, cfg.FEATURE_WIDTH, 2])
+        # self.neg_equal_one_sum = tf.placeholder(tf.float32, [None, 1, 1, 1])
 
         with tf.variable_scope('MiddleAndRPN_' + name):
             # convolutinal middle layers  (?, 10, 400, 352, 64)
@@ -92,33 +93,44 @@ class MiddleAndRPN:
 
             # final:
             temp_conv = tf.concat([deconv3, deconv2, deconv1], -1)
+            print('temp_conv shape:', temp_conv)
             # Probability score map, scale = [None, 200/100, 176/120, 2]
-            p_map = ConvMD(2, 768, 2, 1, (1, 1), (0, 0), temp_conv,
-                           training=self.training, activation=False, bn=False, name='conv20')
+            # p_map = ConvMD(2, 768, 2, 1, (1, 1), (0, 0), temp_conv,
+            #                training=self.training, activation=False, bn=False, name='conv20')
             # Regression(residual) map, scale = [None, 200/100, 176/120, 14]
-            r_map = ConvMD(2, 768, 14, 1, (1, 1), (0, 0),
+            r_map = ConvMD(2, 768, 3, 1, (1, 1), (0, 0),
                            temp_conv, training=self.training, activation=False, bn=False, name='conv21')
+            print('r_map shape:', r_map.shape)
+            final_features = tf.reshape(r_map, [-1, 20*20*3])
+
+            print('final_features shape:', final_features.shape)
+            pred = tf.layers.dense(final_features, 3, name="output")
+            # FIXME
+            self.regression_loss = tf.losses.mean_squared_error(self.y, pred)
+            self.loss = tf.reduce_sum(self.regression_loss)
+            print(self.loss)
+
             # softmax output for positive anchor and negative anchor, scale = [None, 200/100, 176/120, 1]
-            self.p_pos = tf.sigmoid(p_map)
-            #self.p_pos = tf.nn.softmax(p_map, dim=3)
-            self.output_shape = [cfg.FEATURE_HEIGHT, cfg.FEATURE_WIDTH]
-            # TODO pos_equal_one‘s definition gived in train_step(model.py)
-            self.cls_pos_loss = (-self.pos_equal_one * tf.log(self.p_pos + small_addon_for_BCE)) / self.pos_equal_one_sum
-            self.cls_neg_loss = (-self.neg_equal_one * tf.log(1 - self.p_pos + small_addon_for_BCE)) / self.neg_equal_one_sum
-            
-            self.cls_loss = tf.reduce_sum( alpha * self.cls_pos_loss + beta * self.cls_neg_loss )
-            self.cls_pos_loss_rec = tf.reduce_sum( self.cls_pos_loss )
-            self.cls_neg_loss_rec = tf.reduce_sum( self.cls_neg_loss )
-
-
-            self.reg_loss = smooth_l1(r_map * self.pos_equal_one_for_reg, self.targets *
-                                      self.pos_equal_one_for_reg, sigma) / self.pos_equal_one_sum
-            self.reg_loss = tf.reduce_sum(self.reg_loss)
-
-            self.loss = tf.reduce_sum(self.cls_loss + self.reg_loss)
-
-            self.delta_output = r_map
-            self.prob_output = self.p_pos
+            # self.p_pos = tf.sigmoid(p_map)
+            # #self.p_pos = tf.nn.softmax(p_map, dim=3)
+            # self.output_shape = [cfg.FEATURE_HEIGHT, cfg.FEATURE_WIDTH]
+            # # TODO pos_equal_one‘s definition gived in train_step(model.py)
+            # self.cls_pos_loss = (-self.pos_equal_one * tf.log(self.p_pos + small_addon_for_BCE)) / self.pos_equal_one_sum
+            # self.cls_neg_loss = (-self.neg_equal_one * tf.log(1 - self.p_pos + small_addon_for_BCE)) / self.neg_equal_one_sum
+            #
+            # self.cls_loss = tf.reduce_sum( alpha * self.cls_pos_loss + beta * self.cls_neg_loss )
+            # self.cls_pos_loss_rec = tf.reduce_sum( self.cls_pos_loss )
+            # self.cls_neg_loss_rec = tf.reduce_sum( self.cls_neg_loss )
+            #
+            #
+            # self.reg_loss = smooth_l1(r_map * self.pos_equal_one_for_reg, self.targets *
+            #                           self.pos_equal_one_for_reg, sigma) / self.pos_equal_one_sum
+            # self.reg_loss = tf.reduce_sum(self.reg_loss)
+            #
+            # self.loss = tf.reduce_sum(self.cls_loss + self.reg_loss)
+            #
+            # self.delta_output = r_map
+            # self.prob_output = self.p_pos
 
 
 def smooth_l1(deltas, targets, sigma=3.0):
