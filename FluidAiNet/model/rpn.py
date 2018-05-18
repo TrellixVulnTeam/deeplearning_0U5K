@@ -105,6 +105,8 @@ class MiddleAndRPN:
 
             print('final_features shape:', final_features.shape)
             pred = tf.layers.dense(final_features, 3, name="output")
+            print("********************************")
+            tf.add_to_collection('acceleration', pred)
             # FIXME
             self.regression_loss = tf.losses.mean_squared_error(self.y, pred)
             self.loss = tf.reduce_sum(self.regression_loss)

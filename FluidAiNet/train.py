@@ -126,8 +126,9 @@ def main(_):
                     if counter % summary_interval == 0:
                         print("summary_interval now")
                         summary_writer.add_summary(ret[-1], global_counter)
+                    if counter % 2 == 0:
                         model.saver.save(sess, os.path.join(save_model_dir, 'checkpoint'),
-                                         global_step=model.global_step)
+                                             global_step=model.global_step)
                     # print(counter, summary_val_interval, counter % summary_val_interval)
                     # if counter % summary_val_interval == 0:
                     #     print("summary_val_interval now")
