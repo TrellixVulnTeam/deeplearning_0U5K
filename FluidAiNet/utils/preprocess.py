@@ -56,7 +56,7 @@ def fluid_process_pointcloud(point_cloud, fluid_identification,cls=cfg.DETECT_OB
     number_buffer = np.zeros(shape=(K), dtype=np.int64)
 
     # [K, T, 7] feature buffer as described in the paper
-    feature_buffer = np.zeros(shape=(K, T, cfg.VOXEL_POINT_FEATURE), dtype=np.float32) # position, velocity, isFluid, index, relative position
+    feature_buffer = np.zeros(shape=(K, T, cfg.VOXEL_PART_FEATURE), dtype=np.float32) # position, velocity, isFluid, index, relative position
 
     # build a reverse index for coordinate buffer
     index_buffer = {}
@@ -70,13 +70,15 @@ def fluid_process_pointcloud(point_cloud, fluid_identification,cls=cfg.DETECT_OB
         if number < T:
             feature_buffer[index, number, :8] = point
             number_buffer[index] += 1
-
-    feature_buffer[:, :, -3:] = feature_buffer[:, :, :3] - centroid
+    # computer this in the graph
+    # feature_buffer[:, :, -3:] = feature_buffer[:, :, :3] - centroid
 
 
     voxel_dict = {'feature_buffer': feature_buffer,  # (K, T, 7)
                   'coordinate_buffer': coordinate_buffer,  # (K, 3)
-                  'number_buffer': number_buffer}  # (K,)
+                  'number_buffer': number_buffer, # (K,)
+                  'centroid': centroid, #{3,}
+                  'k_dynamic': K}
     return voxel_dict
 
 def process_pointcloud(point_cloud, cls=cfg.DETECT_OBJ):

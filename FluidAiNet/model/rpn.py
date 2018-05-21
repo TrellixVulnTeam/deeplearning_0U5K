@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 # -*- coding:UTF-8 -*-
 
-
-import tensorflow as tf
+from nose.tools import assert_equal
 import numpy as np
+import tensorflow as tf
+
 
 from config import cfg
 
@@ -32,23 +33,36 @@ class MiddleAndRPN:
         # self.neg_equal_one_sum = tf.placeholder(tf.float32, [None, 1, 1, 1])
 
         with tf.variable_scope('MiddleAndRPN_' + name):
-            # convolutinal middle layers  (?, 10, 400, 352, 64)
-            temp_conv = ConvMD(3, 128, 64, 3, (2, 1, 1),
+            # convolutinal middle layers
+            # input shape (2, 40, 40, 50, 128)
+            #print(self.input.shape)
+            # assert_equal(self.input.shape, (None, 40, 40, 50, 128))
+            temp_conv = ConvMD(3, 128, 64, 3, (1, 1, 2),
                                (1, 1, 1), self.input, name='conv1')
-            # (?, 5, 400, 352, 64)
+            #assert_equal()
+            #print(temp_conv.shape)
+            # (?, 40, 40, 25, 64)
             temp_conv = ConvMD(3, 64, 64, 3, (1, 1, 1),
-                               (0, 1, 1), temp_conv, name='conv2')
-            # (?, 3, 400, 352, 64)
-            temp_conv = ConvMD(3, 64, 64, 3, (2, 1, 1),
+                               (1, 1, 0), temp_conv, name='conv2')
+            # (?, 40, 40, 23, 64)
+            #print(temp_conv.shape)
+            temp_conv = ConvMD(3, 64, 64, 3, (1, 1, 2),
                                (1, 1, 1), temp_conv, name='conv3')
-            # (?, 2, 400, 352, 64)
-            temp_conv = tf.transpose(temp_conv, perm=[0, 2, 3, 4, 1])
+            # (?, 40, 40, 12, 64)
+            #print(temp_conv.shape)
+            temp_conv = tf.transpose(temp_conv, perm=[0, 1, 2, 4, 3])
+            #print(temp_conv.shape)
             temp_conv = tf.reshape(
-                temp_conv, [-1, cfg.INPUT_HEIGHT, cfg.INPUT_WIDTH, 128])
-            # TODO ccx in other word, above all for 5D tensor
+                temp_conv, [-1, cfg.INPUT_WIDTH * cfg.INPUT_HEIGHT, 64, 12])
+            print(temp_conv.shape)
+
+            temp_conv = tf.reduce_max(temp_conv, axis=3, keepdims=True)
+            print(temp_conv.shape)
+            temp_conv = tf.reshape(temp_conv, [-1, cfg.INPUT_WIDTH, cfg.INPUT_HEIGHT, 64])
+            print(temp_conv.shape)
             # rpn
             # block1:
-            temp_conv = ConvMD(2, 128, 128, 3, (2, 2), (1, 1),
+            temp_conv = ConvMD(2, 64, 128, 3, (2, 2), (1, 1),
                                temp_conv, training=self.training, name='conv4')
             temp_conv = ConvMD(2, 128, 128, 3, (1, 1), (1, 1),
                                temp_conv, training=self.training, name='conv5')
@@ -100,11 +114,12 @@ class MiddleAndRPN:
             # Regression(residual) map, scale = [None, 200/100, 176/120, 14]
             r_map = ConvMD(2, 768, 3, 1, (1, 1), (0, 0),
                            temp_conv, training=self.training, activation=False, bn=False, name='conv21')
-            print('r_map shape:', r_map.shape)
+            print('r_map shape:', r_map)
             final_features = tf.reshape(r_map, [-1, 20*20*3])
 
             print('final_features shape:', final_features.shape)
             pred = tf.layers.dense(final_features, 3, name="output")
+            print("pred:\n", pred.name)
             print("********************************")
             tf.add_to_collection('acceleration', pred)
             # FIXME
@@ -166,9 +181,12 @@ def ConvMD(M, Cin, Cout, k, s, p, input, training=True, activation=True, bn=True
     :return:
     """
     temp_p = np.array(p)
+    # ccx (1, 1):Number of values padded to the edges of each axis.
     temp_p = np.lib.pad(temp_p, (1, 1), 'constant', constant_values=(0, 0)) # if M=2 [0, 1, 1, 0] else M=3 [0, 1, 1, 1, 0]
+
     with tf.variable_scope(name) as scope:
         if(M == 2):
+            # ccx repeat element by element
             paddings = (np.array(temp_p)).repeat(2).reshape(4, 2) # [[0, 0], [1, 1], [1, 1], [0, 0]]
             pad = tf.pad(input, paddings, "CONSTANT") # default 0
             temp_conv = tf.layers.conv2d(
@@ -202,4 +220,4 @@ def Deconv2D(Cin, Cout, k, s, p, input, training=True, bn=True, name='deconv'):
 
 if(__name__ == "__main__"):
     m = MiddleAndRPN(tf.placeholder(
-        tf.float32, [None, 10, cfg.INPUT_HEIGHT, cfg.INPUT_WIDTH, 128]))
+        tf.float32, [2, cfg.INPUT_WIDTH, cfg.INPUT_HEIGHT, cfg.INPUT_DEPTH, 128]))

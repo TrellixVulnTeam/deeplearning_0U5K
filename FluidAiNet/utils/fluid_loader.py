@@ -137,7 +137,7 @@ def concat_data_label(train_files, max_points, dimention_data, dimention_label):
     current_label = get_array(label_shape)
     start = time.clock()
     for fn in range(len(TRAIN_FILES)):
-        current_data_single, current_label_single = load_data_label(TRAIN_FILES[train_file_idxs[fn]])
+        current_data_single, current_label_single,_ = load_data_label(TRAIN_FILES[train_file_idxs[fn]])
         current_data[fn] = current_data_single.values[:MAX_POINTS, :]
         current_label[fn]= current_label_single.values[:MAX_POINTS, :]
     running = time.clock() - start
@@ -162,7 +162,7 @@ def concat_data_label_all(train_files, dimention_data, dimention_label):
     current_label = []
     start = time.clock()
     for fn in range(len(TRAIN_FILES)):
-        current_data_single, current_label_single = load_data_label(TRAIN_FILES[train_file_idxs[fn]])
+        current_data_single, current_label_single, _ = load_data_label(TRAIN_FILES[train_file_idxs[fn]])
         current_data.append(current_data_single)
         current_label.append(current_label_single)
     running = time.clock() - start
@@ -193,25 +193,29 @@ def iterate_data(data_dir, shuffle=False, aug=False, is_testset=False, batch_siz
             labels = [ret[1] for ret in rets]
 
             # only for voxel -> [gpu, k_single_batch, ...]
-            vox_feature, vox_number, vox_coordinate = [], [], []
+            vox_feature, vox_number, vox_coordinate, vox_centroid, vox_k_dynamic = [], [], [], [], []
             vox_labels = []
             # TODO ccx if bach_size smalls than multi_gpu_sum
             single_batch_size = int(batch_size / multi_gpu_sum)
             for idx in range(multi_gpu_sum):
                 label = labels[idx * single_batch_size:(idx + 1) * single_batch_size]
-                _, per_vox_feature, per_vox_number, per_vox_coordinate = build_input(
+                _, per_vox_feature, per_vox_number, per_vox_coordinate, per_vox_centroid, per_vox_k_dynamic= build_input(
                     voxel[idx * single_batch_size:(idx + 1) * single_batch_size])
                 # a batch concate all files together ∑K
                 vox_labels.append(label)
                 vox_feature.append(per_vox_feature)
                 vox_number.append(per_vox_number)
                 vox_coordinate.append(per_vox_coordinate)
-
+                vox_centroid.append(per_vox_centroid)
+                vox_k_dynamic.append(per_vox_k_dynamic)
+                print(vox_k_dynamic)
             ret = (
                 np.array(vox_labels),
                 np.array(vox_feature),
                 np.array(vox_number),
                 np.array(vox_coordinate),
+                np.array(vox_centroid),
+                np.array(vox_k_dynamic)
             )
 
             yield ret
@@ -222,9 +226,13 @@ def build_input(voxel_dict_list):
     feature_list = []
     number_list = []
     coordinate_list = []
+    centroid_list = []
+    k_dinamic_list = []
     for i, voxel_dict in zip(range(batch_size), voxel_dict_list):
         feature_list.append(voxel_dict['feature_buffer'])
         number_list.append(voxel_dict['number_buffer'])
+        centroid_list.append(voxel_dict['centroid'])
+        k_dinamic_list.append(voxel_dict['k_dynamic'])
         coordinate = voxel_dict['coordinate_buffer']
         coordinate_list.append(
             np.pad(coordinate, ((0, 0), (1, 0)),
@@ -233,7 +241,9 @@ def build_input(voxel_dict_list):
     feature = np.concatenate(feature_list)
     number = np.concatenate(number_list)
     coordinate = np.concatenate(coordinate_list)
-    return batch_size, feature, number, coordinate
+    centroid = np.array(centroid_list)
+    k_dynamics = np.array(k_dinamic_list)
+    return batch_size, feature, number, coordinate, centroid, k_dynamics
 
 if __name__ == '__main__':
     BATCH_SIZE = 2

@@ -48,6 +48,8 @@ class RPN3D(object):
         self.vox_number = []
         self.vox_coordinate = []
         self.labels = []
+        self.vox_centroid = []
+        self.vox_k_dynamic = []
         self.targets = []
 
 
@@ -66,9 +68,11 @@ class RPN3D(object):
                         input=feature.outputs, alpha=self.alpha, beta=self.beta, training=self.is_train)
                     tf.get_variable_scope().reuse_variables()
                     # input
-                    self.vox_feature.append(feature.feature)
+                    self.vox_feature.append(feature.part_feature)
                     self.vox_number.append(feature.number)
                     self.vox_coordinate.append(feature.coordinate)
+                    self.vox_centroid.append(feature.centroid)
+                    self.vox_k_dynamic.append(feature.k_dynamics)
                     self.labels.append(rpn.y)
 
                     # output
@@ -131,6 +135,10 @@ class RPN3D(object):
         vox_feature = data[1]
         vox_number = data[2]
         vox_coordinate = data[3]
+        vox_centroid = data[4]
+        vox_k_dynamic = data[5]
+
+
 
         input_feed = {}
         input_feed[self.is_train] = True
@@ -139,6 +147,8 @@ class RPN3D(object):
             input_feed[self.vox_number[idx]] = vox_number[idx]
             input_feed[self.vox_coordinate[idx]] = vox_coordinate[idx]
             input_feed[self.labels[idx]] = labels[idx]
+            input_feed[self.vox_centroid[idx]] = vox_centroid[idx]
+            input_feed[self.vox_k_dynamic[idx]] = vox_k_dynamic[idx]
         # if train:
         #     output_feed = [self.loss, self.reg_loss,
         #                    self.cls_loss, self.cls_pos_loss, self.cls_neg_loss, self.gradient_norm, self.update]
