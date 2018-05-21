@@ -13,8 +13,6 @@ def get_ip(domain):
     soup = BeautifulSoup(resp.text)
     x = soup.find(class_="IcpMain02")
 
-
-    
     x = x.find_all("span", class_="Whwtdhalf")
     try:
         print("%s %s" % (x[5].text, x[4].text))
