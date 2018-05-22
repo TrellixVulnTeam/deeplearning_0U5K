@@ -186,7 +186,9 @@ def iterate_data(data_dir, shuffle=False, aug=False, is_testset=False, batch_siz
         for batch_idx in range(num_batches):
             start_idx = batch_idx * batch_size
             excerpt = indices[start_idx:start_idx + batch_size]
+            # every batch process 'batch_size' particle, but particle feature 1 part a time,concate them together as one batch.
             rets = TRAIN_POOL.map(proc, excerpt)
+
 
             voxel = [ret[0] for ret in rets]
             labels = [ret[1] for ret in rets]

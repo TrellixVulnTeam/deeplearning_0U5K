@@ -26,7 +26,7 @@ def fluid_process_pointcloud(point_cloud, fluid_identification,cls=cfg.DETECT_OB
         voxel_size = np.array([0.4, 0.4, 0.4], dtype=np.float32)
         grid_size = np.array([40, 40, 50], dtype=np.int64)
         lidar_coord = np.array([8, 8, 8], dtype=np.float32)
-        max_point_number = 64
+        max_point_number = 64 # for each voxel you can contain 4x4x4 particles, you can reduce this number
         # return
     # FIXME  ccx AWESOME
     print(point_cloud)
