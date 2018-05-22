@@ -22,7 +22,7 @@ if __name__ == '__main__':
     voxel_index = preprocess.fluid_process_pointcloud(pointcloud, 10021)
     print(voxel_index['feature_buffer'].shape)
     """
-    for item in fl.iterate_data(DATA_DIR):
-        print(item.keys())
+    for item in fl.iterate_data(DATA_DIR, batch_size=2):
+        print(item[0])
         break
 

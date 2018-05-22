@@ -18,8 +18,8 @@ __C = edict()
 cfg = __C
 
 # for dataset dir
-__C.DATA_DIR = '/media/hdc/KITTI/for_voxelnet/cropped_dataset'
-__C.CALIB_DIR = '/media/hdc/KITTI/calib/data_object_calib/training/calib'
+__C.DATA_DIR = '/data/datasets/simulation_data'
+#__C.CALIB_DIR = '/media/hdc/KITTI/calib/data_object_calib/training/calib'
 
 
 # for gpu allocation
@@ -53,6 +53,7 @@ elif __C.DETECT_OBJ == 'Fluid':
     __C.VOXEL_Y_SIZE = 0.4
     __C.VOXEL_Z_SIZE = 0.4
     __C.VOXEL_POINT_COUNT = 64
+    __C.VOXEL_PART_FEATURE = 8
     __C.VOXEL_POINT_FEATURE = 11
     __C.INPUT_WIDTH = int((__C.X_MAX - __C.X_MIN) / __C.VOXEL_X_SIZE)
     __C.INPUT_HEIGHT = int((__C.Y_MAX - __C.Y_MIN) / __C.VOXEL_Y_SIZE)
