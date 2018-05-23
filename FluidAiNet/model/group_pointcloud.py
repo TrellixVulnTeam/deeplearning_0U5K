@@ -75,11 +75,17 @@ class FeatureNet(object):
         print(self.k_dynamics[0])
         concat_feature = []
         count = 0
+        #if self.k_dynamics.shape[0] < self.batch_size:
+        #    self.batch_size = self.k_dynamics.shape[0]
+        #print("self.batch_size:\n", self.batch_size)
         for screen in range(self.batch_size):
             num = self.k_dynamics[screen]
             concat_feature.append(tf.concat([self.part_feature[count: count + num],
                                              self.part_feature[count: count + num,:,:3]-
                                              self.centroid[screen]],axis=2))
+            #if (count + num) == self.part_feature.shape[0]:
+            #   print("break")
+            #    break
             count += num
 
 
@@ -99,10 +105,10 @@ class FeatureNet(object):
 
         # boolean mask [K, T, 2 * units] # FIXME: ccx fatal  from different file we get different K.
         mask = tf.not_equal(tf.reduce_max(
-            self.feature, axis=2, keepdims=True), 0)   # (ΣK, T, 1) here
+            self.feature, axis=2, keepdims=True), 0)   # (ΣK, T, 1) here, keepdims is true means keep the dimentions but the length only 1
 
-        x = self.vfe1.apply(self.feature, mask, batch_size, self.k_dynamics, self.training)
-        x = self.vfe2.apply(x, mask, batch_size, self.k_dynamics, self.training)
+        x = self.vfe1.apply(self.feature, mask, self.batch_size, self.k_dynamics, self.training)
+        x = self.vfe2.apply(x, mask, self.batch_size, self.k_dynamics, self.training)
 
         # [ΣK, 128]
         voxelwise = tf.reduce_max(x, axis=1)
@@ -120,6 +126,7 @@ class FeatureNet(object):
         locate voxel by fileid and voxel_index, the others padding 0, so a 5-D tensor with shape [2, width, height, depth, 128] returned
         
         """
+
 
 
 

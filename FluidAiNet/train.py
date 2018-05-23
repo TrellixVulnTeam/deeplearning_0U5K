@@ -21,8 +21,8 @@ parser.add_argument('-i', '--max-epoch', type=int, nargs='?', default=160,
                     help='max epoch')
 parser.add_argument('-n', '--tag', type=str, nargs='?', default='default',
                     help='set log tag')
-parser.add_argument('-b', '--single-batch-size', type=int, nargs='?', default=2,
-                    help='set batch size')
+parser.add_argument('-b', '--single-batch-size', type=int, nargs='?', default=1,
+                    help='set batch size') # TOOO change batch_size here
 parser.add_argument('-l', '--lr', type=float, nargs='?', default=0.001,
                     help='set learning rate')
 parser.add_argument('-al', '--alpha', type=float, nargs='?', default=1.0,
