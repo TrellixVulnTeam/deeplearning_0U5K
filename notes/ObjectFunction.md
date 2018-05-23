@@ -137,7 +137,7 @@ $$
 
 相对熵定义为，衡量使用$q(x)$近似$p(x)$时的信息损失：
 $$
-\begin{split}D_{KL}(p||q) &= \sum_{x \in X} p(x) log \frac{p(x)}{q(x)} \\& =\sum_{x \in X}p(x)log \ p(x) - \sum_{x \in X}p(x)log \ q(x) \\& =-H(p) - \sum_{x \in X}p(x)log\ q(x)\end{split}\tag{14}
+\begin{split}D_{KL}(p||q) & = \sum_{x \in X} p(x) log \frac{p(x)}{q(x)} \\& =\sum_{x \in X}p(x)log \ p(x) - \sum_{x \in X}p(x)log \ q(x) \\& =-H(p) - \sum_{x \in X}p(x)log\ q(x)\end{split}\tag{14}
 $$
 交叉熵定义为：
 $$
