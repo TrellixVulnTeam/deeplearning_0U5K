@@ -89,13 +89,49 @@ $$
 
 ### 粒子受力及约束条件建模
 
-粒子运动支配方程
+我们需要根据当前帧所有粒子的位置和速度来构建预测器，基于智能体的位置和速度预测它在下一帧的加速度，一方面我们希望预测器能够进行准确率较高的预测，另一方面我们也希望尽可能建模N-S方程中粒子的各个单项受力和约束条件以使预测能够得到物理控制方程的解释。
 
-结合3维网格信息压缩？
+#### SPH方法物理描述
+
+<!--我觉得从原始N-S方程开始说明可以让读者整个演变历程，如果显得无关且冗余，那就直接从SPH形式的N-S开始-->
+
+首先来看不可压缩流体的N-S方程，明确我们需要提取的各项受力特征。N-S方程通常可以表达为：
+$$
+\rho(\cfrac{\partial \vec{u}}{\partial t}+\vec{u}\cdot \nabla\vec{u})=-\nabla p+\nabla\cdot T+\vec{f} \tag{2}
+$$
+方程右边的三项表示流体受到的力，其中$$\vec{f}$$表示流体收到的外力(如重力等)，$$-\nabla p$$和$$\nabla\cdot T$$表示应力对流体的作用，$p$表示应力中具有各向同性的部分，即流体的压强，T表示各向异性的部分，通常用来表述流体的粘滞力，但对于不可压缩流体，通常使用简化的Navier-Stokes方程来描述不可压缩流体：
+$$
+\rho(\cfrac{\partial \vec{u}}{\partial t}+\vec{u}\cdot \nabla\vec{u})=-\nabla p+\mu\nabla^2\vec{v} +  \sigma\nabla^2\vec{x}+\vec{f}\tag{3}
+$$
+式$(3)$对粘滞力项进行了简化，进一步在SPH方法中，流体是以拉格朗日视角进行观察的，Navier-Stokes方程可以表达为：
+$$
+\rho \cfrac{D\vec{u}}{Dt}=-\nabla p+\mu\nabla^2\vec{v}+\vec{f} \tag{4}
+$$
+在介绍部分，我们提到在概念上提到了SPH方法，现在我们来看SPH方法的数学表达，空间中任意一点的物理状态都可以表示为使用恰当光滑核函数的分离粒子的状态插值来表示。粒子$\vec{x}$的属性$A(\vec{x})$可以用它的邻居粒子$X$近似表示：
+$$
+A(\vec{x})=\sum_{j\in X}\cfrac{m_jA_j}{\rho_j}W(\vec{x}-\vec{x}_j)\tag{5}
+$$
+粘性力可以近似为：
+$$
+a_i^{viso}=\cfrac{\mu}{\rho_0}\sum_j(\vec{v}_j-\vec{v}_i)\nabla^2W(\vec{x}_j-\vec{x}_i)\tag{6}
+$$
+表面张力可以近似为：
+$$
+a_i^{ten}=\cfrac{\sigma}{\rho_0}\sum_j(\vec{x}_j-\vec{x}_i)\nabla^2W(\vec{x}_j-\vec{x}_i)\tag{7}
+$$
+使用理想气体状态方程，压强可近似为:
+$$
+a_i^{pres}=-\cfrac{k}{\rho_0}\sum_jm_j\nabla W(\vec{x}_j-\vec{x}_i)\tag{8}
+$$
+
+
+
 
 
 
 ### 3D卷积提取不同尺度特征
+
+结合3维网格信息压缩？
 
 ——————————
 
