@@ -53,6 +53,9 @@ class VFELayer(object):
         # [K, T, out_channels]
         return concatenated_all_batch # ccx (ΣK, T, output_channels)
 
+class PIL(object):
+    def __init__(self):
+        pass
 
 class FeatureNet(object):
 
