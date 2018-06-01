@@ -53,9 +53,11 @@ class VFELayer(object):
         # [K, T, out_channels]
         return concatenated_all_batch # ccx (ΣK, T, output_channels)
 
+
 class PIL(object):
     def __init__(self):
         pass
+
 
 class FeatureNet(object):
 
@@ -74,32 +76,32 @@ class FeatureNet(object):
         # TODO centoid particle here
         self.centroid = tf.placeholder(tf.float32, shape=(None, 3), name='centroid')
         self.k_dynamics = tf.placeholder(tf.int32, shape=(None), name="k_dynamics")
-        #self.k_dynamics = tf.cast(self.k_dynamics, tf.int32)
+        # self.k_dynamics = tf.cast(self.k_dynamics, tf.int32)
         print(self.k_dynamics[0])
         concat_feature = []
         count = 0
-        #if self.k_dynamics.shape[0] < self.batch_size:
+        # if self.k_dynamics.shape[0] < self.batch_size:
         #    self.batch_size = self.k_dynamics.shape[0]
-        #print("self.batch_size:\n", self.batch_size)
+        # print("self.batch_size:\n", self.batch_size)
         for screen in range(self.batch_size):
             num = self.k_dynamics[screen]
             concat_feature.append(tf.concat([self.part_feature[count: count + num],
                                              self.part_feature[count: count + num,:,:3]-
                                              self.centroid[screen]],axis=2))
-            #if (count + num) == self.part_feature.shape[0]:
+            # if (count + num) == self.part_feature.shape[0]:
             #   print("break")
             #    break
             count += num
 
 
-        #self.feature = tf.concat([self.part_feature, self.part_feature[:,:,:3]-self.centroid],axis=2)
+        # self.feature = tf.concat([self.part_feature, self.part_feature[:,:,:3]-self.centroid],axis=2)
         self.feature = tf.concat(concat_feature, axis=0)
 
         self.number = tf.placeholder(tf.int64, [None], name='number')
         # [ΣK, 4], each row stores (batch, d, h, w) ccx: the second dimention of tensor each row stores (iswhich, d, h, w) iswhich tag the different file in a batch
         self.coordinate = tf.placeholder(
             tf.int64, [None, 4], name='coordinate')
-        #self.seg_single_feature = tf.scatter_nd(self.coordinate, self.part_feature)
+        # self.seg_single_feature = tf.scatter_nd(self.coordinate, self.part_feature)
 
 
         with tf.variable_scope(name, reuse=tf.AUTO_REUSE) as scope:
@@ -123,6 +125,18 @@ class FeatureNet(object):
             self.coordinate, voxelwise, [self.batch_size, cfg.INPUT_WIDTH,  cfg.INPUT_HEIGHT, cfg.INPUT_DEPTH, 128])
         """
         scatter_nd()
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         incidices, updates, shape
         return a tensor
         

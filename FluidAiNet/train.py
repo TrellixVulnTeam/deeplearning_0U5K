@@ -156,6 +156,8 @@ def main(_):
 
                 model.saver.save(sess, os.path.join(save_model_dir, 'checkpoint'), global_step=model.global_step)
 
+                # TODO sample_test_data make a val_dir centroid corespond to batch_size
+
                 # dump test data every 10 epochs
                 # if (epoch + 1) % 10 == 0:
                 #     # create output folder

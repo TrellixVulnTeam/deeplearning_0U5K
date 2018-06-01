@@ -162,6 +162,7 @@ class RPN3D(object):
         # TODO: multi-gpu support for test and predict step
         return session.run(output_feed, input_feed)
 
+
 def average_gradients(tower_grads):
     # ref:
     # https://github.com/tensorflow/models/blob/6db9f0282e2ab12795628de6200670892a8ad6ba/tutorials/image/cifar10/cifar10_multi_gpu_train.py#L103
