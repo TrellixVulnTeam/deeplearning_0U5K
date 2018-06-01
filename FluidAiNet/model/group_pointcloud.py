@@ -25,6 +25,7 @@ class VFELayer(object):
     def apply(self, inputs, mask, batch_size, k_dynamics, training):
         # [K, T, 7] tensordot [7, units] = [K, T, units]
         count = 0
+        # this is final
         result = []
         for screen in range(batch_size):
             pointwise = self.batch_norm.apply(self.dense.apply(inputs[count: count + k_dynamics[screen]]), training)
