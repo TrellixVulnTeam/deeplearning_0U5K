@@ -19,11 +19,11 @@ theoreticlly,
 
 def fluid_process_pointcloud(common, point_cloud, fluid_identification,cls=cfg.DETECT_OBJ):
     centroid = point_cloud[fluid_identification][:3]
-    print('centroid:', centroid)
+    # print('centroid:', centroid)
     if common != None:
         return centroid
     if cls == 'Fluid':
-        print('Fluid')
+        # print('Fluid')
         scene_size = np.array([16, 16, 20], dtype=np.float32)
         voxel_size = np.array([0.4, 0.4, 0.4], dtype=np.float32)
         grid_size = np.array([40, 40, 50], dtype=np.int64)
@@ -52,7 +52,7 @@ def fluid_process_pointcloud(common, point_cloud, fluid_identification,cls=cfg.D
 
     K = len(coordinate_buffer)  # K record the number of voxels
     T = max_point_number
-    print('The count of voxel:', K)
+    # print('The count of voxel:', K)
     assert_equal(T, 64)
     # [K, 1] store number of points in each voxel grid
     number_buffer = np.zeros(shape=(K), dtype=np.int64)

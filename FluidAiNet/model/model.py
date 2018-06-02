@@ -51,11 +51,13 @@ class RPN3D(object):
         self.vox_centroid = []
         self.vox_k_dynamic = []
         self.targets = []
+        self.screen_size = []
 
 
         self.opt = tf.train.AdamOptimizer(lr)
         self.gradient_norm = []
         self.tower_grads = []
+        self.final_feature = []
         with tf.variable_scope(tf.get_variable_scope()):
             for idx, dev in enumerate(self.avail_gpus):
                 with tf.device('/gpu:{}'.format(dev)), tf.name_scope('gpu_{}'.format(dev)):
@@ -74,7 +76,8 @@ class RPN3D(object):
                     self.vox_centroid.append(feature.centroid)
                     self.vox_k_dynamic.append(feature.k_dynamics)
                     self.labels.append(rpn.y)
-
+                    self.screen_size.append(feature.screen_size)
+                    self.final_feature.append(feature.feature)
                     # output
                     feature_output = feature.outputs
                     # delta_output = rpn.delta_output
@@ -138,17 +141,32 @@ class RPN3D(object):
         vox_centroid = data[4]
         vox_k_dynamic = data[5]
 
-
-
         input_feed = {}
         input_feed[self.is_train] = True
         for idx in range(len(self.avail_gpus)):
+            input_feed[self.screen_size[idx]] = self.single_batch_size
             input_feed[self.vox_feature[idx]] = vox_feature[idx]
+            input_feed[self.vox_centroid[idx]] = vox_centroid[idx]
+            count = 0
+            concat_feature = []
+            for agent in range(self.single_batch_size):
+                num = self.vox_k_dynamic[idx][agent]
+                input_feed[self.vox_k_dynamic[idx]] = vox_k_dynamic[idx]
+
+                concat_feature.append(tf.concat([self.vox_feature[idx][count: count+num],
+                                                self.vox_feature[idx][count: count+num, :, :3] - self.vox_centroid[idx][agent]], axis=2))
+                count += num
+            concat_feature = tf.concat(concat_feature, axis=0)
+            print(concat_feature)
+            session.graph.add_to_collection('concat_feature', concat_feature)
+            final_feature_eval = concat_feature.eval(session=session, feed_dict=input_feed)
+            input_feed[self.final_feature[idx]] = final_feature_eval
             input_feed[self.vox_number[idx]] = vox_number[idx]
             input_feed[self.vox_coordinate[idx]] = vox_coordinate[idx]
             input_feed[self.labels[idx]] = labels[idx]
-            input_feed[self.vox_centroid[idx]] = vox_centroid[idx]
-            input_feed[self.vox_k_dynamic[idx]] = vox_k_dynamic[idx]
+
+
+
         # if train:
         #     output_feed = [self.loss, self.reg_loss,
         #                    self.cls_loss, self.cls_pos_loss, self.cls_neg_loss, self.gradient_norm, self.update]

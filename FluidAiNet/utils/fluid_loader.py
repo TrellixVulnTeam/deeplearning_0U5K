@@ -61,8 +61,8 @@ def get_all_frames(data_dir=DATA_DIR):
     for item in dirs:
         screen_path = os.path.join(data_dir, item)
         allfiles = os.listdir(screen_path)
-        frames.extend(map(lambda x:os.path.join(item, x), allfiles))
-    return map(lambda x:os.path.join(data_dir, x), frames)
+        frames.extend(map(lambda x: os.path.join(item, x), allfiles))
+    return map(lambda x: os.path.join(data_dir, x), frames)
 
 
 # for test return subset of frames
@@ -230,7 +230,7 @@ def iterate_data(data_dir, shuffle=False, aug=False, is_testset=False, batch_siz
                 vox_coordinate.append(per_vox_coordinate)
                 vox_centroid.append(per_vox_centroid)
                 vox_k_dynamic.append(per_vox_k_dynamic)
-                print(vox_k_dynamic)
+                # print(vox_k_dynamic)
             ret = (
                 np.array(vox_labels),
                 np.array(vox_feature),
@@ -281,7 +281,7 @@ def sample_test_data(data_dir, batch_size=1, multi_gpu_sum=1):
         vox_coordinate.append(per_vox_coordinate)
         vox_centroid.append(per_vox_centroid)
         vox_k_dynamic.append(per_vox_k_dynamic)
-        print(vox_k_dynamic)
+        # print(vox_k_dynamic)
     ret = (
         np.array(vox_labels),
         np.array(vox_feature),
