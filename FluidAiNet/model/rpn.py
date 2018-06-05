@@ -70,58 +70,57 @@ class MiddleAndRPN:
                                temp_conv, training=self.training, name='conv6')
             temp_conv = ConvMD(2, 128, 128, 3, (1, 1), (1, 1),
                                temp_conv, training=self.training, name='conv7')
-            deconv1 = Deconv2D(128, 256, 3, (1, 1), (0, 0),
-                               temp_conv, training=self.training, name='deconv1')
-
-            # block2:
-            temp_conv = ConvMD(2, 128, 128, 3, (2, 2), (1, 1),
-                               temp_conv, training=self.training, name='conv8')
-            temp_conv = ConvMD(2, 128, 128, 3, (1, 1), (1, 1),
-                               temp_conv, training=self.training, name='conv9')
-            temp_conv = ConvMD(2, 128, 128, 3, (1, 1), (1, 1),
-                               temp_conv, training=self.training, name='conv10')
-            temp_conv = ConvMD(2, 128, 128, 3, (1, 1), (1, 1),
-                               temp_conv, training=self.training, name='conv11')
-            temp_conv = ConvMD(2, 128, 128, 3, (1, 1), (1, 1),
-                               temp_conv, training=self.training, name='conv12')
-            temp_conv = ConvMD(2, 128, 128, 3, (1, 1), (1, 1),
-                               temp_conv, training=self.training, name='conv13')
-            deconv2 = Deconv2D(128, 256, 2, (2, 2), (0, 0),
-                               temp_conv, training=self.training, name='deconv2')
-
-            # block3:
-            temp_conv = ConvMD(2, 128, 256, 3, (2, 2), (1, 1),
-                               temp_conv, training=self.training, name='conv14')
-            temp_conv = ConvMD(2, 256, 256, 3, (1, 1), (1, 1),
-                               temp_conv, training=self.training, name='conv15')
-            temp_conv = ConvMD(2, 256, 256, 3, (1, 1), (1, 1),
-                               temp_conv, training=self.training, name='conv16')
-            temp_conv = ConvMD(2, 256, 256, 3, (1, 1), (1, 1),
-                               temp_conv, training=self.training, name='conv17')
-            temp_conv = ConvMD(2, 256, 256, 3, (1, 1), (1, 1),
-                               temp_conv, training=self.training, name='conv18')
-            temp_conv = ConvMD(2, 256, 256, 3, (1, 1), (1, 1),
-                               temp_conv, training=self.training, name='conv19')
-            deconv3 = Deconv2D(256, 256, 4, (4, 4), (0, 0),
-                               temp_conv, training=self.training, name='deconv3')
-
-            # final:
-            temp_conv = tf.concat([deconv3, deconv2, deconv1], -1)
+            # deconv1 = Deconv2D(128, 256, 3, (1, 1), (0, 0),
+            #                    temp_conv, training=self.training, name='deconv1')
+            #
+            # # block2:
+            # temp_conv = ConvMD(2, 128, 128, 3, (2, 2), (1, 1),
+            #                    temp_conv, training=self.training, name='conv8')
+            # temp_conv = ConvMD(2, 128, 128, 3, (1, 1), (1, 1),
+            #                    temp_conv, training=self.training, name='conv9')
+            # temp_conv = ConvMD(2, 128, 128, 3, (1, 1), (1, 1),
+            #                    temp_conv, training=self.training, name='conv10')
+            # temp_conv = ConvMD(2, 128, 128, 3, (1, 1), (1, 1),
+            #                    temp_conv, training=self.training, name='conv11')
+            # temp_conv = ConvMD(2, 128, 128, 3, (1, 1), (1, 1),
+            #                    temp_conv, training=self.training, name='conv12')
+            # temp_conv = ConvMD(2, 128, 128, 3, (1, 1), (1, 1),
+            #                    temp_conv, training=self.training, name='conv13')
+            # deconv2 = Deconv2D(128, 256, 2, (2, 2), (0, 0),
+            #                    temp_conv, training=self.training, name='deconv2')
+            #
+            # # block3:
+            # temp_conv = ConvMD(2, 128, 256, 3, (2, 2), (1, 1),
+            #                    temp_conv, training=self.training, name='conv14')
+            # temp_conv = ConvMD(2, 256, 256, 3, (1, 1), (1, 1),
+            #                    temp_conv, training=self.training, name='conv15')
+            # temp_conv = ConvMD(2, 256, 256, 3, (1, 1), (1, 1),
+            #                    temp_conv, training=self.training, name='conv16')
+            # temp_conv = ConvMD(2, 256, 256, 3, (1, 1), (1, 1),
+            #                    temp_conv, training=self.training, name='conv17')
+            # temp_conv = ConvMD(2, 256, 256, 3, (1, 1), (1, 1),
+            #                    temp_conv, training=self.training, name='conv18')
+            # temp_conv = ConvMD(2, 256, 256, 3, (1, 1), (1, 1),
+            #                    temp_conv, training=self.training, name='conv19')
+            # deconv3 = Deconv2D(256, 256, 4, (4, 4), (0, 0),
+            #                    temp_conv, training=self.training, name='deconv3')
+            #
+            # # final:
+            # temp_conv = tf.concat([deconv3, deconv2, deconv1], -1)
             print('temp_conv shape:', temp_conv)
             # Probability score map, scale = [None, 200/100, 176/120, 2]
             # p_map = ConvMD(2, 768, 2, 1, (1, 1), (0, 0), temp_conv,
             #                training=self.training, activation=False, bn=False, name='conv20')
             # Regression(residual) map, scale = [None, 200/100, 176/120, 14]
-            r_map = ConvMD(2, 768, 3, 1, (1, 1), (0, 0),
+            r_map = ConvMD(2, 128, 3, 1, (1, 1), (0, 0),
                            temp_conv, training=self.training, activation=False, bn=False, name='conv21')
             print('r_map shape:', r_map)
             final_features = tf.reshape(r_map, [-1, 20*20*3])
 
             print('final_features shape:', final_features.shape)
             pred = tf.layers.dense(final_features, 3, name="output")
-            print("pred:\n", pred.name)
+            print("pred:\n", pred)
             print("********************************")
-            tf.add_to_collection('acceleration', pred)
             # FIXME
             self.regression_loss = tf.losses.mean_squared_error(self.y, pred)
             self.loss = tf.reduce_sum(self.regression_loss)
@@ -220,4 +219,4 @@ def Deconv2D(Cin, Cout, k, s, p, input, training=True, bn=True, name='deconv'):
 
 if(__name__ == "__main__"):
     m = MiddleAndRPN(tf.placeholder(
-        tf.float32, [2, cfg.INPUT_WIDTH, cfg.INPUT_HEIGHT, cfg.INPUT_DEPTH, 128]))
+        tf.float32, [None, cfg.INPUT_WIDTH, cfg.INPUT_HEIGHT, cfg.INPUT_DEPTH, 128]))
