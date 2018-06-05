@@ -124,17 +124,25 @@ class FeatureNet(object):
         x = self.vfe2.apply(x, mask, self.batch_size, self.k_dynamics, self.training)
 
         # [ΣK, 128]
-        voxelwise = tf.reduce_max(x, axis=1)
+        self.voxelwise = tf.reduce_max(x, axis=1)
+        print(self.voxelwise)
         # ccx: D' x H' x W' x  C, where C is dimention of voxelwise feature.
         # car: [N * 10 * 400 * 352 * 128]
         # pedestrian/cyclist: [N * 10 * 200 * 240 * 128]
         # FIXME ccx AWESOME- a sparse tensor
+
+        #self.outputs = tf.placeholder(tf.float32, shape=(None, cfg.INPUT_WIDTH,  cfg.INPUT_HEIGHT, cfg.INPUT_DEPTH, 128),
+         #                             name="scatter_nd_holder")
         self.outputs = tf.scatter_nd(
-            self.coordinate, voxelwise, [self.batch_size, cfg.INPUT_WIDTH,  cfg.INPUT_HEIGHT, cfg.INPUT_DEPTH, 128])
+            self.coordinate, self.voxelwise, [self.batch_size, cfg.INPUT_WIDTH, cfg.INPUT_HEIGHT, cfg.INPUT_DEPTH, 128])
+        print(self.outputs)
         """
         scatter_nd()       
         incidices, updates, shape
         return a tensor
         locate voxel by fileid and voxel_index, the others padding 0, so a 5-D tensor with shape [2, width, height, depth, 128] returned
+        self.outputs = tf.scatter_nd(
+            self.coordinate, voxelwise, [-1, cfg.INPUT_WIDTH,  cfg.INPUT_HEIGHT, cfg.INPUT_DEPTH, 128])
         """
-
+if __name__ == "__main__":
+    feature = FeatureNet(True, 3)

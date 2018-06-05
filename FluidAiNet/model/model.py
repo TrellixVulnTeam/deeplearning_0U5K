@@ -52,6 +52,8 @@ class RPN3D(object):
         self.vox_k_dynamic = []
         self.targets = []
         self.screen_size = []
+        self.outputs = []
+        self.voxelwise = None  # 郑重申明：获取voxelwise仅仅作为中间值在session中定义ScatterND无需feed value
 
 
         self.opt = tf.train.AdamOptimizer(lr)
@@ -78,8 +80,10 @@ class RPN3D(object):
                     self.labels.append(rpn.y)
                     self.screen_size.append(feature.screen_size)
                     self.final_feature.append(feature.feature)
+                    self.voxelwise = feature.voxelwise
                     # output
                     feature_output = feature.outputs
+                    self.outputs.append(feature_output)
                     # delta_output = rpn.delta_output
                     # prob_output = rpn.prob_output
 
@@ -156,6 +160,9 @@ class RPN3D(object):
                 concat_feature.append(tf.concat([self.vox_feature[idx][count: count+num],
                                                 self.vox_feature[idx][count: count+num, :, :3] - self.vox_centroid[idx][agent]], axis=2))
                 count += num
+            # self.outputs[idx].set_shape([self.single_batch_size, cfg.INPUT_WIDTH,
+            #                              cfg.INPUT_HEIGHT, cfg.INPUT_DEPTH, 128])
+            # tf.import_graph_def(session.graph_def, input_map={"gpu_0/ScatterNd:0": self.outputs[idx]})
             concat_feature = tf.concat(concat_feature, axis=0)
             print(concat_feature)
             session.graph.add_to_collection('concat_feature', concat_feature)
@@ -163,6 +170,13 @@ class RPN3D(object):
             input_feed[self.final_feature[idx]] = final_feature_eval
             input_feed[self.vox_number[idx]] = vox_number[idx]
             input_feed[self.vox_coordinate[idx]] = vox_coordinate[idx]
+
+            #scatter_nd = tf.scatter_nd(
+             #   self.vox_coordinate[idx], self.voxelwise, [self.single_batch_size, cfg.INPUT_WIDTH, cfg.INPUT_HEIGHT, cfg.INPUT_DEPTH, 128])
+            #scatter_nd_eval = scatter_nd.eval(session=session, feed_dict=input_feed)
+
+            #tf.placeholder_with_default()
+            #input_feed[self.outputs[idx]] = scatter_nd_eval
             input_feed[self.labels[idx]] = labels[idx]
 
 

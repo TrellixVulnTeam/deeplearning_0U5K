@@ -20,7 +20,8 @@ from nose.tools import assert_equal
 import numpy as np
 import pandas as pd
 
-from utils.preprocess import fluid_process_pointcloud
+from preprocess import fluid_process_pointcloud
+# from utils.preprocess import fluid_process_pointcloud
 
 BASE_DIR = '/data/datasets/simulation_data'
 DATA_DIR = os.path.join(BASE_DIR, 'water')
@@ -38,17 +39,12 @@ class Processor(object):
         self.aug = aug
         self.is_testset = is_testset
         self.common = None
-        self.voxel = None
+        self.voxel = fluid_process_pointcloud(self.particles)
 
     def __call__(self, load_index):
         label = self.labels[load_index]
-        result = fluid_process_pointcloud(self.common, self.particles, load_index)
-        if len(result) > 1:
-            self.voxel = result[0]
-            self.voxel['centroid'] = result[1]
-            self.common = result[2]
-        else:
-            self.voxel['cetroid'] = result
+        centroid = fluid_process_pointcloud(self.particles, fluid_identification=load_index)
+        self.voxel['centroid'] = centroid
 
         ret = [self.voxel, label]
 
@@ -190,7 +186,7 @@ def concat_data_label_all(train_files, dimention_data, dimention_label):
 
 
 # global pool
-TRAIN_POOL = multiprocessing.Pool(4)
+TRAIN_POOL = multiprocessing.Pool(5)
 
 
 def iterate_data(data_dir, shuffle=False, aug=False, is_testset=False, batch_size=1, multi_gpu_sum=1):
@@ -323,3 +319,10 @@ if __name__ == '__main__':
     BATCH_SIZE = 2
     TRAIN_FILES = create_train_files(2)
     print(TRAIN_FILES)
+    # data_dir = '/data/datasets/simulation_data'
+    # train_dir = os.path.join(data_dir, 'water')
+    # batch_size = 1000
+    # singel_batch = None
+    # for batch in iterate_data(train_dir, batch_size=batch_size):
+    #     singel_batch = batch
+    #     break

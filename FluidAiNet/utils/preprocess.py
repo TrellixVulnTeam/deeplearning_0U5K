@@ -17,11 +17,12 @@ x,y,z(21,21,26) (-1, -1, -1) (1, 1, 1.5)
 theoreticlly, 
 """
 
-def fluid_process_pointcloud(common, point_cloud, fluid_identification,cls=cfg.DETECT_OBJ):
-    centroid = point_cloud[fluid_identification][:3]
-    # print('centroid:', centroid)
-    if common != None:
+def fluid_process_pointcloud(point_cloud, fluid_identification=None,cls=cfg.DETECT_OBJ):
+    if fluid_identification is not None:
+        centroid = point_cloud[fluid_identification][:3]
         return centroid
+    # print('centroid:', centroid)
+
     if cls == 'Fluid':
         # print('Fluid')
         scene_size = np.array([16, 16, 20], dtype=np.float32)
@@ -81,7 +82,7 @@ def fluid_process_pointcloud(common, point_cloud, fluid_identification,cls=cfg.D
                   'number_buffer': number_buffer, # (K,)
                   #'centroid': centroid, #{3,}
                   'k_dynamic': K}
-    return voxel_dict, centroid, True
+    return voxel_dict
 
 def process_pointcloud(point_cloud, cls=cfg.DETECT_OBJ):
     # Input:

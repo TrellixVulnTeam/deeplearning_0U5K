@@ -71,6 +71,7 @@ def main(_):
                 beta=args.beta,
                 avail_gpus=cfg.GPU_AVAILABLE.split(',')
             )
+
             # param init/restore
             if tf.train.get_checkpoint_state(save_model_dir):
                 print("Reading model parameters from %s" % save_model_dir)
@@ -111,6 +112,7 @@ def main(_):
                     ret = model.train_step(sess, batch, train=True, summary=is_summary)
                     forward_time = time.time() - start_time
                     batch_time = time.time() - batch_time
+
 
                     print(
                         'train: {} @ epoch:{}/{} loss: {:.4f}  forward time: {:.4f} batch time: {:.4f}'.format(
