@@ -36,7 +36,7 @@ parser.add_argument('-v', '--vis', type=bool, nargs='?', default=False,
 args = parser.parse_args()
 
 dataset_dir = cfg.DATA_DIR
-train_dir = os.path.join(cfg.DATA_DIR, 'water')  # ccx need to change
+train_dir = os.path.join(cfg.DATA_DIR, 'train')  # ccx need to change
 # val_dir = os.path.join(cfg.DATA_DIR, 'validation')  # ccx need to change
 log_dir = os.path.join('./log', args.tag)
 save_model_dir = os.path.join('./save_model', args.tag)
@@ -96,7 +96,7 @@ def main(_):
                 counter = 0
                 batch_time = time.time()
                 # TODO ccx get batch data(read data from file)
-                for batch in iterate_data(train_dir, shuffle=True, aug=True, is_testset=False,
+                for batch in iterate_data(train_dir, sample_rate=0.001, shuffle=True, aug=True, is_testset=False,
                                           batch_size=args.single_batch_size * cfg.GPU_USE_COUNT,
                                           multi_gpu_sum=cfg.GPU_USE_COUNT):
 

@@ -25,6 +25,7 @@ from utils.preprocess import fluid_process_pointcloud
 
 BASE_DIR = '/data/datasets/simulation_data'
 DATA_DIR = os.path.join(BASE_DIR, 'water')
+TRAIN_DATA_DIR = os.path.join(DATA_DIR, 'train')
 
 if not os.path.exists(DATA_DIR):
     os.mkdir(DATA_DIR)
@@ -243,21 +244,24 @@ def iterate_single_frame(data_dir, file_name, batch_size, multi_gpu_sum=1):
         yield ret
 
 
-def iterate_data(data_dir, shuffle=False, aug=False, is_testset=False, batch_size=1, multi_gpu_sum=1):
+def iterate_data(data_dir, sample_rate=1, shuffle=False, aug=False, is_testset=False, batch_size=1, multi_gpu_sum=1):
     TRAIN_FILES = get_all_frames(data_dir)
     for f in TRAIN_FILES:
         data, label, index = load_data_label(f)
         # TODO the common part of feature
         nums = len(index)
         indices = list(range(nums))
-        num_batches = int(math.floor(nums / float(batch_size)))
+        num_batches = int(math.floor(nums / float(batch_size))) # about 1W/25
+        
+        interval = int(1/sample_rate)  # num_batches / interval = num_batches * 0.01
+
         extra = nums % batch_size
         if extra > 0:
             num_batches += 1
 
         proc = Processor(data, label, index, data_dir, aug, is_testset)
         # only different with centroid
-        for batch_idx in range(num_batches):
+        for batch_idx in range(0, num_batches, interval):
             start_idx = batch_idx * batch_size
             if extra > 0 and batch_idx == num_batches - 1 :
                 excerpt = indices[start_idx:start_idx + extra]

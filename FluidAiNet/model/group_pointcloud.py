@@ -9,6 +9,7 @@ from nose.tools import assert_equal
 import tensorflow as tf
 
 from config import cfg
+from units import tf_util
 
 
 class VFELayer(object):
@@ -22,8 +23,9 @@ class VFELayer(object):
             self.batch_norm = tf.layers.BatchNormalization(
                 name='batch_norm', fused=True, _reuse=tf.AUTO_REUSE, _scope=scope)
 
-    def apply(self, inputs, mask, batch_size, k_dynamics, training):
-        # [K, T, 7] tensordot [7, units] = [K, T, units]
+    def apply(self, inputs, mask, training):
+        # [K, T, 7] tensordot [7, units] = [K, T, units]  # todo chane fcl to conv2d with feature selection
+        # but i think fcl is fine
         count = 0
         result = []
         pointwise = self.batch_norm.apply(self.dense.apply(inputs), training)
@@ -51,7 +53,7 @@ class VFELayer(object):
 
         concatenated_all_batch = tf.concat(result, axis=0)
         """
-        # TODO pointwise + aggregated(global features) the same as the pointnet
+        # TODO pointwise + aggregated(global features) the same as the pointnet (ΣK, T, 1)
         mask = tf.tile(mask, [1, 1, 2 * self.units]) # ccx (ΣK, T, output_channels) here
         # TODO use shared mlp,in other means ,expand input as [K, T, 2 * units, 1] conv2d [1, 2 * units, 1, 2 * units]
         concatenated = tf.multiply(concatenated, tf.cast(mask, tf.float32)) # ccx item corresponded
@@ -59,9 +61,36 @@ class VFELayer(object):
         return concatenated # ccx (ΣK, T, output_channels)
 
 
-class PIL(object):
-    def __init__(self):
-        pass
+class PILayer(object):
+    def __init__(self, out_channels, name):
+        self.units = int(out_channels / 2)
+        
+
+    def apply(self, inputs, mask, batch_size, training):
+        num_point = point_cloud.get_shape()[1].value
+        feature_dims = point_cloud.get_shape()[2].value  # feature dimention
+        input_expend = tf.expand_dims(inputs, -1)
+        # (ΣK, T, 14, 1)
+        pointwise = tf_util.conv2d(input_expend, self.units, [1, feature_dims],
+            padding='VALID', stride=[1, 1], bn=True, is_training=training,
+            activation_fn=tf.nn.relu)
+        # (ΣK, T, 1, self.units)
+        pointwise = tf.reshape(pointwise, [-1, num_point, self.units])
+        # (ΣK, T, self.units)
+        aggregated = tf.reduce_mean(pointwise, axis=1, keepdims=True)  # reduce_max@1
+        # (ΣK, 1, self.units)
+        repeated = tf.tile(aggregated, [1, cfg.VOXEL_POINT_COUNT, 1])
+        # (ΣK, T, self.units)
+        concatenated = tf.concat([pointwise, repeated], axis=2)
+        # (ΣK, T, out_channels)
+
+        #(ΣK, T, 1) -> (ΣK, T, 2 * units)
+        mask = tf.tile(mask, [1, 1, 2 * self.units])
+        # clear t which is all 0 in 3D grid
+        concatenated = tf.multiply(concatenated, tf.cast(mask, tf.float32)) 
+        # (K, T, out_channels)
+        return concatenated
+
 
 
 class FeatureNet(object):
@@ -71,6 +100,7 @@ class FeatureNet(object):
         self.training = training
 
         # scalar
+        # FIXME: ccx fatal  from different file we get different K.
         self.batch_size = batch_size
         # [ΣK, 35/45, 7]  ccx: all files in a batch, so we get ΣK.
         assert_equal(cfg.VOXEL_POINT_FEATURE, 11)
@@ -78,30 +108,21 @@ class FeatureNet(object):
         self.part_feature = tf.placeholder(
             tf.float32, [None, cfg.VOXEL_POINT_COUNT, cfg.VOXEL_PART_FEATURE], name='part_feature') # feature dimention can be set a variable
         # [ΣK]
-        # TODO centoid particle here
-        self.centroid = tf.placeholder(tf.float32, shape=(None, 3), name='centroid')
+        # TODO centoid particle here merge pos and vel
+        self.centroid  = tf.placeholder(tf.float32, shape=(None, 6), name='centroid')
+        # self.centroid_pos = tf.placeholder(tf.float32, shape=(None, 3), name='centroid_pos')
+        # self.centroid_vel = tf.placeholder(tf.float32, shape=(None, 3), name='centroid_vel')
         self.k_dynamics = tf.placeholder(tf.int32, shape=(None), name="k_dynamics")
         # self.k_dynamics = tf.cast(self.k_dynamics, tf.int32)
         print(self.k_dynamics[0])
-        # concat_feature = []
-        # count = 0
-        # if self.k_dynamics.shape[0] < self.batch_size:
-        #    self.batch_size = self.k_dynamics.shape[0]
-        # print("self.batch_size:\n", self.batch_size)
-        """
-        for screen in range(self.batch_size):
-            num = self.k_dynamics[screen]
-            concat_feature.append(tf.concat([self.part_feature[count: count + num],
-                                             self.part_feature[count: count + num,:,:3]-
-                                             self.centroid[screen]],axis=2))
-            # if (count + num) == self.part_feature.shape[0]:
-            #   print("break")
-            #    break
-            count += num
-        """
-        self.screen_size = tf.placeholder(tf.int32, name="screen_size")
 
-        self.feature = tf.placeholder(tf.float32, shape=(None, cfg.VOXEL_POINT_COUNT, 11), name="feature")
+        # (ΣK, T, 1) here use time:boolean mask [K, T, 2 * units], keepdims is true means keep the dimentions but the length only 1
+        mask = tf.not_equal(tf.reduce_max(
+            self.feature, axis=2, keepdims=True), 0)   
+        
+        self.screen_size = tf.placeholder(tf.int32, name="screen_size")
+        # feed by concat feature in train_step
+        self.feature = tf.placeholder(tf.float32, shape=(None, cfg.VOXEL_POINT_COUNT, 14), name="feature")  # add \Delta v
         # self.feature = tf.concat([self.part_feature, self.part_feature[:,:,:3]-self.centroid],axis=2)
         # self.feature = tf.concat(concat_feature, axis=0)
 
@@ -112,20 +133,21 @@ class FeatureNet(object):
         # self.seg_single_feature = tf.scatter_nd(self.coordinate, self.part_feature)
 
 
+        # with tf.variable_scope(name, reuse=tf.AUTO_REUSE) as scope:
+        #     self.vfe1 = VFELayer(32, 'VFE-1')
+        #     self.vfe2 = VFELayer(128, 'VFE-2')
         with tf.variable_scope(name, reuse=tf.AUTO_REUSE) as scope:
-            self.vfe1 = VFELayer(32, 'VFE-1')
-            self.vfe2 = VFELayer(128, 'VFE-2')
+            self.pil1 = PILayer(32, 'PIL-1')
+            self.pil2 = PILayer(128, 'PIL-2')
 
-        # boolean mask [K, T, 2 * units] # FIXME: ccx fatal  from different file we get different K.
-        mask = tf.not_equal(tf.reduce_max(
-            self.feature, axis=2, keepdims=True), 0)   # (ΣK, T, 1) here, keepdims is true means keep the dimentions but the length only 1
+        
 
-        x = self.vfe1.apply(self.feature, mask, self.batch_size, self.k_dynamics, self.training)
-        x = self.vfe2.apply(x, mask, self.batch_size, self.k_dynamics, self.training)
-
+        # x = self.vfe1.apply(self.feature, mask, self.batch_size, self.k_dynamics, self.training)
+        # x = self.vfe2.apply(x, mask, self.batch_size, self.k_dynamics, self.training)
+        x = self.pil1.apply(self.feature, mask, self.training)
+        x = self.pil2.apply(x, mask, self.training)
         # [ΣK, 128]
-        self.voxelwise = tf.reduce_max(x, axis=1)
-        print(self.voxelwise)
+        self.voxelwise = tf.reduce_mean(x, axis=1)  # reduce_max@2
         # ccx: D' x H' x W' x  C, where C is dimention of voxelwise feature.
         # car: [N * 10 * 400 * 352 * 128]
         # pedestrian/cyclist: [N * 10 * 200 * 240 * 128]
@@ -144,5 +166,8 @@ class FeatureNet(object):
         self.outputs = tf.scatter_nd(
             self.coordinate, voxelwise, [-1, cfg.INPUT_WIDTH,  cfg.INPUT_HEIGHT, cfg.INPUT_DEPTH, 128])
         """
+
+
 if __name__ == "__main__":
     feature = FeatureNet(True, 3)
+

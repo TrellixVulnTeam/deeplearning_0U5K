@@ -19,7 +19,7 @@ theoreticlly,
 
 def fluid_process_pointcloud(point_cloud, fluid_identification=None,cls=cfg.DETECT_OBJ):
     if fluid_identification is not None:
-        centroid = point_cloud[fluid_identification][:3]
+        centroid = point_cloud[fluid_identification][:6]
         return centroid
     # print('centroid:', centroid)
 

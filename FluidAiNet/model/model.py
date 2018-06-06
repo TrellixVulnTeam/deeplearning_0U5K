@@ -158,7 +158,8 @@ class RPN3D(object):
                 input_feed[self.vox_k_dynamic[idx]] = vox_k_dynamic[idx]
 
                 concat_feature.append(tf.concat([self.vox_feature[idx][count: count+num],
-                                                self.vox_feature[idx][count: count+num, :, :3] - self.vox_centroid[idx][agent]], axis=2))
+                                                self.vox_feature[idx][count: count+num, :, :3] - self.vox_centroid[idx][agent][:3],
+                                                self.vox_feature[idx][count: count+num, :, 3:6] - self.vox_centroid[idx][agent][3:]],axis=2))
                 count += num
             # self.outputs[idx].set_shape([self.single_batch_size, cfg.INPUT_WIDTH,
             #                              cfg.INPUT_HEIGHT, cfg.INPUT_DEPTH, 128])
@@ -170,16 +171,7 @@ class RPN3D(object):
             input_feed[self.final_feature[idx]] = final_feature_eval
             input_feed[self.vox_number[idx]] = vox_number[idx]
             input_feed[self.vox_coordinate[idx]] = vox_coordinate[idx]
-
-            #scatter_nd = tf.scatter_nd(
-             #   self.vox_coordinate[idx], self.voxelwise, [self.single_batch_size, cfg.INPUT_WIDTH, cfg.INPUT_HEIGHT, cfg.INPUT_DEPTH, 128])
-            #scatter_nd_eval = scatter_nd.eval(session=session, feed_dict=input_feed)
-
-            #tf.placeholder_with_default()
-            #input_feed[self.outputs[idx]] = scatter_nd_eval
             input_feed[self.labels[idx]] = labels[idx]
-
-
 
         # if train:
         #     output_feed = [self.loss, self.reg_loss,

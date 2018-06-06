@@ -18,7 +18,7 @@ __C = edict()
 cfg = __C
 
 # for dataset dir
-__C.DATA_DIR = '/data/datasets/simulation_data'
+__C.DATA_DIR = '/data/datasets/simulation_data/water'
 #__C.CALIB_DIR = '/media/hdc/KITTI/calib/data_object_calib/training/calib'
 
 
