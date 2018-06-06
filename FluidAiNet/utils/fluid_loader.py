@@ -20,7 +20,7 @@ from nose.tools import assert_equal
 import numpy as np
 import pandas as pd
 
-from preprocess import fluid_process_pointcloud
+from utils.preprocess import fluid_process_pointcloud
 # from utils.preprocess import fluid_process_pointcloud
 
 BASE_DIR = '/data/datasets/simulation_data'
@@ -189,6 +189,60 @@ def concat_data_label_all(train_files, dimention_data, dimention_label):
 TRAIN_POOL = multiprocessing.Pool(5)
 
 
+def iterate_single_frame(data_dir, file_name, batch_size, multi_gpu_sum=1):
+    # frame_file_name = os.path.join(data_dir, file_name)
+    data, label, index = load_data_label(file_name)
+    nums = len(index)
+    indices = list(range(nums))
+    num_batches = int(math.floor(nums / float(batch_size)))
+    extra = nums % batch_size
+    if extra > 0:
+        num_batches += 1
+
+    proc = Processor(data, label, index, data_dir, False, False)
+    # only different with centroid
+    for batch_idx in range(num_batches):
+        print(batch_idx, ' of ', num_batches)
+        start_idx = batch_idx * batch_size
+        if extra > 0 and batch_idx == num_batches - 1:
+            excerpt = indices[start_idx:start_idx + extra]
+        else:
+            excerpt = indices[start_idx:start_idx + batch_size]
+        rets = TRAIN_POOL.map(proc, excerpt)
+
+        voxel = [ret[0] for ret in rets]
+        assert_equal(len(voxel), batch_size)
+        labels = [ret[1] for ret in rets]
+
+        # only for voxel -> [gpu, k_single_batch, ...]
+        vox_feature, vox_number, vox_coordinate, vox_centroid, vox_k_dynamic = [], [], [], [], []
+        vox_labels = []
+        # TODO ccx if bach_size smalls than multi_gpu_sum
+        single_batch_size = int(batch_size / multi_gpu_sum)
+        for idx in range(multi_gpu_sum):
+            label = labels[idx * single_batch_size:(idx + 1) * single_batch_size]
+            _, per_vox_feature, per_vox_number, per_vox_coordinate, per_vox_centroid, per_vox_k_dynamic = build_input(
+                voxel[idx * single_batch_size:(idx + 1) * single_batch_size])
+            # a batch concate all files together ∑K
+            vox_labels.append(label)
+            vox_feature.append(per_vox_feature)
+            vox_number.append(per_vox_number)
+            vox_coordinate.append(per_vox_coordinate)
+            vox_centroid.append(per_vox_centroid)
+            vox_k_dynamic.append(per_vox_k_dynamic)
+            # print(vox_k_dynamic)
+        ret = (
+            np.array(vox_labels),
+            np.array(vox_feature),
+            np.array(vox_number),
+            np.array(vox_coordinate),
+            np.array(vox_centroid),
+            np.array(vox_k_dynamic)
+        )
+
+        yield ret
+
+
 def iterate_data(data_dir, shuffle=False, aug=False, is_testset=False, batch_size=1, multi_gpu_sum=1):
     TRAIN_FILES = get_all_frames(data_dir)
     for f in TRAIN_FILES:
@@ -197,12 +251,20 @@ def iterate_data(data_dir, shuffle=False, aug=False, is_testset=False, batch_siz
         nums = len(index)
         indices = list(range(nums))
         num_batches = int(math.floor(nums / float(batch_size)))
+        extra = nums % batch_size
+        if extra > 0:
+            num_batches += 1
 
         proc = Processor(data, label, index, data_dir, aug, is_testset)
         # only different with centroid
         for batch_idx in range(num_batches):
             start_idx = batch_idx * batch_size
-            excerpt = indices[start_idx:start_idx + batch_size]
+            if extra > 0 and batch_idx == num_batches - 1 :
+                excerpt = indices[start_idx:start_idx + extra]
+            else:
+                excerpt = indices[start_idx:start_idx + batch_size]
+
+
             # every batch process 'batch_size' particle, but particle feature 1 part a time,concate them together as one batch.
             rets = TRAIN_POOL.map(proc, excerpt)
 
