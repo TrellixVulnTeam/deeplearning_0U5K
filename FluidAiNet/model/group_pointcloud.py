@@ -9,7 +9,7 @@ from nose.tools import assert_equal
 import tensorflow as tf
 
 from config import cfg
-from units import tf_util
+from utils import tf_util
 
 
 class VFELayer(object):
@@ -64,14 +64,15 @@ class VFELayer(object):
 class PILayer(object):
     def __init__(self, out_channels, name):
         self.units = int(out_channels / 2)
+        self.name = name
         
 
-    def apply(self, inputs, mask, batch_size, training):
-        num_point = point_cloud.get_shape()[1].value
-        feature_dims = point_cloud.get_shape()[2].value  # feature dimention
+    def apply(self, inputs, mask, training):
+        num_point = inputs.get_shape()[1].value
+        feature_dims = inputs.get_shape()[2].value  # feature dimention
         input_expend = tf.expand_dims(inputs, -1)
         # (ΣK, T, 14, 1)
-        pointwise = tf_util.conv2d(input_expend, self.units, [1, feature_dims],
+        pointwise = tf_util.conv2d(input_expend, self.units, [1, feature_dims], self.name,
             padding='VALID', stride=[1, 1], bn=True, is_training=training,
             activation_fn=tf.nn.relu)
         # (ΣK, T, 1, self.units)
@@ -118,7 +119,7 @@ class FeatureNet(object):
 
         # (ΣK, T, 1) here use time:boolean mask [K, T, 2 * units], keepdims is true means keep the dimentions but the length only 1
         mask = tf.not_equal(tf.reduce_max(
-            self.feature, axis=2, keepdims=True), 0)   
+            self.part_feature, axis=2, keepdims=True), 0)
         
         self.screen_size = tf.placeholder(tf.int32, name="screen_size")
         # feed by concat feature in train_step
