@@ -118,35 +118,14 @@ class MiddleAndRPN:
             final_features = tf.reshape(r_map, [-1, 20*20*3])
 
             print('final_features shape:', final_features.shape)
-            pred = tf.layers.dense(final_features, 3, name="output")
-            print("pred:\n", pred)
+            self.pred = tf.layers.dense(final_features, 3, name="output")
+            print("pred:\n", self.pred)
             print("********************************")
             # FIXME
-            self.regression_loss = tf.losses.mean_squared_error(self.y, pred)
-            self.loss = tf.reduce_sum(self.regression_loss)
+            self.regression_loss = tf.losses.mean_squared_error(self.y, self.pred)
+            print('regression_loss', self.regression_loss)
+            self.loss = self.regression_loss
             print(self.loss)
-
-            # softmax output for positive anchor and negative anchor, scale = [None, 200/100, 176/120, 1]
-            # self.p_pos = tf.sigmoid(p_map)
-            # #self.p_pos = tf.nn.softmax(p_map, dim=3)
-            # self.output_shape = [cfg.FEATURE_HEIGHT, cfg.FEATURE_WIDTH]
-            # # TODO pos_equal_one‘s definition gived in train_step(model.py)
-            # self.cls_pos_loss = (-self.pos_equal_one * tf.log(self.p_pos + small_addon_for_BCE)) / self.pos_equal_one_sum
-            # self.cls_neg_loss = (-self.neg_equal_one * tf.log(1 - self.p_pos + small_addon_for_BCE)) / self.neg_equal_one_sum
-            #
-            # self.cls_loss = tf.reduce_sum( alpha * self.cls_pos_loss + beta * self.cls_neg_loss )
-            # self.cls_pos_loss_rec = tf.reduce_sum( self.cls_pos_loss )
-            # self.cls_neg_loss_rec = tf.reduce_sum( self.cls_neg_loss )
-            #
-            #
-            # self.reg_loss = smooth_l1(r_map * self.pos_equal_one_for_reg, self.targets *
-            #                           self.pos_equal_one_for_reg, sigma) / self.pos_equal_one_sum
-            # self.reg_loss = tf.reduce_sum(self.reg_loss)
-            #
-            # self.loss = tf.reduce_sum(self.cls_loss + self.reg_loss)
-            #
-            # self.delta_output = r_map
-            # self.prob_output = self.p_pos
 
 
 def smooth_l1(deltas, targets, sigma=3.0):
@@ -181,13 +160,14 @@ def ConvMD(M, Cin, Cout, k, s, p, input, training=True, activation=True, bn=True
     """
     temp_p = np.array(p)
     # ccx (1, 1):Number of values padded to the edges of each axis.
-    temp_p = np.lib.pad(temp_p, (1, 1), 'constant', constant_values=(0, 0)) # if M=2 [0, 1, 1, 0] else M=3 [0, 1, 1, 1, 0]
+    temp_p = np.lib.pad(temp_p, (1, 1), 'constant', constant_values=(0, 0))
+    # if M=2 [0, 1, 1, 0] else M=3 [0, 1, 1, 1, 0]
 
     with tf.variable_scope(name) as scope:
         if(M == 2):
             # ccx repeat element by element
-            paddings = (np.array(temp_p)).repeat(2).reshape(4, 2) # [[0, 0], [1, 1], [1, 1], [0, 0]]
-            pad = tf.pad(input, paddings, "CONSTANT") # default 0
+            paddings = (np.array(temp_p)).repeat(2).reshape(4, 2)  # [[0, 0], [1, 1], [1, 1], [0, 0]]
+            pad = tf.pad(input, paddings, "CONSTANT")  # default 0
             temp_conv = tf.layers.conv2d(
                 pad, Cout, k, strides=s, padding="valid", reuse=tf.AUTO_REUSE, name=scope)
         if(M == 3):
@@ -202,6 +182,7 @@ def ConvMD(M, Cin, Cout, k, s, p, input, training=True, activation=True, bn=True
             return tf.nn.relu(temp_conv)
         else:
             return temp_conv
+
 
 def Deconv2D(Cin, Cout, k, s, p, input, training=True, bn=True, name='deconv'):
     temp_p = np.array(p)

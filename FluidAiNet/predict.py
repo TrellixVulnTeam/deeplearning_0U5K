@@ -32,7 +32,11 @@ class Predict(object):
         #
         self.phase_1 = self.graph.get_tensor_by_name("phase_1:0")
 
+    def caculate_concat_feature(self):
+        pass
+
     def fluidnet_predict(self, batch_size=1, singel_batch=None):
+
         if singel_batch is None:
             print("single_batch can't be None")
             return

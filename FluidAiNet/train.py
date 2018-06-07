@@ -90,7 +90,25 @@ def main(_):
             summary_interval = 5
             summary_val_interval = 10
             summary_writer = tf.summary.FileWriter(log_dir, sess.graph)
+            for idx in range(len(model.avail_gpus)):
+                count = 0
+                concat_feature = []
+                with tf.variable_scope("concatfeature", reuse=True):
+                    for agent in range(args.single_batch_size):
+                        # num = self.vox_k_dynamic[idx][agent]
+                        num = model.vox_k_dynamic[idx][agent]
+                        concat_feature.append(tf.concat([model.vox_feature[idx][count: count+num],
+                                                        model.vox_feature[idx][count: count+num, :, :3] - model.vox_centroid[idx][agent][:3],
+                                                        model.vox_feature[idx][count: count+num, :, 3:6] - model.vox_centroid[idx][agent][3:]],axis=2))
+                        count += num
 
+                    # self.outputs[idx].set_shape([self.single_batch_size, cfg.INPUT_WIDTH,
+                    #                              cfg.INPUT_HEIGHT, cfg.INPUT_DEPTH, 128])
+                    # tf.import_graph_def(session.graph_def, input_map={"gpu_0/ScatterNd:0": self.outputs[idx]})
+                    concat_feature = tf.concat(concat_feature, axis=0)
+
+                    print(concat_feature)
+                model.concat_feature.append(concat_feature)
             # training
             for epoch in range(start_epoch, args.max_epoch):
                 counter = 0

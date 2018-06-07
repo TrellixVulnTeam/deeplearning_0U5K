@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # -*- coding:UTF-8 -*-
-
-
-import sys
 import os
+import sys
+import time
+
 import tensorflow as tf
 import cv2
 from numba import jit
@@ -53,13 +53,13 @@ class RPN3D(object):
         self.targets = []
         self.screen_size = []
         self.outputs = []
+        self.concat_feature = []
         self.voxelwise = None  # 郑重申明：获取voxelwise仅仅作为中间值在session中定义ScatterND无需feed value
 
 
         self.opt = tf.train.AdamOptimizer(lr)
-        self.gradient_norm = []
-        self.tower_grads = []
         self.final_feature = []
+        self.pred = []
         with tf.variable_scope(tf.get_variable_scope()):
             for idx, dev in enumerate(self.avail_gpus):
                 with tf.device('/gpu:{}'.format(dev)), tf.name_scope('gpu_{}'.format(dev)):
@@ -84,35 +84,25 @@ class RPN3D(object):
                     # output
                     feature_output = feature.outputs
                     self.outputs.append(feature_output)
-                    # delta_output = rpn.delta_output
-                    # prob_output = rpn.prob_output
-
                     # loss and grad
                     if idx == 0:
                         self.extra_update_ops = tf.get_collection(tf.GraphKeys.UPDATE_OPS)
 
                     self.loss = rpn.loss
-
                     self.params = tf.trainable_variables()
-                    gradients = tf.gradients(self.loss, self.params)
-                    clipped_gradients, gradient_norm = tf.clip_by_global_norm(
-                        gradients, max_gradient_norm)
-
-                    self.tower_grads.append(clipped_gradients)
-                    self.gradient_norm.append(gradient_norm)
 
         self.vars = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES)
 
         # loss and optimizer
-        # self.xxxloss is only the loss for the lowest tower
         with tf.device('/gpu:{}'.format(self.avail_gpus[0])):
-            self.grads = average_gradients(self.tower_grads)
-            self.update = [self.opt.apply_gradients(
-                zip(self.grads, self.params), global_step=self.global_step)]
-            self.gradient_norm = tf.group(*self.gradient_norm)
-
-        self.update.extend(self.extra_update_ops)
-        self.update = tf.group(*self.update)
+            self.optimazer = self.opt.minimize(self.loss)
+        #     self.grads = average_gradients(self.tower_grads)
+        #     self.update = [self.opt.apply_gradients(
+        #         zip(self.grads, self.params), global_step=self.global_step)]
+        #     self.gradient_norm = tf.group(*self.gradient_norm)
+        #
+        # self.update.extend(self.extra_update_ops)
+        # self.update = tf.group(*self.update)
 
         # summary and saver
         self.saver = tf.train.Saver(write_version=tf.train.SaverDef.V2,
@@ -122,13 +112,6 @@ class RPN3D(object):
             tf.summary.scalar('train/loss', self.loss),
             *[tf.summary.histogram(each.name, each) for each in self.vars + self.params]
         ])
-
-        # # TODO: bird_view_summary and front_view_summary
-        # self.predict_summary = tf.summary.merge([
-        #     tf.summary.image('predict/bird_view_lidar', self.bv),
-        #     tf.summary.image('predict/bird_view_heatmap', self.bv_heatmap),
-        #     tf.summary.image('predict/front_view_rgb', self.rgb),
-        # ])
 
     def train_step(self, session, data, train=False, summary=False):
         # input:
@@ -151,35 +134,21 @@ class RPN3D(object):
             input_feed[self.screen_size[idx]] = self.single_batch_size
             input_feed[self.vox_feature[idx]] = vox_feature[idx]
             input_feed[self.vox_centroid[idx]] = vox_centroid[idx]
-            count = 0
-            concat_feature = []
-            for agent in range(self.single_batch_size):
-                num = self.vox_k_dynamic[idx][agent]
-                input_feed[self.vox_k_dynamic[idx]] = vox_k_dynamic[idx]
+            input_feed[self.vox_k_dynamic[idx]] = vox_k_dynamic[idx]
 
-                concat_feature.append(tf.concat([self.vox_feature[idx][count: count+num],
-                                                self.vox_feature[idx][count: count+num, :, :3] - self.vox_centroid[idx][agent][:3],
-                                                self.vox_feature[idx][count: count+num, :, 3:6] - self.vox_centroid[idx][agent][3:]],axis=2))
-                count += num
-            # self.outputs[idx].set_shape([self.single_batch_size, cfg.INPUT_WIDTH,
-            #                              cfg.INPUT_HEIGHT, cfg.INPUT_DEPTH, 128])
-            # tf.import_graph_def(session.graph_def, input_map={"gpu_0/ScatterNd:0": self.outputs[idx]})
-            concat_feature = tf.concat(concat_feature, axis=0)
-            print(concat_feature)
-            session.graph.add_to_collection('concat_feature', concat_feature)
-            final_feature_eval = concat_feature.eval(session=session, feed_dict=input_feed)
+            # session.graph.add_to_collection('concat_feature', concat_feature)
+            start = time.clock()
+            final_feature_eval = self.concat_feature[idx].eval(session=session, feed_dict=input_feed)
+            print('concat feature calculate', time.clock() - start)
             input_feed[self.final_feature[idx]] = final_feature_eval
             input_feed[self.vox_number[idx]] = vox_number[idx]
             input_feed[self.vox_coordinate[idx]] = vox_coordinate[idx]
+            print(self.labels[idx])
             input_feed[self.labels[idx]] = labels[idx]
 
-        # if train:
-        #     output_feed = [self.loss, self.reg_loss,
-        #                    self.cls_loss, self.cls_pos_loss, self.cls_neg_loss, self.gradient_norm, self.update]
         if train:
-            output_feed = [self.loss, self.gradient_norm, self.update]
+            output_feed = [self.loss, self.optimazer]
         else:
-            # output_feed = [self.loss, self.reg_loss, self.cls_loss, self.cls_pos_loss, self.cls_neg_loss]
             output_feed = [self.loss]
         if summary:
             output_feed.append(self.train_summary)
