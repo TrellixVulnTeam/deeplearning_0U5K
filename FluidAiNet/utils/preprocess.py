@@ -17,19 +17,20 @@ x,y,z(21,21,26) (-1, -1, -1) (1, 1, 1.5)
 theoreticlly, 
 """
 
+
 def fluid_process_pointcloud(point_cloud, fluid_identification=None,cls=cfg.DETECT_OBJ):
     if fluid_identification is not None:
         centroid = point_cloud[fluid_identification][:6]
         return centroid
     # print('centroid:', centroid)
-
+    
     if cls == 'Fluid':
         # print('Fluid')
         scene_size = np.array([16, 16, 20], dtype=np.float32)
-        voxel_size = np.array([0.4, 0.4, 0.4], dtype=np.float32)
+        voxel_size = np.array([0.4, 0.4, 0.4], dtype=np.float32)  # [-4, 4]x [-4, 4]x [-2, 2] (20,20,10)
         grid_size = np.array([40, 40, 50], dtype=np.int64)
         lidar_coord = np.array([8, 8, 8], dtype=np.float32)
-        max_point_number = 64 # for each voxel you can contain 4x4x4 particles, you can reduce this number
+        max_point_number = 64  # for each voxel you can contain 4x4x4 particles, you can reduce this number
         # return
     # FIXME  ccx AWESOME
     shifted_coord = point_cloud[:, :3] + lidar_coord
@@ -59,7 +60,8 @@ def fluid_process_pointcloud(point_cloud, fluid_identification=None,cls=cfg.DETE
     number_buffer = np.zeros(shape=(K), dtype=np.int64)
 
     # [K, T, 7] feature buffer as described in the paper
-    feature_buffer = np.zeros(shape=(K, T, cfg.VOXEL_PART_FEATURE), dtype=np.float32) # position, velocity, isFluid, index, relative position
+    # position, velocity, isFluid, index, relative position
+    feature_buffer = np.zeros(shape=(K, T, cfg.VOXEL_PART_FEATURE), dtype=np.float32)
 
     # build a reverse index for coordinate buffer
     index_buffer = {}
@@ -76,13 +78,13 @@ def fluid_process_pointcloud(point_cloud, fluid_identification=None,cls=cfg.DETE
     # computer this in the graph
     # feature_buffer[:, :, -3:] = feature_buffer[:, :, :3] - centroid
 
-
     voxel_dict = {'feature_buffer': feature_buffer,  # (K, T, 7)
                   'coordinate_buffer': coordinate_buffer,  # (K, 3)
-                  'number_buffer': number_buffer, # (K,)
-                  #'centroid': centroid, #{3,}
+                  'number_buffer': number_buffer,  # (K,)
+                  # 'centroid': centroid, #{3,}
                   'k_dynamic': K}
     return voxel_dict
+
 
 def process_pointcloud(point_cloud, cls=cfg.DETECT_OBJ):
     # Input:
@@ -106,7 +108,8 @@ def process_pointcloud(point_cloud, cls=cfg.DETECT_OBJ):
         scene_size = np.array([4, 40, 48], dtype=np.float32)
         voxel_size = np.array([0.4, 0.2, 0.2], dtype=np.float32)
         grid_size = np.array([10, 200, 240], dtype=np.int64)
-        lidar_coord = np.array([0, 20, 3], dtype=np.float32)# fix coordinate to positive(z,y,x),which is the max num of minus
+        # fix coordinate to positive(z,y,x),which is the max num of minus
+        lidar_coord = np.array([0, 20, 3], dtype=np.float32)
         max_point_number = 45
 
         np.random.shuffle(point_cloud)
@@ -114,7 +117,7 @@ def process_pointcloud(point_cloud, cls=cfg.DETECT_OBJ):
     shifted_coord = point_cloud[:, :3] + lidar_coord
     # reverse the point cloud coordinate (X, Y, Z) -> (Z, Y, X)
     voxel_index = np.floor(
-        shifted_coord[:, ::-1] / voxel_size).astype(np.int) # int lower than num
+        shifted_coord[:, ::-1] / voxel_size).astype(np.int)  # int lower than num
 
     bound_x = np.logical_and(
         voxel_index[:, 2] >= 0, voxel_index[:, 2] < grid_size[2])
@@ -131,8 +134,8 @@ def process_pointcloud(point_cloud, cls=cfg.DETECT_OBJ):
     # [K, 3] coordinate buffer as described in the paper
     coordinate_buffer = np.unique(voxel_index, axis=0)
 
-    K = len(coordinate_buffer) # K record the number of voxels
-    T = max_point_number # TODO ccx set T reasonable?
+    K = len(coordinate_buffer)  # K record the number of voxels
+    T = max_point_number  # TODO ccx set T reasonable?
 
     # [K, 1] store number of points in each voxel grid
     number_buffer = np.zeros(shape=(K), dtype=np.int64)
@@ -156,17 +159,18 @@ def process_pointcloud(point_cloud, cls=cfg.DETECT_OBJ):
     feature_buffer[:, :, -3:] = feature_buffer[:, :, :3] - \
         feature_buffer[:, :, :3].sum(axis=1, keepdims=True)/number_buffer.reshape(K, 1, 1)
 
-    voxel_dict = {'feature_buffer': feature_buffer, # (K, T, 7)
-                  'coordinate_buffer': coordinate_buffer, # (K, 3)
-                  'number_buffer': number_buffer} # (K,)
+    voxel_dict = {'feature_buffer': feature_buffer,  # (K, T, 7)
+                  'coordinate_buffer': coordinate_buffer,  # (K, 3)
+                  'number_buffer': number_buffer}  # (K,)
     return voxel_dict
 
-if __name__ == "__main__":
-#     import fluid_loader
 
-#     BATCH_SIZE = 2
-#     TRAIN_FILES = fluid_loader.create_train_files(BATCH_SIZE)
-#     print(TRAIN_FILES)
-#     pointcloud, _, _ = fluid_loader.concat_data_label_all(TRAIN_FILES, 8, 3)
-#     voxel_index = fluid_process_pointcloud(pointcloud[0],1)
+if __name__ == "__main__":
+    # import fluid_loader
+    #
+    # BATCH_SIZE = 2
+    # TRAIN_FILES = fluid_loader.create_train_files(BATCH_SIZE)
+    # print(TRAIN_FILES)
+    # pointcloud, _, _ = fluid_loader.concat_data_label_all(TRAIN_FILES, 8, 3)
+    # voxel_index = fluid_process_pointcloud(pointcloud[0],1)
     pass

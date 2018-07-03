@@ -19,7 +19,9 @@ cfg = __C
 
 # for dataset dir
 __C.DATA_DIR = '/data/datasets/simulation_data/water'
-#__C.CALIB_DIR = '/media/hdc/KITTI/calib/data_object_calib/training/calib'
+__C.DEBUG_INFO = '/data/info'
+__C.INFO_DIR_PROJECT = os.path.join(__C.DEBUG_INFO, 'FluidAiNet')
+# __C.CALIB_DIR = '/media/hdc/KITTI/calib/data_object_calib/training/calib'
 
 
 # for gpu allocation

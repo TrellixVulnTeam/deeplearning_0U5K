@@ -11,7 +11,7 @@ from numba import jit
 from config import cfg
 from utils import *
 from model.group_pointcloud import FeatureNet
-from model.rpn import MiddleAndRPN
+from model.rpn import MiddleAndReg
 
 
 class RPN3D(object):
@@ -25,6 +25,7 @@ class RPN3D(object):
                  beta=1,
                  avail_gpus=['0']):
         # hyper parameters and status
+        self.scope = []
         self.cls = cls
         self.single_batch_size = single_batch_size
         self.learning_rate = tf.Variable(
@@ -62,13 +63,13 @@ class RPN3D(object):
         self.pred = []
         with tf.variable_scope(tf.get_variable_scope()):
             for idx, dev in enumerate(self.avail_gpus):
-                with tf.device('/gpu:{}'.format(dev)), tf.name_scope('gpu_{}'.format(dev)):
-
+                with tf.device('/gpu:{}'.format(dev)), tf.name_scope('gpu_{}'.format(dev)) as scope:
+                    self.scope.append(scope)
                     # must use name scope here since we do not want to create new variables
                     # graph
                     feature = FeatureNet(
                         training=self.is_train, batch_size=self.single_batch_size)
-                    rpn = MiddleAndRPN(
+                    rpn = MiddleAndReg(
                         input=feature.outputs, alpha=self.alpha, beta=self.beta, training=self.is_train)
                     tf.get_variable_scope().reuse_variables()
                     # input
@@ -120,7 +121,7 @@ class RPN3D(object):
         #     vox_feature
         #     vox_number
         #     vox_coordinate
-        #tag = data[0]
+
         labels = data[0]
         vox_feature = data[1]
         vox_number = data[2]
@@ -143,7 +144,6 @@ class RPN3D(object):
             input_feed[self.final_feature[idx]] = final_feature_eval
             input_feed[self.vox_number[idx]] = vox_number[idx]
             input_feed[self.vox_coordinate[idx]] = vox_coordinate[idx]
-            print(self.labels[idx])
             input_feed[self.labels[idx]] = labels[idx]
 
         if train:

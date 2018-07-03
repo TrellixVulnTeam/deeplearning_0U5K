@@ -22,7 +22,7 @@ parser.add_argument('-i', '--max-epoch', type=int, nargs='?', default=160,
 parser.add_argument('-n', '--tag', type=str, nargs='?', default='default',
                     help='set log tag')
 parser.add_argument('-b', '--single-batch-size', type=int, nargs='?', default=1,
-                    help='set batch size') # TOOO change batch_size here
+                    help='set batch size')  # TOOO change batch_size here
 parser.add_argument('-l', '--lr', type=float, nargs='?', default=0.001,
                     help='set learning rate')
 parser.add_argument('-al', '--alpha', type=float, nargs='?', default=1.0,
@@ -36,10 +36,12 @@ parser.add_argument('-v', '--vis', type=bool, nargs='?', default=False,
 args = parser.parse_args()
 
 dataset_dir = cfg.DATA_DIR
+info_dir = cfg.DEBUG_INFO
+info_dir_project = cfg.INFO_DIR_PROJECT
 train_dir = os.path.join(cfg.DATA_DIR, 'train')  # ccx need to change
 # val_dir = os.path.join(cfg.DATA_DIR, 'validation')  # ccx need to change
-log_dir = os.path.join('./log', args.tag)
-save_model_dir = os.path.join('./save_model', args.tag)
+log_dir = os.path.join(info_dir_project, 'log', args.tag)
+save_model_dir = os.path.join(info_dir_project, 'save_model', args.tag)
 os.makedirs(log_dir, exist_ok=True)
 os.makedirs(save_model_dir, exist_ok=True)
 
@@ -90,24 +92,25 @@ def main(_):
             summary_interval = 5
             summary_val_interval = 10
             summary_writer = tf.summary.FileWriter(log_dir, sess.graph)
-            for idx in range(len(model.avail_gpus)):
-                count = 0
-                concat_feature = []
-                with tf.variable_scope("concatfeature", reuse=True):
-                    for agent in range(args.single_batch_size):
-                        # num = self.vox_k_dynamic[idx][agent]
-                        num = model.vox_k_dynamic[idx][agent]
-                        concat_feature.append(tf.concat([model.vox_feature[idx][count: count+num],
-                                                        model.vox_feature[idx][count: count+num, :, :3] - model.vox_centroid[idx][agent][:3],
-                                                        model.vox_feature[idx][count: count+num, :, 3:6] - model.vox_centroid[idx][agent][3:]],axis=2))
-                        count += num
+            for idx, dev in enumerate(model.avail_gpus):
+                with tf.device('/gpu:{}'.format(dev)), tf.name_scope('gpu_{}'.format(dev)):
+                    count = 0
+                    concat_feature = []
+                    with tf.variable_scope("concatfeature", reuse=True):
+                        for agent in range(args.single_batch_size):
+                            # num = self.vox_k_dynamic[idx][agent]
+                            num = model.vox_k_dynamic[idx][agent]
+                            concat_feature.append(tf.concat([model.vox_feature[idx][count: count+num],
+                                                            model.vox_feature[idx][count: count+num, :, :3] - model.vox_centroid[idx][agent][:3],
+                                                            model.vox_feature[idx][count: count+num, :, 3:6] - model.vox_centroid[idx][agent][3:]],axis=2))
+                            count += num
 
-                    # self.outputs[idx].set_shape([self.single_batch_size, cfg.INPUT_WIDTH,
-                    #                              cfg.INPUT_HEIGHT, cfg.INPUT_DEPTH, 128])
-                    # tf.import_graph_def(session.graph_def, input_map={"gpu_0/ScatterNd:0": self.outputs[idx]})
-                    concat_feature = tf.concat(concat_feature, axis=0)
+                        # self.outputs[idx].set_shape([self.single_batch_size, cfg.INPUT_WIDTH,
+                        #                              cfg.INPUT_HEIGHT, cfg.INPUT_DEPTH, 128])
+                        # tf.import_graph_def(session.graph_def, input_map={"gpu_0/ScatterNd:0": self.outputs[idx]})
+                        concat_feature = tf.concat(concat_feature, axis=0)
 
-                    print(concat_feature)
+                        print(concat_feature)
                 model.concat_feature.append(concat_feature)
             # training
             for epoch in range(start_epoch, args.max_epoch):
@@ -131,12 +134,11 @@ def main(_):
                     forward_time = time.time() - start_time
                     batch_time = time.time() - batch_time
 
-
                     print(
                         'train: {} @ epoch:{}/{} loss: {:.4f}  forward time: {:.4f} batch time: {:.4f}'.format(
                             counter, epoch, args.max_epoch, ret[0], forward_time,
                             batch_time))
-                    with open('log/train.txt', 'a') as f:
+                    with open(os.path.join(info_dir_project, 'log/train.txt'), 'a') as f:
                         f.write(
                             'train: {} @ epoch:{}/{} loss: {:.4f} forward time: {:.4f} batch time: {:.4f} \n'.format(
                                 counter, epoch, args.max_epoch, ret[0], forward_time,
@@ -147,6 +149,7 @@ def main(_):
                         print("summary_interval now")
                         summary_writer.add_summary(ret[-1], global_counter)
                     if counter % 10 == 0:
+                        print('save model now')
                         model.saver.save(sess, os.path.join(save_model_dir, 'checkpoint'),
                                          global_step=model.global_step)
                     batch_time = time.time()
@@ -167,4 +170,5 @@ def main(_):
 
 if __name__ == '__main__':
     tf.app.run(main)
+    # true sync
 

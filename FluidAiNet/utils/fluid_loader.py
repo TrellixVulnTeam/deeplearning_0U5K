@@ -82,7 +82,7 @@ def convert_str_float(frame_particles):
     fps = pd.DataFrame(frame_particles[1:], columns=frame_particles[0])
     fps = fps[fps.columns[:-1]]
     for col in fps.columns:
-        #if col == 'isFluidSolid':
+        # if col == 'isFluidSolid':
         fps[col] = fps[col].astype(float)
     return fps
 
@@ -100,17 +100,21 @@ def load_data_file(filename):
         return laod_csv(filename)
 
 
-def load_data_label(filename):
+def load_data_label(filename, isvalues=True):
     particles = load_data_file(filename)
     cols = particles.columns
-    data_cols = operator.add(list(cols[0:6]), list(cols[7:9])) # extrat timestep
+    data_cols = operator.add(list(cols[0:6]), list(cols[7:9]))  # extrat timestep
     label_cols = cols[15:18]
 
     isfluid = cols[7]
     fluid_parts = particles[particles[isfluid] == 0]
     index = fluid_parts.index
-    data = particles[data_cols].values
-    label = fluid_parts[label_cols].values
+    if isvalues:
+        data = particles[data_cols].values
+        label = fluid_parts[label_cols].values
+    else:
+        data = particles[data_cols]
+        label = fluid_parts[label_cols]
 
     return data, label, index
 
@@ -190,25 +194,29 @@ def concat_data_label_all(train_files, dimention_data, dimention_label):
 TRAIN_POOL = multiprocessing.Pool(5)
 
 
-def iterate_single_frame(data_dir, file_name, batch_size, multi_gpu_sum=1):
+def iterate_single_frame(data_dir, file_name, batch_size, data_new=None, index_new=None, sample_rate=1, multi_gpu_sum=1):
     # frame_file_name = os.path.join(data_dir, file_name)
     data, label, index = load_data_label(file_name)
+    if data_new is not None  and data_new is not None:
+        data = data_new
+        index = index_new
     nums = len(index)
     indices = list(range(nums))
     num_batches = int(math.floor(nums / float(batch_size)))
+    interval = int(1 / sample_rate)
+
     extra = nums % batch_size
     if extra > 0:
         num_batches += 1
 
     proc = Processor(data, label, index, data_dir, False, False)
     # only different with centroid
-    for batch_idx in range(num_batches):
+    for batch_idx in range(0, num_batches, interval):
         print(batch_idx, ' of ', num_batches)
         start_idx = batch_idx * batch_size
         if extra > 0 and batch_idx == num_batches - 1:
-            excerpt = indices[start_idx:start_idx + extra]
-        else:
-            excerpt = indices[start_idx:start_idx + batch_size]
+            batch_size = extra
+        excerpt = indices[start_idx:start_idx + batch_size]
         rets = TRAIN_POOL.map(proc, excerpt)
 
         voxel = [ret[0] for ret in rets]
@@ -241,7 +249,7 @@ def iterate_single_frame(data_dir, file_name, batch_size, multi_gpu_sum=1):
             np.array(vox_k_dynamic)
         )
 
-        yield ret
+        yield ret, batch_size
 
 
 def iterate_data(data_dir, sample_rate=1, shuffle=False, aug=False, is_testset=False, batch_size=1, multi_gpu_sum=1):
@@ -267,7 +275,6 @@ def iterate_data(data_dir, sample_rate=1, shuffle=False, aug=False, is_testset=F
                 excerpt = indices[start_idx:start_idx + extra]
             else:
                 excerpt = indices[start_idx:start_idx + batch_size]
-
 
             # every batch process 'batch_size' particle, but particle feature 1 part a time,concate them together as one batch.
             rets = TRAIN_POOL.map(proc, excerpt)
