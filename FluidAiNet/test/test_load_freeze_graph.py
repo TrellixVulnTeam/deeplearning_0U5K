@@ -2,7 +2,7 @@ import os
 
 import numpy as np
 import tensorflow as tf
-from FluidAiNet.utils.model_utils import *
+from utils.model_utils import *
 
 
 
