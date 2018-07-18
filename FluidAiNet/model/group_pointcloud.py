@@ -9,7 +9,7 @@ from nose.tools import assert_equal
 import tensorflow as tf
 
 from config import cfg
-from utils import tf_util
+# from utils import tf_util
 
 
 class PILayer(object):
@@ -101,8 +101,19 @@ class FeatureNet(object):
 
         # x = self.vfe1.apply(self.feature, mask, self.batch_size, self.k_dynamics, self.training)
         # x = self.vfe2.apply(x, mask, self.batch_size, self.k_dynamics, self.training)
+
+
+        # all_fields = []
+        # for i in range(4):
+        #     field_feature = self.feature[:, :, i*3:i*3+3]
+        #     field_feature = self.pil1.apply(field_feature, mask, self.training)
+        #     field_feature = self.pil2.apply(field_feature, mask, self.training)
+        #     all_fields.append(field_feature)
+
         x = self.pil1.apply(self.feature, mask, self.training)
         x = self.pil2.apply(x, mask, self.training)
+
+        # x = tf.concat(all_fields, axis=2)
         # [ΣK, 128]
         self.voxelwise = tf.reduce_mean(x, axis=1)  # reduce_max@2
         print(self.voxelwise)
@@ -111,8 +122,8 @@ class FeatureNet(object):
         # pedestrian/cyclist: [N * 10 * 200 * 240 * 128]
         # FIXME ccx AWESOME- a sparse tensor
 
-        self.outputs = tf.placeholder(tf.float32, shape=(None, cfg.INPUT_WIDTH,  cfg.INPUT_HEIGHT,
-                                                         cfg.INPUT_DEPTH, 128), name="scatter_nd_holder")
+        # self.outputs = tf.placeholder(tf.float32, shape=(None, cfg.INPUT_WIDTH,  cfg.INPUT_HEIGHT,
+        #                                                  cfg.INPUT_DEPTH, 128), name="scatter_nd_holder")
         self.outputs = tf.scatter_nd(
             self.coordinate, self.voxelwise, [self.batch_size, cfg.INPUT_HEIGHT, cfg.INPUT_WIDTH, cfg.INPUT_DEPTH, 128])
         print(self.outputs)

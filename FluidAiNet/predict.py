@@ -1,24 +1,23 @@
 import os
 import time
 
-import tensorflow as tf
-
-from config import cfg
 import matplotlib
-matplotlib.use('Agg')
+# matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import pandas as pd
+import tensorflow as tf
 
-
+from config import cfg
 from utils.fluid_loader import iterate_single_frame, get_all_frames
 from utils.model_utils import load_graph_with_input_map
 from utils.fluid_loader import load_data_label
 
 dataset_dir = cfg.DATA_DIR
-train_dir = os.path.join(cfg.DATA_DIR, 'test')
+train_dir = os.path.join(cfg.DATA_DIR, 'train')
 avail_gpus = cfg.GPU_AVAILABLE.split(',')
 info_project = cfg.INFO_DIR_PROJECT
+
 
 class Predict(object):
 
@@ -32,7 +31,7 @@ class Predict(object):
         'gpu_0/k_dynamics'
         'gpu_0/centroid'
         'gpu_0/coordinate'
-        self.concat_feature = []
+        self.concat_feature = None
         self.screen_size = self.graph.get_tensor_by_name('gpu_0/screen_size:0')
         self.feature = self.graph.get_tensor_by_name('gpu_0/feature:0')
         self.part_feature = self.graph.get_tensor_by_name('gpu_0/part_feature:0')
@@ -64,7 +63,7 @@ class Predict(object):
                                        self.part_feature[count: count + k, :, 3:6] - self.centroid[screen][3:6]],
                                       axis=2))
                         count += k
-                    self.concat_feature.append(tf.concat(concat_feature_all, axis=0))
+                    self.concat_feature = tf.concat(concat_feature_all, axis=0)
                     print(self.concat_feature)
 
     def fluidnet_predict(self, batch_size=1, singel_batch=None):
@@ -75,6 +74,7 @@ class Predict(object):
         # predict
         with tf.Session(graph=self.graph) as sess:
             if batch_size != self.batch_size:
+                print('')
                 self.caculate_concat_feature(batch_size)
 
             input_dict = dict()
@@ -85,7 +85,7 @@ class Predict(object):
             input_dict[self.k_dynamics] = singel_batch[5][0]
             input_dict[self.centroid] = singel_batch[4][0]
             start = time.clock()
-            concat_feature_eval = sess.run(self.concat_feature[0], input_dict)
+            concat_feature_eval = sess.run(self.concat_feature, input_dict)
             print('concat feature:\n', time.clock()-start)
             input_dict[self.feature] = concat_feature_eval
             input_dict[self.coordinate] = singel_batch[3][0]
@@ -125,11 +125,14 @@ def write_acc_2_file(f, accelaration_eval):
         f.write('\n')
 
 
-def iter_batch_size(f, predict, result, start, train_dir, file_path, data_new=None, index_new=None,
-                    sample_rate=0.01, batch_size=25):
+def iter_batch_size(frozen_model_filename, init_batch_size, f, predict, result, start, train_dir, file_path,
+                    data_new=None, index_new=None, sample_rate=0.01, batch_size=25):
     for batch, batch_size in iterate_single_frame(train_dir, file_path, data_new=None, index_new=None, sample_rate=1,
                                                   batch_size=batch_size):
+        if batch_size != init_batch_size:
+            predict = Predict(frozen_model_filename, batch_size=batch_size)
         accelaration_eval = predict.fluidnet_predict(batch_size=batch_size, singel_batch=batch)
+        # print('**********', accelaration_eval)
         write_acc_2_file(f, accelaration_eval)
         result.extend(accelaration_eval)
         if len(result) % 500 == 0:
@@ -138,16 +141,22 @@ def iter_batch_size(f, predict, result, start, train_dir, file_path, data_new=No
     # return accelaration_eval
 
 
+def get_local_time():
+    return time.asctime(time.localtime(time.time()))
+
+
 def forward():
     test_predict = True
+    zero_time = get_local_time()
+    print('start: ', zero_time)
     if test_predict:
 
-        batch_size = 25
+        init_batch_size = 25
         forward_step = 3
         # load trained model
         model_dir = "/data/info/FluidAiNet/save_model/default"
         frozen_model_filename = os.path.join(model_dir, "../frozen_model/frozen_model.pb")
-        predict = Predict(frozen_model_filename, batch_size=batch_size)
+        predict = Predict(frozen_model_filename, batch_size=init_batch_size)
 
         # create dir for current task
         # os.makedirs(path) multifolders os.mkdir(path) singlefolder
@@ -180,27 +189,33 @@ def forward():
         for step in range(forward_step):
             f = open(os.path.join(acc_dir, 'accelaration_%d.txt' % step), 'w+')
             if step == 0:
-                accelaration_eval = iter_batch_size(f, predict, result, start, train_dir, file_path, data_new=None, index_new=None,
-                                batch_size=25)
+                iter_batch_size(frozen_model_filename, init_batch_size, f, predict, result, start,
+                                                    train_dir, file_path, data_new=None, index_new=None, batch_size=25)
             else:
-                accelaration_eval = iter_batch_size(f, predict, result, start, train_dir, file_path, data_new=data, index_new=index,
-                                batch_size=25)
+                iter_batch_size(frozen_model_filename, init_batch_size, f, predict, result, start,
+                                                    train_dir, file_path, data_new=data.copy(), index_new=index, batch_size=25)
             f.close()
             # todo update velocity and accrlaration
             # updata velocity
-            df_acc = pd.DataFrame(result)
-            cols = data.columns
-            for i in range(3):
-                data[cols[i + 3]][index[0]: index[-1]] = data[cols[i + 3]][index[0]: index[-1]] + df_acc[
-                    df_acc.columns[i]] * delta_t
-            # update position
-            for i in range(3):
-                data[cols[i]][index[0]: index[-1]] = data[cols[i]][index[0]: index[-1]] + data[cols[i + 3]][
-                                                                                          index[0]: index[-1]] * delta_t
-            figure_path = os.path.join(figure_dir, 'figure_%d.png' % (step+1))
-            plot_3d_scater_df(data[index[0]:index[-1]], 0, figure_path)
+            try:
+                df_acc = pd.DataFrame(result)
+                acc_num = len(df_acc.index)
+                cols = data.columns
+                for i in range(3):
+                    data[cols[i + 3]][0: acc_num] = data[cols[i + 3]][0: acc_num] + \
+                                                    df_acc[df_acc.columns[i]] * delta_t
+                # update position
+                for i in range(3):
+                    data[cols[i]][0: acc_num] = data[cols[i]][0: acc_num] + \
+                                                data[cols[i + 3]][0: acc_num] * delta_t
+                figure_path = os.path.join(figure_dir, 'figure_%d.png' % (step+1))
+                plot_3d_scater_df(data[index[0]:index[-1]], 0, figure_path)
+            except Exception as e:
+                print('update velocity and acc error')
+                print(e)
+    print('start on ', zero_time, ' and end on ', get_local_time(), '\n')
 
 
 if __name__ == "__main__":
     import os
-    forward()
+    # forward()

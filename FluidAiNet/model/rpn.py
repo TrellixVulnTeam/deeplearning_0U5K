@@ -117,8 +117,8 @@ class MiddleAndReg(object):
             middle1 = 180
             middle2 = 45
             print('final_features shape:', final_features.shape)
-            final_features_middle1 = tf.layers.dense(final_features, middle1, name="fcn1")
-            final_features_middle2 = tf.layers.dense(final_features_middle1, middle2, name="fcn2")
+            final_features_middle1 = tf.layers.dense(final_features, middle1, activation=tf.nn.relu, name="fcn1")
+            final_features_middle2 = tf.layers.dense(final_features_middle1, middle2, activation=tf.nn.relu, name="fcn2")
             self.pred = tf.layers.dense(final_features_middle2, 3, name="output")
             print("pred:\n", self.pred)
             print("********************************")

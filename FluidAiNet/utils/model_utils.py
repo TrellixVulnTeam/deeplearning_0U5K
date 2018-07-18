@@ -134,7 +134,7 @@ class LoadGraphTest:
 if __name__ == '__main__':
     print("sync")
     model_dir = "/data/info/FluidAiNet/save_model/default"
-    freeze_graph(model_dir, output_node_names="gpu_0/screen_size,gpu_0_1/concatfeature/concat_1,gpu_0/MiddleAndReg_/output/BiasAdd")
+    # freeze_graph(model_dir, output_node_names="gpu_0/screen_size,gpu_0_1/concatfeature/concat_1,gpu_0/MiddleAndReg_/output/BiasAdd")
     # frozen_model_filename = os.path.join(model_dir, "../frozen_model/frozen_model.pb")
     # graph, _ = load_graph_with_input_map(frozen_model_filename, batch_size=3)
     # # graph = load_graph(frozen_model_filename)
@@ -143,4 +143,6 @@ if __name__ == '__main__':
     # with tf.Session(graph=graph) as sess:
     #     #     sess.run(tf.global_variables_initializer())
     #     print(all_nodes("Mean_2"))
+    frozen_model_filename = os.path.join(model_dir, "../frozen_model/frozen_model.pb")
+    # load_graph_with_input_map(frozen_model_filename, batch_size=25)
 

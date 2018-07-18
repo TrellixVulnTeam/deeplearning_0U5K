@@ -21,7 +21,7 @@ import numpy as np
 import pandas as pd
 
 from utils.preprocess import fluid_process_pointcloud
-# from utils.preprocess import fluid_process_pointcloud
+# from preprocess import fluid_process_pointcloud
 
 BASE_DIR = '/data/datasets/simulation_data'
 DATA_DIR = os.path.join(BASE_DIR, 'water')
@@ -58,6 +58,10 @@ def get_all_frames(data_dir=DATA_DIR):
     for item in dirs:
         screen_path = os.path.join(data_dir, item)
         allfiles = os.listdir(screen_path)
+        # for i in range(10):
+        #     np.random.shuffle(allfiles)
+        #     print(allfiles)
+        np.random.shuffle(allfiles)
         frames.extend(map(lambda x: os.path.join(item, x), allfiles))
     return map(lambda x: os.path.join(data_dir, x), frames)
 
@@ -110,13 +114,22 @@ def load_data_label(filename, isvalues=True):
     fluid_parts = particles[particles[isfluid] == 0]
     index = fluid_parts.index
     if isvalues:
-        data = particles[data_cols].values
+        # only fluid parts
+        # data = particles[data_cols].values
+        data = fluid_parts[data_cols].values
         label = fluid_parts[label_cols].values
     else:
-        data = particles[data_cols]
+        # data = particles[data_cols]
+        data = fluid_parts[data_cols]
         label = fluid_parts[label_cols]
 
     return data, label, index
+
+
+def shuffle_label(labels):
+    idx = np.arange(labels.shape[0])
+    np.random.shuffle(idx)
+    return idx
 
 
 def shuffle_data(data, labels):
@@ -197,7 +210,7 @@ TRAIN_POOL = multiprocessing.Pool(5)
 def iterate_single_frame(data_dir, file_name, batch_size, data_new=None, index_new=None, sample_rate=1, multi_gpu_sum=1):
     # frame_file_name = os.path.join(data_dir, file_name)
     data, label, index = load_data_label(file_name)
-    if data_new is not None  and data_new is not None:
+    if data_new is not None and data_new is not None:
         data = data_new
         index = index_new
     nums = len(index)
@@ -256,9 +269,13 @@ def iterate_data(data_dir, sample_rate=1, shuffle=False, aug=False, is_testset=F
     TRAIN_FILES = get_all_frames(data_dir)
     for f in TRAIN_FILES:
         data, label, index = load_data_label(f)
+
+
         # TODO the common part of feature
         nums = len(index)
         indices = list(range(nums))
+        if shuffle:
+            np.random.shuffle(indices)
         num_batches = int(math.floor(nums / float(batch_size))) # about 1W/25
         
         interval = int(1/sample_rate)  # num_batches / interval = num_batches * 0.01
@@ -306,7 +323,9 @@ def iterate_data(data_dir, sample_rate=1, shuffle=False, aug=False, is_testset=F
                 np.array(vox_number),
                 np.array(vox_coordinate),
                 np.array(vox_centroid),
-                np.array(vox_k_dynamic)
+                np.array(vox_k_dynamic),
+                f,
+                excerpt
             )
 
             yield ret
@@ -389,9 +408,9 @@ def build_input(voxel_dict_list):
     return batch_size, feature, number, coordinate, centroid, k_dynamics
 
 if __name__ == '__main__':
-    BATCH_SIZE = 2
-    TRAIN_FILES = create_train_files(2)
-    print(TRAIN_FILES)
+    # BATCH_SIZE = 2
+    # TRAIN_FILES = create_train_files(2)
+    # print(TRAIN_FILES)
     # data_dir = '/data/datasets/simulation_data'
     # train_dir = os.path.join(data_dir, 'water')
     # batch_size = 1000
@@ -399,3 +418,4 @@ if __name__ == '__main__':
     # for batch in iterate_data(train_dir, batch_size=batch_size):
     #     singel_batch = batch
     #     break
+    get_all_frames(data_dir=TRAIN_DATA_DIR)

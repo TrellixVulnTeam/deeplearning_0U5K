@@ -113,11 +113,12 @@ def main(_):
                         print(concat_feature)
                 model.concat_feature.append(concat_feature)
             # training
+            pre_loss = 0
             for epoch in range(start_epoch, args.max_epoch):
                 counter = 0
                 batch_time = time.time()
                 # TODO ccx get batch data(read data from file)
-                for batch in iterate_data(train_dir, sample_rate=0.001, shuffle=True, aug=True, is_testset=False,
+                for batch in iterate_data(train_dir, sample_rate=0.0001, shuffle=True, aug=True, is_testset=False,
                                           batch_size=args.single_batch_size * cfg.GPU_USE_COUNT,
                                           multi_gpu_sum=cfg.GPU_USE_COUNT):
 
@@ -131,6 +132,7 @@ def main(_):
 
                     start_time = time.time()
                     ret = model.train_step(sess, batch, train=True, summary=is_summary)
+
                     forward_time = time.time() - start_time
                     batch_time = time.time() - batch_time
 
@@ -138,11 +140,14 @@ def main(_):
                         'train: {} @ epoch:{}/{} loss: {:.4f}  forward time: {:.4f} batch time: {:.4f}'.format(
                             counter, epoch, args.max_epoch, ret[0], forward_time,
                             batch_time))
-                    with open(os.path.join(info_dir_project, 'log/train.txt'), 'a') as f:
-                        f.write(
-                            'train: {} @ epoch:{}/{} loss: {:.4f} forward time: {:.4f} batch time: {:.4f} \n'.format(
-                                counter, epoch, args.max_epoch, ret[0], forward_time,
-                                batch_time))
+                    if ret[0] - pre_loss > 500 or ret[0] - pre_loss < -500:
+                        with open(os.path.join(info_dir_project, 'log/train_%d.txt' % epoch), 'a') as f:
+                            f.write(
+                                'train: {} @ epoch:{}/{} loss: {:.4f} forward time: {:.4f} batch time: {:.4f} \n'.format(
+                                    counter, epoch, args.max_epoch, ret[0], forward_time,
+                                    batch_time))
+                            f.write('filename:{},parts indexes:{} \n'.format(batch[-2], batch[-1]))
+                    pre_loss = ret[0]
 
                     # print(counter, summary_interval, counter % summary_interval)
                     if counter % summary_interval == 0:
