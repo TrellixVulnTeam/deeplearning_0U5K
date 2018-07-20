@@ -21,7 +21,7 @@ import numpy as np
 import pandas as pd
 
 from utils.preprocess import fluid_process_pointcloud
-# from utils.preprocess import fluid_process_pointcloud
+# from preprocess import fluid_process_pointcloud
 
 BASE_DIR = '/data/datasets/simulation_data'
 DATA_DIR = os.path.join(BASE_DIR, 'water')
@@ -58,6 +58,10 @@ def get_all_frames(data_dir=DATA_DIR):
     for item in dirs:
         screen_path = os.path.join(data_dir, item)
         allfiles = os.listdir(screen_path)
+        # for i in range(10):
+        #     np.random.shuffle(allfiles)
+        #     print(allfiles)
+        np.random.shuffle(allfiles)
         frames.extend(map(lambda x: os.path.join(item, x), allfiles))
     return map(lambda x: os.path.join(data_dir, x), frames)
 
@@ -82,7 +86,7 @@ def convert_str_float(frame_particles):
     fps = pd.DataFrame(frame_particles[1:], columns=frame_particles[0])
     fps = fps[fps.columns[:-1]]
     for col in fps.columns:
-        #if col == 'isFluidSolid':
+        # if col == 'isFluidSolid':
         fps[col] = fps[col].astype(float)
     return fps
 
@@ -100,19 +104,32 @@ def load_data_file(filename):
         return laod_csv(filename)
 
 
-def load_data_label(filename):
+def load_data_label(filename, isvalues=True):
     particles = load_data_file(filename)
     cols = particles.columns
-    data_cols = operator.add(list(cols[0:6]), list(cols[7:9])) # extrat timestep
+    data_cols = operator.add(list(cols[0:6]), list(cols[7:9]))  # extrat timestep
     label_cols = cols[15:18]
 
     isfluid = cols[7]
     fluid_parts = particles[particles[isfluid] == 0]
     index = fluid_parts.index
-    data = particles[data_cols].values
-    label = fluid_parts[label_cols].values
+    if isvalues:
+        # only fluid parts
+        # data = particles[data_cols].values
+        data = fluid_parts[data_cols].values
+        label = fluid_parts[label_cols].values
+    else:
+        # data = particles[data_cols]
+        data = fluid_parts[data_cols]
+        label = fluid_parts[label_cols]
 
     return data, label, index
+
+
+def shuffle_label(labels):
+    idx = np.arange(labels.shape[0])
+    np.random.shuffle(idx)
+    return idx
 
 
 def shuffle_data(data, labels):
@@ -190,25 +207,29 @@ def concat_data_label_all(train_files, dimention_data, dimention_label):
 TRAIN_POOL = multiprocessing.Pool(5)
 
 
-def iterate_single_frame(data_dir, file_name, batch_size, multi_gpu_sum=1):
+def iterate_single_frame(data_dir, file_name, batch_size, data_new=None, index_new=None, sample_rate=1, multi_gpu_sum=1):
     # frame_file_name = os.path.join(data_dir, file_name)
     data, label, index = load_data_label(file_name)
+    if data_new is not None and data_new is not None:
+        data = data_new
+        index = index_new
     nums = len(index)
     indices = list(range(nums))
     num_batches = int(math.floor(nums / float(batch_size)))
+    interval = int(1 / sample_rate)
+
     extra = nums % batch_size
     if extra > 0:
         num_batches += 1
 
     proc = Processor(data, label, index, data_dir, False, False)
     # only different with centroid
-    for batch_idx in range(num_batches):
+    for batch_idx in range(0, num_batches, interval):
         print(batch_idx, ' of ', num_batches)
         start_idx = batch_idx * batch_size
         if extra > 0 and batch_idx == num_batches - 1:
-            excerpt = indices[start_idx:start_idx + extra]
-        else:
-            excerpt = indices[start_idx:start_idx + batch_size]
+            batch_size = extra
+        excerpt = indices[start_idx:start_idx + batch_size]
         rets = TRAIN_POOL.map(proc, excerpt)
 
         voxel = [ret[0] for ret in rets]
@@ -241,16 +262,20 @@ def iterate_single_frame(data_dir, file_name, batch_size, multi_gpu_sum=1):
             np.array(vox_k_dynamic)
         )
 
-        yield ret
+        yield ret, batch_size
 
 
 def iterate_data(data_dir, sample_rate=1, shuffle=False, aug=False, is_testset=False, batch_size=1, multi_gpu_sum=1):
     TRAIN_FILES = get_all_frames(data_dir)
     for f in TRAIN_FILES:
         data, label, index = load_data_label(f)
+
+
         # TODO the common part of feature
         nums = len(index)
         indices = list(range(nums))
+        if shuffle:
+            np.random.shuffle(indices)
         num_batches = int(math.floor(nums / float(batch_size))) # about 1W/25
         
         interval = int(1/sample_rate)  # num_batches / interval = num_batches * 0.01
@@ -267,7 +292,6 @@ def iterate_data(data_dir, sample_rate=1, shuffle=False, aug=False, is_testset=F
                 excerpt = indices[start_idx:start_idx + extra]
             else:
                 excerpt = indices[start_idx:start_idx + batch_size]
-
 
             # every batch process 'batch_size' particle, but particle feature 1 part a time,concate them together as one batch.
             rets = TRAIN_POOL.map(proc, excerpt)
@@ -299,7 +323,9 @@ def iterate_data(data_dir, sample_rate=1, shuffle=False, aug=False, is_testset=F
                 np.array(vox_number),
                 np.array(vox_coordinate),
                 np.array(vox_centroid),
-                np.array(vox_k_dynamic)
+                np.array(vox_k_dynamic),
+                f,
+                excerpt
             )
 
             yield ret
@@ -382,9 +408,9 @@ def build_input(voxel_dict_list):
     return batch_size, feature, number, coordinate, centroid, k_dynamics
 
 if __name__ == '__main__':
-    BATCH_SIZE = 2
-    TRAIN_FILES = create_train_files(2)
-    print(TRAIN_FILES)
+    # BATCH_SIZE = 2
+    # TRAIN_FILES = create_train_files(2)
+    # print(TRAIN_FILES)
     # data_dir = '/data/datasets/simulation_data'
     # train_dir = os.path.join(data_dir, 'water')
     # batch_size = 1000
@@ -392,3 +418,4 @@ if __name__ == '__main__':
     # for batch in iterate_data(train_dir, batch_size=batch_size):
     #     singel_batch = batch
     #     break
+    get_all_frames(data_dir=TRAIN_DATA_DIR)
