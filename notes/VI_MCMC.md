@@ -5,6 +5,7 @@
 > 另注变分推理用于贝叶斯估计和机器学习领域中的近似计算复杂积分则称变分贝叶斯推理(Variational Bayesian Inference)，它关注的如何求解一个近似后验概率分布。
 
 - [ ] (全文对应不同分布的指代需要同步)
+- [ ] 对数据驱动方法的模型整理
 
 变分自编码器(VAE)和对抗生成网络(GAN)是典型的深度生成模型，这类**生成模型**通常被参数化为一个深度神经网络：
 
@@ -91,8 +92,10 @@ $$
 通过最小化KL散度就可以推导出变分推理的ELOB(Evidence Lower Bound)：
 $$
 \begin{split}
-ELOB(q(z|x;\phi)) &= E_{q(z|x;\phi)}[log \cfrac{p(x,z;\theta)}{q(z|x;\phi)}]
-\\&=E_{q(z|x;\phi)}[log\ {p(x,z;\theta)}] - E_{q(z|x;\phi)}[{log\ q(z|x;\phi)}]
+ELOB(q(z|x;\phi)) 
+&= E_{q(z|x;\phi)}[log \cfrac{p(x,z;\theta)}{q(z|x;\phi)}]\\\\
+&=E_{q(z|x;\phi)}[log\ {p(x,z;\theta)}] - \\\\
+&E_{q(z|x;\phi)}[{log\ q(z|x;\phi)}]
 \end{split}
 $$
 可以得到：
@@ -118,14 +121,22 @@ $$
 
 定义关于参数$\theta$的后验概率分布：
 $$
-\begin{split} p(\theta|X,Y,\alpha) &= \cfrac{p(\theta|\alpha)p(Y|X,\theta)}{\int_{\hat \theta}p(\hat\theta|\alpha)p(Y|X,\hat \theta)d\hat \theta}\\&=\cfrac{p(\theta,Y|X,\alpha)}{p(Y|X,\alpha)}\end{split}
+\begin{split}
+p(\theta|X,Y,\alpha) 
+&= \cfrac{p(\theta|\alpha)p(Y|X,\theta)}{\int_{\hat \theta}p(\hat\theta|\alpha)p(Y|X,\hat \theta)d\hat \theta}\\\\
+&=\cfrac{p(\theta,Y|X,\alpha)}{p(Y|X,\alpha)}
+\end{split}
 $$
 其中$\alpha$是$\theta$的先验分布,同时记真实分布为$q(\theta|\phi)$,则使用KL Divergence来衡量近似分布和真实后验概率分布的话，可以表达为：
 $$
-\begin{split} D_{KL}(q(\theta|\phi)||p(\theta|X,Y,\alpha) )&=E_{q(\theta|\phi)}[log\cfrac{q(\theta|\phi)}{p(\theta|X,Y,\alpha) }]\\&= F(D,\phi)+log\ p(Y|X,\alpha)\end{split}
+\begin{split} 
+D_{KL}(q(\theta|\phi)||p(\theta|X,Y,\alpha) )
+&=E_{q(\theta|\phi)}[log\cfrac{q(\theta|\phi)}{p(\theta|X,Y,\alpha) }]\\\\
+&= F(D,\phi)+log\ p(Y|X,\alpha)
+\end{split}
 $$
 
-- [ ] $F(D,\phi)$,变分自由能量的意义是什么
+- [ ] $F(D,\phi)​$,变分自由能量的意义是什么
 
 许多概率模型由未归一化的概率分布$\hat p(x;\theta)$定义，必须通过除以配分函数来归一化$\hat p$,以获得一个有效的概率分布。
 
@@ -164,7 +175,11 @@ Burn-in：很明显的最初的一些迭代得到的分布会和目标的后验�
 >
 > 数学定义：
 > $$
-> \Pr(X_{{n+1}}=x\mid X_{1}=x_{1},X_{2}=x_{2},\ldots ,X_{n}=x_{n})=\Pr(X_{{n+1}}=x\mid X_{n}=x_{n})\tag{@}
+> \begin{split}
+> \Pr(X_{{n+1}}=x\mid X_{1}
+> =x_{1},X_{2}=x_{2},\ldots ,X_{n}=x_{n})\\\\
+> =\Pr(X_{{n+1}}=x\mid X_{n}=x_{n})
+> \end{split}
 > $$
 > 即状态转移的概率只依赖于前一个状态，这种“无记忆性”称为马尔可夫性质。
 >
@@ -236,11 +251,15 @@ $n\sim Uniform(1,2,3,...N)$
 
 $\lambda_i\sim Gamma(\lambda_i;a,b)$
 
-$x_i\sim\{_{Possion(x_i;\lambda_2)\ n<i\le N}^{Possion(x_i;\lambda_2)\ 1\le i\le n}$
+$x_i\sim\lbrace_{Possion(x_i;\lambda_2) n < i \le N}^{Possion(x_i;\lambda_2)1\le i \le n}$
 
 对于隐变量$n,\lambda_1,\lambda_2$的后验概率分布可以用Bayes公式求解：
 $$
 p(n,\lambda_1,\lambda_2|x_{1:N})\propto p(x_{1:n}|\lambda_1)p(x_{n+1:N}|\lambda_2)p(\lambda_1)p(\lambda_2)p(n)
+$$
+
+$$
+x_i\sim\{_{Possion(x_i;\lambda_2) n < i \le N}^{Possion(x_i;\lambda_2)1\le i \le n}
 $$
 
 
@@ -255,10 +274,10 @@ $q_\phi(z|x)$表示建议分布，参数$\phi$由参数为$\phi\in\Phi$的神经
 $$
 \begin{split}
 p_\theta(x) 
-&= \int p( z)p_\theta(x|z)d z
-\\&=E_{p(z)}[p_\theta(x|z)]
-\\&=E_{p(z)}[\cfrac{q_\phi(z|x)}{q_\phi(z|x)}p_\theta(x|z)]
-\\&=E_{q_\phi(z|x)}[\cfrac{p_\theta(x|z)p(z)}{q_\phi(z|x)}]
+&= \int p( z)p_\theta(x|z)d z\\\\
+&=E_{p(z)}[p_\theta(x|z)]\\\\
+&=E_{p(z)}[\cfrac{q_\phi(z|x)}{q_\phi(z|x)}p_\theta(x|z)]\\\\
+&=E_{q_\phi(z|x)}[\cfrac{p_\theta(x|z)p(z)}{q_\phi(z|x)}]
 \end{split}
 $$
 PS😕
@@ -314,6 +333,8 @@ MLE的角度，基于观测数据t，得到似然函数$\mathbb L(\theta|t,x)$�
 
 
 
+
+
 这一小节核心的内容在这里:smile:,Kl散度不是对称的，因而不能称作两个分布间的距离，那么这种不对称性如何体现的。
 
 假定我们有一个确定性分布P，我们希望用另一个分布Q来近似P。
@@ -339,15 +360,39 @@ $$
 >
 >  对比来看，VAE 中的 KL 散度($KL(q(z|x;\phi)||p(z|x;\theta))$)会驱使生成模型分布覆盖真实后验分布的所有区域，包括真实后验分布的低密度区域，这通常导致生成模糊图像。
 
+## 混合高斯模型
+
+[缺点](http://sklearn.apachecn.org/cn/stable/modules/mixture.html)：
+
+- 奇异性
+
+  当每个混合模型没有足够多的点时，估算协方差变难，同时算法会发散并且找具有无穷大似然函数值的解，除非认为的进行正则化。
+
+- 分量的数量
+
+  这个算法将会总是用所有它能用的分量，所以在没有外部线索的情况下需要留存数据或者用信息理论标准来决定用多少分量。
+
+单变量，多变量
+
+## EM算法
+
+> 是变分推理的基础
+
+![sc_11](/Users/changxin/Pictures/SceenShots/sc_11.png)
+
+![sc_12](/Users/changxin/Pictures/SceenShots/sc_12.png)
+
+
+
 ### VI求解混合高斯模型
 
 K个独立的正态分布混合，给出观测数据{x_n},n=1,2,...,N,我需要估计的隐变量有K个混合成分个各自的均值$\boldsymbol\mu=\mu_{1:K}$和观测的来源分布$\boldsymbol c=\mu_{1:n}$,问题可以定义如下：
 $$
 \begin{split}
-\boldsymbol{\mu} = \{\mu_1, ..., \mu_K\}\hspace{2cm}  \\
-\mu_k \sim \mathcal{N}(0, \sigma^{2}), \hspace{1cm} k = 1, ..., K \\
-c_i \sim Categorical(\frac{1}{K}, ..., \frac{1}{K}), \hspace{1cm} i = 1, ..., n \\
-x_i \vert c_i, \boldsymbol{\mu} \sim \mathcal{N}(c_i^T\boldsymbol{\mu}, 1), \hspace{1cm} i = 1, ..., n \\
+\boldsymbol{\mu} = \{\mu_1, ..., \mu_K\}\hspace{2cm}  \\\\
+\mu_k \sim \mathcal{N}(0, \sigma^{2}), \hspace{1cm} k = 1, ..., K \\\\
+c_i \sim Categorical(\frac{1}{K}, ..., \frac{1}{K}), \hspace{1cm} i = 1, ..., n \\\\
+x_i \vert c_i, \boldsymbol{\mu} \sim \mathcal{N}(c_i^T\boldsymbol{\mu}, 1), \hspace{1cm} i = 1, ..., n 
 \end{split}
 $$
 观测和隐变量的联合分布可以表达为：
@@ -364,14 +409,14 @@ q(\boldsymbol{\mu, c}) = \boldsymbol{\prod_{k=1}^K} q(\mu_k;m_k, s_k^2)\boldsymb
 $$
 隐变量$\mu,c$分别有不同的变分因子，其中$\mu$由自己的均值和方差决定，代入ELBO可得：
 $$
-ELBO(q) = E[(log(p(z,x))] - E[log(q(z))] \\
-\implies ELBO(\boldsymbol{m,s^2,w}) = \sum_{k=1}^{K}E[log(p(\mu_k));m_k,s_k^2] \\
-+ \sum_{i=1}^n(E[log(p(c_i));w_i] + E[log(p(x_i \vert c_i,\boldsymbol{\mu}));w_i,\boldsymbol{m,s^2}]) \\
+ELBO(q) = E[(log(p(z,x))] - E[log(q(z))] \\\\
+\implies ELBO(\boldsymbol{m,s^2,w}) = \sum_{k=1}^{K}E[log(p(\mu_k));m_k,s_k^2] \\\\
++ \sum_{i=1}^n(E[log(p(c_i));w_i] + E[log(p(x_i \vert c_i,\boldsymbol{\mu}));w_i,\boldsymbol{m,s^2}]) \\\\
 - \sum_{i=1}^nE[log(q(c_i;w_i))] - \sum_{k=1}^KE[log(q(\mu_k;m_k,s_k^2))]
 $$
 优化迭代过程：
 
-
+困于此整一周
 
 
 
@@ -386,14 +431,13 @@ $$
    则：
    $$
    \begin{split}
-   E[log(p(x_i \vert c_i,\boldsymbol{\mu}))] &= \sum_kc_{ik}E[log(p(x_i \vert \mu_k));m_k,s_k^2] \\
-   \\&= \sum_kc_{ik}E[-(x_i-\mu_k)^2/2;m_k,s_k^2] + const \\
-   \\&=\sum_kc_{ik}(E[\mu_k;m_k,s_k^2]x_i - E[\mu_k^2;m_k,s_k^2]/2) + const
+   E[log(p(x_i \vert c_i,\boldsymbol{\mu}))] &= \sum_kc_{ik}E[log(p(x_i \vert \mu_k));m_k,s_k^2] \\\\
+   &= \sum_kc_{ik}E[-(x_i-\mu_k)^2/2;m_k,s_k^2] + const \\\\
+   &=\sum_kc_{ik}(E[\mu_k;m_k,s_k^2]x_i - E[\mu_k^2;m_k,s_k^2]/2) + const
    \end{split}
    $$
-   
 
-2. 估计$\boldsymbol \mu$:
+2. 估计$\boldsymbol \mu​$:
 
    
 
@@ -414,11 +458,96 @@ blei的LDA论文的附录，其中便是用mean-field做变分推理的，并且
 
 
 
+# prml
+
+## 绪论
+
+$$
+\begin{split}
+var[f]&=E[(f(x)-E[f(x)])^2] \\\\
+&=E[f(x)^2]-E[f(x)]^2
+\end{split}
+$$
+
+高斯分布：
+
+
+
+![sc_14](/Users/changxin/Pictures/SceenShots/sc_14.png)
+$$
+N(x|\mu,\sigma^2)=\cfrac{1}{(2\pi\sigma^2)^{1/2}}exp^{-\cfrac{1}{2\sigma^2}(x-\mu)^2}
+$$
+似然函数：
+
+
+
+对数似然函数：
+$$
+<Empty \space Math \space Block>
+$$
+![sc_15](/Users/changxin/Pictures/SceenShots/sc_15.png)
+
+最大似然的迁移问题是我们在多项式曲线拟合问题中遇到的过拟合问题的核心
+
+贝叶斯信息准则
 
 
 
 
 
+针对数据的建模过程，基于概率分布的建模过程，都是最后解释成了统计机器学习，发挥的淋漓尽致的就是graphic model
+
+既然都有统计解释，为什么不直接从统计上直接建模，生成模型
+
+
+
+- [ ] 回归分析，假设检验，p-value
+- [ ] AIC，最小信息准则 
+- [ ] 文本补缺
+- [ ] 推荐算法
+- [ ] 最小一乘，LDA
+- [ ] 为什么说机器学习不单单是一个拟合问题
+- [ ] 方差的倒数-精度
+
+
+
+亟待解决的问题
+
+- [ ] 学习率选择技巧，确保算法收敛
+- [ ] 正则化系数选择技巧
+- [ ] 恢复部分参数
+- [ ] tensorboard使用技巧
+- [ ] 添加测试误差
+- [ ] 使用分布式tensorflow
+- [ ] momentum
+- [ ] 汇总5道tensorflow训练题
+- [ ] 
+
+
+
+
+
+Tensorflow训练技巧
+
+
+
+Gamma函数：
+$$
+\Gamma(x)\equiv\int_{0}^{\propto}u^{x-1}e^{-u}du
+$$
+
+
+后验=先验+数据（似然估计）
+
+
+
+假设t服从与w和x有关的高斯分布，那么自然t取高斯分布概率最高时的取值，即高斯分布的均值处；
+
+如何推广到更一般的分布
+
+
+
+分类问题，目标变量的条件概率分布就是伯努利分布，考虑一个由独立的观测组成的训练集，负对数似然函数的给出的误差函数就是交叉熵误差函数
 
 
 
