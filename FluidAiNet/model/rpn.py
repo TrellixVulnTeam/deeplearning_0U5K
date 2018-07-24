@@ -108,7 +108,7 @@ class MiddleAndReg(object):
             r_map = ConvMD(2, cin, 192,  3, (1, 1), (1, 1),
                            temp_conv, training=self.training, activation=False, bn=False, name='conv9')
             r_map = ConvMD(2, 192, 48, 3, (1, 1), (1, 1),
-                           temp_conv, training=self.training, activation=False, bn=False, name='conv10')
+                           r_map, training=self.training, activation=False, bn=False, name='conv10')
             print('r_map shape:', r_map)
             height = r_map.get_shape()[1]
             width = r_map.get_shape()[2]

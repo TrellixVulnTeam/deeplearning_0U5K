@@ -210,7 +210,7 @@ TRAIN_POOL = multiprocessing.Pool(5)
 def iterate_single_frame(data_dir, file_name, batch_size, data_new=None, index_new=None, sample_rate=1, multi_gpu_sum=1):
     # frame_file_name = os.path.join(data_dir, file_name)
     data, label, index = load_data_label(file_name)
-    if data_new is not None and data_new is not None:
+    if data_new is not None and index_new is not None:
         data = data_new
         index = index_new
     nums = len(index)
@@ -233,7 +233,7 @@ def iterate_single_frame(data_dir, file_name, batch_size, data_new=None, index_n
         rets = TRAIN_POOL.map(proc, excerpt)
 
         voxel = [ret[0] for ret in rets]
-        assert_equal(len(voxel), batch_size)
+        assert_equal(len(voxel), batch_size)  # in final step the size may less than init batch_size
         labels = [ret[1] for ret in rets]
 
         # only for voxel -> [gpu, k_single_batch, ...]
@@ -324,7 +324,7 @@ def iterate_data(data_dir, sample_rate=1, shuffle=False, aug=False, is_testset=F
                 np.array(vox_coordinate),
                 np.array(vox_centroid),
                 np.array(vox_k_dynamic),
-                f,
+                TRAIN_FILES,
                 excerpt
             )
 
@@ -398,7 +398,7 @@ def build_input(voxel_dict_list):
         coordinate = voxel_dict['coordinate_buffer']
         coordinate_list.append(
             np.pad(coordinate, ((0, 0), (1, 0)),
-                   mode='constant', constant_values=i)) # ccx add index for [[i, x1, y1, z1], [i, x2, y2, z2],...,]
+                   mode='constant', constant_values=i))  # ccx add index for [[i, x1, y1, z1], [i, x2, y2, z2],...,]
 
     feature = np.concatenate(feature_list)
     number = np.concatenate(number_list)
@@ -406,6 +406,7 @@ def build_input(voxel_dict_list):
     centroid = np.array(centroid_list)
     k_dynamics = np.array(k_dinamic_list)
     return batch_size, feature, number, coordinate, centroid, k_dynamics
+
 
 if __name__ == '__main__':
     # BATCH_SIZE = 2

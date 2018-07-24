@@ -89,7 +89,7 @@ class FeatureNet(object):
         # [ΣK, 4], each row stores (batch, h, d, w)
         # the second dimention of tensor each row stores (iswhich, d, h, w) iswhich tag the different file in a batch
         self.coordinate = tf.placeholder(
-            tf.int64, [None, 4], name='coordinate')
+            tf.int64, [None, 4], name='coordinate')  # [[i, x1, y1, z1], [i, x2, y2, z2],...,] same i in a batch
         # self.seg_single_feature = tf.scatter_nd(self.coordinate, self.part_feature)
 
         # with tf.variable_scope(name, reuse=tf.AUTO_REUSE) as scope:
@@ -132,9 +132,9 @@ class FeatureNet(object):
         incidices, updates, shape
         return a tensor
         locate voxel by fileid and voxel_index, the others padding 0, 
-            so a 5-D tensor with shape [2, width, height, depth, 128] returned
+            so a 5-D tensor with shape [batch_size, width, height, depth, 128] returned
         self.outputs = tf.scatter_nd(
-            self.coordinate, voxelwise, [-1, cfg.INPUT_WIDTH,  cfg.INPUT_HEIGHT, cfg.INPUT_DEPTH, 128])
+            self.coordinate, voxelwise, [batch_size, cfg.INPUT_WIDTH,  cfg.INPUT_HEIGHT, cfg.INPUT_DEPTH, 128])
         """
 
 

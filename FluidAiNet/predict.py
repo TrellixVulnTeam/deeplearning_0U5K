@@ -10,7 +10,7 @@ import tensorflow as tf
 
 from config import cfg
 from utils.fluid_loader import iterate_single_frame, get_all_frames
-from utils.model_utils import load_graph_with_input_map
+from utils.model_utils import load_graph_with_input_map, load_graph
 from utils.fluid_loader import load_data_label
 
 dataset_dir = cfg.DATA_DIR
@@ -24,6 +24,8 @@ class Predict(object):
     def __init__(self, frozen_model_filename, batch_size):
         self.batch_size = batch_size
         self.graph, self.acceleration = load_graph_with_input_map(frozen_model_filename, batch_size=self.batch_size)
+        self.graph = load_graph(frozen_model_filename)
+        self.acceleration = self.graph.get_tensor_by_name("gpu_0/MiddleAndReg_/output/BiasAdd:0")
         """
         node name
         """
@@ -42,9 +44,10 @@ class Predict(object):
         self.coordinate = self.graph.get_tensor_by_name("gpu_0/coordinate:0")
         self.phase = self.graph.get_tensor_by_name("phase:0")
         self.scatter_nd = self.graph.get_tensor_by_name('gpu_0/ScatterNd:0')
-        self.voxelwise = self.graph.get_tensor_by_name("gpu_0/Max_1:0")
+        # self.scatter_nd = self.graph.get_tensor_by_name('gpu_0/ScatterNd_1:0')  # reconstruct by batch_size
+        # self.voxelwise = self.graph.get_tensor_by_name("gpu_0/Max_1:0")
         #
-        self.phase_1 = self.graph.get_tensor_by_name("phase_1:0")
+        # self.phase_1 = self.graph.get_tensor_by_name("phase_1:0")
 
         self.caculate_concat_feature(self.batch_size)
 
@@ -79,7 +82,7 @@ class Predict(object):
 
             input_dict = dict()
             input_dict[self.phase] = False
-            input_dict[self.phase_1] = False
+            # input_dict[self.phase_1] = False
             # screen_size_eval = self.screen_size.eval(session=sess, feed_dict={self.screen_size: batch_size})
             input_dict[self.part_feature] = singel_batch[1][0]
             input_dict[self.k_dynamics] = singel_batch[5][0]
@@ -126,9 +129,9 @@ def write_acc_2_file(f, accelaration_eval):
 
 
 def iter_batch_size(frozen_model_filename, init_batch_size, f, predict, result, start, train_dir, file_path,
-                    data_new=None, index_new=None, sample_rate=0.01, batch_size=25):
-    for batch, batch_size in iterate_single_frame(train_dir, file_path, data_new=None, index_new=None, sample_rate=1,
-                                                  batch_size=batch_size):
+                    data_new=None, index_new=None, sample_rate=1, batch_size=25):
+    for batch, batch_size in iterate_single_frame(train_dir, file_path, data_new=data_new, index_new=index_new,
+                                                  sample_rate=sample_rate, batch_size=batch_size):
         if batch_size != init_batch_size:
             predict = Predict(frozen_model_filename, batch_size=batch_size)
         accelaration_eval = predict.fluidnet_predict(batch_size=batch_size, singel_batch=batch)
@@ -192,6 +195,7 @@ def forward():
                 iter_batch_size(frozen_model_filename, init_batch_size, f, predict, result, start,
                                                     train_dir, file_path, data_new=None, index_new=None, batch_size=25)
             else:
+                # step after the first step and update with the previous data
                 iter_batch_size(frozen_model_filename, init_batch_size, f, predict, result, start,
                                                     train_dir, file_path, data_new=data.copy(), index_new=index, batch_size=25)
             f.close()
