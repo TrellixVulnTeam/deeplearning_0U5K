@@ -37,23 +37,11 @@ def freeze_graph(model_folder, output_node_names=None):
     # We retrieve the protobuf graph definition
     graph = tf.get_default_graph()
     input_graph_def = graph.as_graph_def()
-    # fix batch norm nodes
-
 
     # We start a session and restore the graph weights
     with tf.Session() as sess:
         saver.restore(sess, input_checkpoint)
-        # for node in input_graph_def.node:
-        #     if node.op == 'RefSwitch':
-        #         node.op = 'Switch'
-        #         for index in range(len(node.input)):
-        #             if 'moving_' in node.input[index]:
-        #                 node.input[index] = node.input[index] + '/read'
-        #     elif node.op == 'AssignSub':
-        #         node.op = 'Sub'
-        #         if 'use_locking' in node.attr: del node.attr['use_locking']
         # We use a built-in TF helper to export variables to constant
-        all_nodes("mean")
         output_graph_def = graph_util.convert_variables_to_constants(
             sess, 
             input_graph_def, 
@@ -90,16 +78,14 @@ def load_graph_with_input_map(frozen_graph_filename, prefix='', batch_size=None)
 
     # Then, we import the graph_def into a new Graph and returns it
     with tf.Graph().as_default() as graph:
-
         tf.import_graph_def(graph_def, name=prefix)
         coordinate = graph.get_tensor_by_name("gpu_0/coordinate:0")
-        voxelwise = graph.get_tensor_by_name("gpu_0/Mean_2:0")
+        voxelwise = graph.get_tensor_by_name("gpu_0/Max_1:0")
         scatter_nd = graph.get_tensor_by_name("gpu_0/ScatterNd:0")
         # holder = tf.placeholder(tf.float32,shape=(3, 40, 40, 50, 1))
-        with tf.name_scope('gpu_{}'.format(0)) as scope:
-            new_scatter_nd = tf.scatter_nd(coordinate, voxelwise, shape=[batch_size, 40, 40, 50, 128])
+        new_scatter_nd = tf.scatter_nd(coordinate, voxelwise, shape=[batch_size, 40, 40, 50, 128])
         print(new_scatter_nd)
-        # conv3D = graph.get_tensor_by_name('gpu_0/MiddleAndRPN_/conv1/Conv3D:0')
+        conv3D = graph.get_tensor_by_name('gpu_0/MiddleAndRPN_/conv1/Conv3D:0')
         # print(conv3D)
         # conv3D.input = new_scatter_nd
         # print(conv3D.input.shape)
@@ -110,7 +96,7 @@ def load_graph_with_input_map(frozen_graph_filename, prefix='', batch_size=None)
         # scatter_nd = graph.get_tensor_by_name('gpu_0/ScatterNd:0')
         # saver = tf.train.import_meta_graph(graph_def, name=prefix, input_map={'gpu_0/ScatterNd': holder})
         # z = tf.import_graph_def(graph_def, name=prefix, input_map={'gpu_0/ScatterNd:0': new_scatter_nd},return_elements=["gpu_0/MiddleAndRPN_/conv1/Conv3D:0"])
-        accerlation = tf.import_graph_def(graph_def, name=prefix, input_map={'gpu_0/ScatterNd:0': new_scatter_nd}, return_elements=["gpu_0/MiddleAndReg_/output/BiasAdd:0"])
+        accerlation = tf.import_graph_def(graph_def, name=prefix, input_map={'gpu_0/ScatterNd:0': new_scatter_nd}, return_elements=["gpu_0/MiddleAndRPN_/output/BiasAdd:0"])
         print(accerlation)
         # _ = tf.train.import_meta_graph(graph_def, name=prefix, input_map={'gpu_0/ScatterNd': new_scatter_nd})
     return graph, accerlation
@@ -133,17 +119,11 @@ class LoadGraphTest:
 
 
 if __name__ == '__main__':
-    print("sync")
-    model_dir = "/data/info/FluidAiNet/save_model/default"
-    freeze_graph(model_dir, output_node_names="gpu_0/screen_size,gpu_0_1/concatfeature/concat_1,gpu_0/MiddleAndReg_/output/BiasAdd")
-    # frozen_model_filename = os.path.join(model_dir, "../frozen_model/frozen_model.pb")
-    # graph, _ = load_graph_with_input_map(frozen_model_filename, batch_size=3)
-    # # graph = load_graph(frozen_model_filename)
-    # # scatter_nd = graph.get_tensor_by_name('gpu_0/ScatterNd:0')
-    # # print(scatter_nd)
-    # with tf.Session(graph=graph) as sess:
-    #     #     sess.run(tf.global_variables_initializer())
-    #     print(all_nodes("Mean_2"))
-    # frozen_model_filename = os.path.join(model_dir, "../frozen_model/frozen_model.pb")
-    # load_graph_with_input_map(frozen_model_filename, batch_size=25)
+
+    model_dir = "/data/deeplearning/FluidAiNet/save_model/default"
+    #freeze_graph(model_dir, output_node_names="gpu_0/screen_size,concat_129,gpu_0/MiddleAndRPN_/output/BiasAdd")
+    frozen_model_filename = os.path.join(model_dir, "../frozen_model/frozen_model.pb")
+    graph, _ = load_graph_with_input_map(frozen_model_filename, batch_size=3)
+    scatter_nd = graph.get_tensor_by_name('gpu_0/ScatterNd:0')
+    print(scatter_nd)
 

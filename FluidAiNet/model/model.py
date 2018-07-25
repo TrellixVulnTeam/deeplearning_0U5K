@@ -57,7 +57,6 @@ class RPN3D(object):
         self.concat_feature = []
         self.voxelwise = None  # 郑重申明：获取voxelwise仅仅作为中间值在session中定义ScatterND无需feed value
 
-
         self.opt = tf.train.AdamOptimizer(lr)
         self.final_feature = []
         self.pred = []
@@ -85,6 +84,7 @@ class RPN3D(object):
                     # output
                     feature_output = feature.outputs
                     self.outputs.append(feature_output)
+                    self.pred.append(rpn.pred)
                     # loss and grad
                     if idx == 0:
                         self.extra_update_ops = tf.get_collection(tf.GraphKeys.UPDATE_OPS)
@@ -123,6 +123,7 @@ class RPN3D(object):
         #     vox_coordinate
 
         labels = data[0]
+        print('labels data:\n', labels, '\n')
         vox_feature = data[1]
         vox_number = data[2]
         vox_coordinate = data[3]
@@ -147,7 +148,7 @@ class RPN3D(object):
             input_feed[self.labels[idx]] = labels[idx]
 
         if train:
-            output_feed = [self.loss, self.optimazer]
+            output_feed = [self.loss, self.optimazer, self.pred[0]]
         else:
             output_feed = [self.loss]
         if summary:

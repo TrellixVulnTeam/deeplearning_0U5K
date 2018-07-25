@@ -106,7 +106,12 @@ def load_data_file(filename):
 
 def load_data_label(filename, isvalues=True):
     particles = load_data_file(filename)
-    cols = particles.columns
+    try:
+        cols = particles.columns
+    except Exception as e:
+        print(e)
+        print('csv file maybe contain no data :{} '.format(filename))
+        raise IOError('file none')
     data_cols = operator.add(list(cols[0:6]), list(cols[7:9]))  # extrat timestep
     label_cols = cols[15:18]
 
@@ -268,8 +273,11 @@ def iterate_single_frame(data_dir, file_name, batch_size, data_new=None, index_n
 def iterate_data(data_dir, sample_rate=1, shuffle=False, aug=False, is_testset=False, batch_size=1, multi_gpu_sum=1):
     TRAIN_FILES = get_all_frames(data_dir)
     for f in TRAIN_FILES:
-        data, label, index = load_data_label(f)
-
+        try:
+            data, label, index = load_data_label(f)
+        except Exception as e:
+            print(e)
+            continue
 
         # TODO the common part of feature
         nums = len(index)
@@ -331,6 +339,7 @@ def iterate_data(data_dir, sample_rate=1, shuffle=False, aug=False, is_testset=F
             yield ret
 
 
+# Fixme iterate all sample test data
 def sample_test_data(data_dir, batch_size=1, multi_gpu_sum=1):
     TEST_FILES = list(get_all_frames(data_dir))
     if len(TEST_FILES) < 1:

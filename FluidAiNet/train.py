@@ -39,6 +39,7 @@ dataset_dir = cfg.DATA_DIR
 info_dir = cfg.DEBUG_INFO
 info_dir_project = cfg.INFO_DIR_PROJECT
 train_dir = os.path.join(cfg.DATA_DIR, 'train')  # ccx need to change
+test_dir = os.path.join(cfg.DATA_DIR, 'test')
 # val_dir = os.path.join(cfg.DATA_DIR, 'validation')  # ccx need to change
 log_dir = os.path.join(info_dir_project, 'log', args.tag)
 save_model_dir = os.path.join(info_dir_project, 'save_model', args.tag)
@@ -101,8 +102,8 @@ def main(_):
                             # num = self.vox_k_dynamic[idx][agent]
                             num = model.vox_k_dynamic[idx][agent]
                             concat_feature.append(tf.concat([model.vox_feature[idx][count: count+num],
-                                                            model.vox_feature[idx][count: count+num, :, :3] - model.vox_centroid[idx][agent][:3],
-                                                            model.vox_feature[idx][count: count+num, :, 3:6] - model.vox_centroid[idx][agent][3:]],axis=2))
+                                                             model.vox_feature[idx][count: count+num, :, :3] - model.vox_centroid[idx][agent][:3],
+                                                             model.vox_feature[idx][count: count+num, :, 3:6] - model.vox_centroid[idx][agent][3:]],axis=2))
                             count += num
 
                         # self.outputs[idx].set_shape([self.single_batch_size, cfg.INPUT_WIDTH,
@@ -114,6 +115,7 @@ def main(_):
                 model.concat_feature.append(concat_feature)
             # training
             pre_loss = 0
+            best_loss = np.infty
             for epoch in range(start_epoch, args.max_epoch):
                 counter = 0
                 batch_time = time.time()
@@ -132,14 +134,20 @@ def main(_):
 
                     start_time = time.time()
                     ret = model.train_step(sess, batch, train=True, summary=is_summary)
+                    # Fixme I should calculate loss with the test data instead of train data of optimizing loss.
+                    # for example: after optimizing around 5 epoch, calculate test data loss
+                    # every single epoch and 500 batch
+                    # if batch % 500 == 0:
+                    #     every frame extra some data
+
+
 
                     forward_time = time.time() - start_time
                     batch_time = time.time() - batch_time
 
                     print(
-                        'train: {} @ epoch:{}/{} loss: {:.4f}  forward time: {:.4f} batch time: {:.4f}'.format(
-                            counter, epoch, args.max_epoch, ret[0], forward_time,
-                            batch_time))
+                        'train: {} @ epoch:{}/{} loss: {:.4f}  forward time: {:.4f} batch time: {:.4f}  result: \n{}'.format(
+                            counter, epoch, args.max_epoch, ret[0], forward_time, batch_time, ret[2]))
                     if ret[0] - pre_loss > 500 or ret[0] - pre_loss < -500:
                         with open(os.path.join(info_dir_project, 'log/train_%d.txt' % epoch), 'a') as f:
                             f.write(
@@ -154,14 +162,16 @@ def main(_):
                         print("summary_interval now")
                         summary_writer.add_summary(ret[-1], global_counter)
                     if counter % 10 == 0:
-                        print('save model now')
-                        model.saver.save(sess, os.path.join(save_model_dir, 'checkpoint'),
-                                         global_step=model.global_step)
+                        if ret[0] < best_loss:
+                            print('save model now')
+                            model.saver.save(sess, os.path.join(save_model_dir, 'checkpoint'),
+                                             global_step=model.global_step)
+
                     batch_time = time.time()
 
                 sess.run(model.epoch_add_op)
-
-                model.saver.save(sess, os.path.join(save_model_dir, 'checkpoint'), global_step=model.global_step)
+                # Fixme calculate loss here
+                # model.saver.save(sess, os.path.join(save_model_dir, 'checkpoint'), global_step=model.global_step)
 
                 # TODO sample_test_data make a val_dir centroid corespond to batch_size
 
