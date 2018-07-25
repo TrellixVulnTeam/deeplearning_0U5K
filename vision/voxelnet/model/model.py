@@ -43,7 +43,6 @@ class RPN3D(object):
         # build graph
         # input placeholders
         self.is_train = tf.placeholder(tf.bool, name='phase')
-
         self.vox_feature = []
         self.vox_number = []
         self.vox_coordinate = []

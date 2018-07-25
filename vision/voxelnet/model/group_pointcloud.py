@@ -39,7 +39,7 @@ class VFELayer(object):
         # TODO use shared mlp,in other means ,expand input as [K, T, 2 * units, 1] conv2d [1, 2 * units, 1, 2 * units]
         concatenated = tf.multiply(concatenated, tf.cast(mask, tf.float32)) # ccx item corresponded
         # [K, T, out_channels]
-        return concatenated # ccx (ΣK, T, output_channels)
+        return concatenated  # ccx (ΣK, T, output_channels)
 
 
 class FeatureNet(object):

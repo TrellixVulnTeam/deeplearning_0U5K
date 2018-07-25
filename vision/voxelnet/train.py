@@ -186,10 +186,8 @@ def main(_):
                     cmd_1 = "./kitti_eval/launch_test.sh"
                     cmd_2 = os.path.join( args.output_path, str(epoch) )
                     cmd_3 = os.path.join( args.output_path, str(epoch), 'log' )
-                    os.system( " ".join( [cmd_1, cmd_2, cmd_3] ) )
+                    os.system(" ".join( [cmd_1, cmd_2, cmd_3] ) )
                         
-                        
-
             print('train done. total epoch:{} iter:{}'.format(
                 epoch, model.global_step.eval()))
                 

@@ -103,7 +103,6 @@ def iterate_data(data_dir, shuffle=False, aug=False, is_testset=False, batch_siz
         yield ret
 
 
-
 def sample_test_data(data_dir, batch_size=1, multi_gpu_sum=1):
     f_rgb = glob.glob(os.path.join(data_dir, 'image_2', '*.png'))
     f_lidar = glob.glob(os.path.join(data_dir, 'velodyne', '*.bin'))
@@ -121,20 +120,19 @@ def sample_test_data(data_dir, batch_size=1, multi_gpu_sum=1):
     indices = list(range(nums))
     np.random.shuffle(indices)
 
-    num_batches = int(math.floor( nums / float(batch_size) ))
-
+    num_batches = int(math.floor(nums / float(batch_size)))
 
     excerpt = indices[0:batch_size]
     
-    proc_val=Processor(data_tag, f_rgb, f_lidar, f_label, data_dir, False, False)
+    proc_val = Processor(data_tag, f_rgb, f_lidar, f_label, data_dir, False, False)
     
-    rets=VAL_POOL.map(proc_val,excerpt)
+    rets = VAL_POOL.map(proc_val, excerpt)
     
-    tag = [ ret[0] for ret in rets ]
-    rgb = [ ret[1] for ret in rets ]
-    raw_lidar = [ ret[2] for ret in rets ]
-    voxel = [ ret[3] for ret in rets ]
-    labels = [ ret[4] for ret in rets ]
+    tag = [ret[0] for ret in rets]
+    rgb = [ret[1] for ret in rets]
+    raw_lidar = [ret[2] for ret in rets]
+    voxel = [ret[3] for ret in rets]
+    labels = [ret[4] for ret in rets]
     
     # only for voxel -> [gpu, k_single_batch, ...]
     vox_feature, vox_number, vox_coordinate = [], [], []
