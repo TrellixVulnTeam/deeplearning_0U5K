@@ -1,0 +1,1764 @@
+[I 06:25:45.602 NotebookApp] Serving notebooks from local directory: /data/deeplearning/handson-ml
+[I 06:25:45.602 NotebookApp] 0 active kernels
+[I 06:25:45.602 NotebookApp] The Jupyter Notebook is running at:
+[I 06:25:45.602 NotebookApp] http://202.204.54.230:9312/?token=814b5874bb8f69efbaf7807f531c4ad3b645c2351131915c
+[I 06:25:45.602 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[W 06:25:45.603 NotebookApp] No web browser found: could not locate runnable browser.
+[C 06:25:45.603 NotebookApp] 
+    
+    Copy/paste this URL into your browser when you connect for the first time,
+    to login with a token:
+        http://202.204.54.230:9312/?token=814b5874bb8f69efbaf7807f531c4ad3b645c2351131915c
+[C 06:39:33.996 NotebookApp] received signal 15, stopping
+[I 06:39:33.998 NotebookApp] Shutting down 0 kernels
+[I 09:14:50.299 NotebookApp] Serving notebooks from local directory: /data/deeplearning/handson-ml
+[I 09:14:50.315 NotebookApp] 0 active kernels
+[I 09:14:50.315 NotebookApp] The Jupyter Notebook is running at:
+[I 09:14:50.315 NotebookApp] http://202.204.54.230:1212/?token=2d169f0f008bc2c7d2d441ef533195c1819a38b76211de07
+[I 09:14:50.315 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[W 09:14:50.315 NotebookApp] No web browser found: could not locate runnable browser.
+[C 09:14:50.316 NotebookApp] 
+    
+    Copy/paste this URL into your browser when you connect for the first time,
+    to login with a token:
+        http://202.204.54.230:1212/?token=2d169f0f008bc2c7d2d441ef533195c1819a38b76211de07
+[I 09:15:17.327 NotebookApp] 302 GET /?token=2d169f0f008bc2c7d2d441ef533195c1819a38b76211de07 (10.24.24.188) 1.26ms
+[W 09:15:23.508 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[W 09:15:23.679 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js (10.24.24.188) 8.01ms referer=http://202.204.54.230:1212/notebooks/13_convolutional_neural_networks.ipynb
+[I 09:15:30.073 NotebookApp] Kernel started: 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[I 09:15:30.811 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[I 09:17:33.553 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 09:17:33.557 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 09:22:32.849 NotebookApp] Starting buffering for 18256a2f-1841-4d7f-9ae4-bfde2614071d:A91879AA81FF44A38849F04D92CBE068
+[I 09:22:37.884 NotebookApp] Kernel restarted: 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[I 09:22:38.732 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[I 09:22:38.733 NotebookApp] Restoring connection for 18256a2f-1841-4d7f-9ae4-bfde2614071d:A91879AA81FF44A38849F04D92CBE068
+[I 09:22:38.733 NotebookApp] Replaying 3 buffered messages
+[I 09:23:33.221 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 09:23:33.224 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 09:27:33.088 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 09:27:33.092 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 09:29:33.060 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 09:29:33.063 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[W 10:52:38.734 NotebookApp] WebSocket ping timeout after 119921 ms.
+[I 10:52:43.740 NotebookApp] Starting buffering for 18256a2f-1841-4d7f-9ae4-bfde2614071d:A91879AA81FF44A38849F04D92CBE068
+[I 11:11:24.285 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[I 11:11:24.286 NotebookApp] Restoring connection for 18256a2f-1841-4d7f-9ae4-bfde2614071d:A91879AA81FF44A38849F04D92CBE068
+[W 11:12:54.287 NotebookApp] WebSocket ping timeout after 90000 ms.
+[I 11:12:59.288 NotebookApp] Starting buffering for 18256a2f-1841-4d7f-9ae4-bfde2614071d:A91879AA81FF44A38849F04D92CBE068
+[I 12:32:36.052 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[I 12:32:36.053 NotebookApp] Restoring connection for 18256a2f-1841-4d7f-9ae4-bfde2614071d:A91879AA81FF44A38849F04D92CBE068
+[W 12:58:36.053 NotebookApp] WebSocket ping timeout after 119950 ms.
+[I 12:58:41.054 NotebookApp] Starting buffering for 18256a2f-1841-4d7f-9ae4-bfde2614071d:A91879AA81FF44A38849F04D92CBE068
+[I 13:52:59.554 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[I 13:52:59.555 NotebookApp] Restoring connection for 18256a2f-1841-4d7f-9ae4-bfde2614071d:A91879AA81FF44A38849F04D92CBE068
+[W 17:54:29.555 NotebookApp] WebSocket ping timeout after 119908 ms.
+[I 17:54:34.558 NotebookApp] Starting buffering for 18256a2f-1841-4d7f-9ae4-bfde2614071d:A91879AA81FF44A38849F04D92CBE068
+[I 18:20:13.885 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[I 18:20:13.886 NotebookApp] Restoring connection for 18256a2f-1841-4d7f-9ae4-bfde2614071d:A91879AA81FF44A38849F04D92CBE068
+[I 18:57:35.492 NotebookApp] 302 GET /?token=2d169f0f008bc2c7d2d441ef533195c1819a38b76211de07 (202.204.54.230) 0.88ms
+[W 18:57:39.554 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[W 18:57:39.704 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js (202.204.54.230) 1.52ms referer=http://202.204.54.230:1212/notebooks/13_convolutional_neural_networks.ipynb
+[I 18:57:42.898 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+2017-11-25 18:57:56.413705: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2017-11-25 18:57:56.761144: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties: 
+name: Quadro M5000 major: 5 minor: 2 memoryClockRate(GHz): 1.038
+pciBusID: 0000:03:00.0
+totalMemory: 7.93GiB freeMemory: 7.60GiB
+2017-11-25 18:57:56.761203: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0, compute capability: 5.2)
+2017-11-25 18:58:07.259900: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0, compute capability: 5.2)
+2017-11-25 18:58:10.330314: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0, compute capability: 5.2)
+2017-11-25 18:58:12.858751: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0, compute capability: 5.2)
+2017-11-25 18:58:16.375446: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0, compute capability: 5.2)
+2017-11-25 18:58:48.150845: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0, compute capability: 5.2)
+[I 18:59:42.937 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 18:59:42.939 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[W 19:26:06.827 NotebookApp] 400 GET /api/contents/datasets/inception/inception_v3.tgz?type=file&format=text&_=1511609166685 (202.204.54.230): /data/deeplearning/handson-ml/datasets/inception/inception_v3.tgz is not UTF-8 encoded
+[W 19:26:06.828 NotebookApp] /data/deeplearning/handson-ml/datasets/inception/inception_v3.tgz is not UTF-8 encoded
+[W 19:26:06.828 NotebookApp] 400 GET /api/contents/datasets/inception/inception_v3.tgz?type=file&format=text&_=1511609166685 (202.204.54.230) 2.46ms referer=http://202.204.54.230:1212/edit/datasets/inception/inception_v3.tgz
+[I 19:29:42.977 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 19:29:42.981 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 19:29:44.645 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 19:29:44.648 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 19:45:42.875 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 19:45:42.877 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 19:47:42.967 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 19:47:42.970 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 19:52:21.873 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 19:52:21.876 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 19:52:50.925 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 19:52:50.929 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 19:57:42.947 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 19:57:42.949 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 20:09:42.957 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 20:09:42.961 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[W 20:53:13.886 NotebookApp] WebSocket ping timeout after 119968 ms.
+[I 20:58:42.618 NotebookApp] Starting buffering for 18256a2f-1841-4d7f-9ae4-bfde2614071d:8B68A84724904990956D42CF15AB0239
+[W 20:58:43.537 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[W 20:58:43.680 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js (202.204.54.230) 1.45ms referer=http://202.204.54.230:1212/notebooks/13_convolutional_neural_networks.ipynb
+[I 20:58:46.671 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[I 21:00:46.895 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 21:00:46.897 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 21:06:46.835 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 21:06:46.840 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+2017-11-25 21:08:19.798816: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0, compute capability: 5.2)
+2017-11-25 21:08:25.740275: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0, compute capability: 5.2)
+2017-11-25 21:08:31.758352: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0, compute capability: 5.2)
+[I 21:08:46.856 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 21:08:46.860 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+2017-11-25 21:09:22.764077: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0, compute capability: 5.2)
+[I 21:10:46.827 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 21:10:46.829 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[W 21:11:48.926 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[W 21:11:49.054 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js (202.204.54.230) 1.37ms referer=http://202.204.54.230:1212/notebooks/13_convolutional_neural_networks.ipynb
+[I 21:11:52.647 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[I 21:12:47.710 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 21:12:47.713 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 21:14:46.847 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 21:14:46.851 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 21:15:02.170 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 21:15:02.174 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 21:16:48.284 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 21:16:48.288 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+2017-11-25 21:16:53.273466: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0, compute capability: 5.2)
+[I 21:18:48.307 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 21:18:48.310 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 21:20:48.335 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 21:20:48.339 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+2017-11-25 21:21:02.556180: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0, compute capability: 5.2)
+2017-11-25 21:21:04.082228: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0, compute capability: 5.2)
+[I 21:31:18.806 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 21:31:18.809 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 21:41:59.422 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 21:41:59.425 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[W 21:43:16.323 NotebookApp] IOPub message rate exceeded.
+    The notebook server will temporarily stop sending output
+    to the client in order to avoid crashing it.
+    To change this limit, set the config variable
+    `--NotebookApp.iopub_msg_rate_limit`.
+    
+    Current values:
+    NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
+    NotebookApp.rate_limit_window=3.0 (secs)
+    
+[W 21:43:17.027 NotebookApp] iopub messages resumed
+[W 21:43:19.903 NotebookApp] IOPub message rate exceeded.
+    The notebook server will temporarily stop sending output
+    to the client in order to avoid crashing it.
+    To change this limit, set the config variable
+    `--NotebookApp.iopub_msg_rate_limit`.
+    
+    Current values:
+    NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
+    NotebookApp.rate_limit_window=3.0 (secs)
+    
+[W 21:43:20.605 NotebookApp] iopub messages resumed
+[W 21:43:23.476 NotebookApp] IOPub message rate exceeded.
+    The notebook server will temporarily stop sending output
+    to the client in order to avoid crashing it.
+    To change this limit, set the config variable
+    `--NotebookApp.iopub_msg_rate_limit`.
+    
+    Current values:
+    NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
+    NotebookApp.rate_limit_window=3.0 (secs)
+    
+[W 21:43:24.180 NotebookApp] iopub messages resumed
+[W 21:43:27.122 NotebookApp] IOPub message rate exceeded.
+    The notebook server will temporarily stop sending output
+    to the client in order to avoid crashing it.
+    To change this limit, set the config variable
+    `--NotebookApp.iopub_msg_rate_limit`.
+    
+    Current values:
+    NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
+    NotebookApp.rate_limit_window=3.0 (secs)
+    
+[W 21:43:27.784 NotebookApp] iopub messages resumed
+[W 21:43:30.657 NotebookApp] IOPub message rate exceeded.
+    The notebook server will temporarily stop sending output
+    to the client in order to avoid crashing it.
+    To change this limit, set the config variable
+    `--NotebookApp.iopub_msg_rate_limit`.
+    
+    Current values:
+    NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
+    NotebookApp.rate_limit_window=3.0 (secs)
+    
+[W 21:43:31.362 NotebookApp] iopub messages resumed
+[W 21:43:34.270 NotebookApp] IOPub message rate exceeded.
+    The notebook server will temporarily stop sending output
+    to the client in order to avoid crashing it.
+    To change this limit, set the config variable
+    `--NotebookApp.iopub_msg_rate_limit`.
+    
+    Current values:
+    NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
+    NotebookApp.rate_limit_window=3.0 (secs)
+    
+[W 21:43:34.953 NotebookApp] iopub messages resumed
+[I 21:47:19.405 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 21:47:19.409 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 08:59:19.422 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 08:59:19.425 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 09:04:39.394 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 09:04:39.397 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 09:09:59.414 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 09:09:59.417 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 09:20:39.422 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 09:20:39.425 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 09:25:59.389 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 09:25:59.392 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 09:26:24.477 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 09:26:24.481 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 09:29:29.907 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 09:29:29.910 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 09:29:38.789 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 09:29:38.792 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 09:31:19.389 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 09:31:19.391 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 09:42:03.681 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 09:42:03.687 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 09:42:04.139 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 09:42:04.141 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 09:42:04.666 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 09:42:04.669 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+2017-11-26 09:44:48.786379: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0, compute capability: 5.2)
+[I 09:46:28.239 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 09:46:28.242 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+2017-11-26 10:02:24.078259: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0, compute capability: 5.2)
+[W 10:12:11.984 NotebookApp] 400 GET /api/contents/datasets/inception/inception_v3.ckpt?type=file&format=text&_=1511662331713 (202.204.54.230): /data/deeplearning/handson-ml/datasets/inception/inception_v3.ckpt is not UTF-8 encoded
+[W 10:12:11.985 NotebookApp] /data/deeplearning/handson-ml/datasets/inception/inception_v3.ckpt is not UTF-8 encoded
+[W 10:12:11.985 NotebookApp] 400 GET /api/contents/datasets/inception/inception_v3.ckpt?type=file&format=text&_=1511662331713 (202.204.54.230) 140.17ms referer=http://202.204.54.230:1212/edit/datasets/inception/inception_v3.ckpt
+[W 16:31:06.858 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[W 16:31:07.409 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js (10.13.56.211) 3.09ms referer=http://202.204.54.230:1212/notebooks/13_convolutional_neural_networks.ipynb
+[W 16:47:32.253 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[W 16:47:32.410 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js (10.13.56.211) 1.94ms referer=http://202.204.54.230:1212/notebooks/13_convolutional_neural_networks.ipynb
+[I 16:47:37.190 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+2017-11-26 16:48:44.358496: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0, compute capability: 5.2)
+[I 16:49:38.766 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 16:49:38.769 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 16:51:41.053 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 16:51:41.057 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[W 16:54:37.192 NotebookApp] WebSocket ping timeout after 119953 ms.
+[I 17:40:39.982 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[I 23:14:45.985 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 23:14:45.988 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 23:18:45.801 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 23:18:45.803 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 00:00:46.465 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 00:00:46.468 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 00:10:45.734 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 00:10:45.737 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 00:28:45.581 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 00:28:45.585 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 00:30:45.485 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 00:30:45.488 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 00:34:45.446 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 00:34:45.450 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 00:46:45.406 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 00:46:45.409 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 00:48:45.622 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 00:48:45.625 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 00:52:45.403 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 00:52:45.405 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 00:54:45.653 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 00:54:45.657 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 01:02:45.378 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 01:02:45.381 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+2017-11-27 01:05:00.059354: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0, compute capability: 5.2)
+[I 01:06:45.319 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 01:06:45.322 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 01:08:45.294 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 01:08:45.296 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 01:10:45.377 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 01:10:45.380 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 01:12:45.332 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 01:12:45.334 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 01:14:45.488 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 01:14:45.491 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[W 02:26:39.985 NotebookApp] WebSocket ping timeout after 119948 ms.
+[I 03:17:50.772 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[W 03:40:50.774 NotebookApp] WebSocket ping timeout after 119997 ms.
+[I 03:56:32.711 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[W 04:18:02.713 NotebookApp] WebSocket ping timeout after 119914 ms.
+[I 04:32:39.763 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[W 04:54:09.766 NotebookApp] WebSocket ping timeout after 117916 ms.
+[I 05:08:39.744 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[W 05:29:39.745 NotebookApp] WebSocket ping timeout after 119993 ms.
+[I 05:46:58.918 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[W 06:08:28.920 NotebookApp] WebSocket ping timeout after 119867 ms.
+[I 06:24:27.085 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[W 06:45:27.087 NotebookApp] WebSocket ping timeout after 119951 ms.
+[I 07:10:41.782 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[W 07:33:11.784 NotebookApp] WebSocket ping timeout after 119887 ms.
+[I 07:52:05.661 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[W 08:13:35.662 NotebookApp] WebSocket ping timeout after 119125 ms.
+[I 08:25:49.010 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[W 08:46:49.011 NotebookApp] WebSocket ping timeout after 119975 ms.
+[I 09:08:34.690 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[I 09:13:54.204 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 09:13:54.207 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 09:19:53.976 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 09:19:53.979 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 09:51:54.283 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 09:51:54.286 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[W 10:55:04.693 NotebookApp] WebSocket ping timeout after 119994 ms.
+[I 11:34:01.391 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[W 16:14:01.395 NotebookApp] WebSocket ping timeout after 119996 ms.
+[I 16:31:41.303 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[W 17:44:11.304 NotebookApp] WebSocket ping timeout after 119819 ms.
+[I 17:57:05.997 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[W 20:58:35.999 NotebookApp] WebSocket ping timeout after 119997 ms.
+[I 22:41:15.456 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[W 08:37:15.458 NotebookApp] WebSocket ping timeout after 119997 ms.
+[I 09:09:49.314 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[W 12:39:19.315 NotebookApp] WebSocket ping timeout after 119996 ms.
+[I 12:49:02.813 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[W 13:36:32.814 NotebookApp] WebSocket ping timeout after 119943 ms.
+[I 13:55:21.072 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[W 13:56:51.074 NotebookApp] WebSocket ping timeout after 90000 ms.
+[I 16:46:16.986 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[W 16:47:46.988 NotebookApp] WebSocket ping timeout after 90000 ms.
+[I 18:45:16.196 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[I 20:08:40.215 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[I 20:31:01.883 NotebookApp] KernelRestarter: restarting kernel (1/5)
+WARNING:root:kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d restarted
+WARNING:root:kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d restarted
+[W 08:16:10.218 NotebookApp] WebSocket ping timeout after 119986 ms.
+[I 21:58:29.661 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[W 23:31:00.272 NotebookApp] WebSocket ping timeout after 119993 ms.
+[I 23:48:27.804 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[W 00:54:58.267 NotebookApp] WebSocket ping timeout after 119996 ms.
+[I 01:43:33.621 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[W 02:06:03.907 NotebookApp] WebSocket ping timeout after 119813 ms.
+[I 02:24:33.572 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[W 02:46:04.045 NotebookApp] WebSocket ping timeout after 119889 ms.
+[I 03:07:18.217 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[W 03:28:48.725 NotebookApp] WebSocket ping timeout after 119998 ms.
+[I 03:49:51.667 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[W 04:10:52.369 NotebookApp] WebSocket ping timeout after 119913 ms.
+[I 04:34:04.051 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[W 04:55:34.692 NotebookApp] WebSocket ping timeout after 119994 ms.
+[I 05:09:33.120 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[W 05:31:03.538 NotebookApp] WebSocket ping timeout after 119951 ms.
+[I 05:53:35.080 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[W 06:14:35.459 NotebookApp] WebSocket ping timeout after 119997 ms.
+[I 06:30:49.060 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[W 06:52:19.759 NotebookApp] WebSocket ping timeout after 119954 ms.
+[I 07:12:37.559 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[W 07:33:07.930 NotebookApp] WebSocket ping timeout after 119997 ms.
+[I 07:55:31.020 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[W 08:07:31.213 NotebookApp] WebSocket ping timeout after 119998 ms.
+[I 08:30:30.720 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[I 08:49:47.780 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 08:49:48.577 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 08:50:31.119 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 08:50:31.123 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 08:50:32.297 NotebookApp] 302 GET / (10.24.31.69) 0.42ms
+[W 08:50:35.382 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[W 08:50:35.533 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js (10.24.31.69) 1.74ms referer=http://202.204.54.230:1212/notebooks/13_convolutional_neural_networks.ipynb
+[I 08:50:42.282 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[I 08:52:46.222 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 08:52:46.225 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[I 08:54:46.017 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 08:54:46.021 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[W 12:19:42.284 NotebookApp] WebSocket ping timeout after 119788 ms.
+[I 13:07:48.694 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[W 13:30:18.716 NotebookApp] WebSocket ping timeout after 119985 ms.
+[I 13:46:21.504 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[W 14:07:51.811 NotebookApp] WebSocket ping timeout after 119997 ms.
+[I 14:28:15.017 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[W 16:59:45.336 NotebookApp] WebSocket ping timeout after 119891 ms.
+[I 17:42:34.963 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[W 18:05:35.383 NotebookApp] WebSocket ping timeout after 119996 ms.
+[I 18:25:24.996 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[W 18:46:55.315 NotebookApp] WebSocket ping timeout after 119998 ms.
+[I 19:00:50.330 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[W 19:22:20.591 NotebookApp] WebSocket ping timeout after 119913 ms.
+[I 19:45:27.640 NotebookApp] Adapting to protocol v5.1 for kernel 18256a2f-1841-4d7f-9ae4-bfde2614071d
+[I 20:55:33.920 NotebookApp] 302 GET /?token=2d169f0f008bc2c7d2d441ef533195c1819a38b76211de07 (10.24.5.1) 0.81ms
+[W 20:55:40.335 NotebookApp] Notebook 06_decision_trees.ipynb is not trusted
+[W 20:55:40.376 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js (10.24.5.1) 1.80ms referer=http://202.204.54.230:1212/notebooks/06_decision_trees.ipynb
+[I 20:55:41.315 NotebookApp] Kernel started: 8a06230a-53bd-427d-801e-2748725e7ce4
+[I 20:55:42.033 NotebookApp] Adapting to protocol v5.1 for kernel 8a06230a-53bd-427d-801e-2748725e7ce4
+[I 20:57:41.344 NotebookApp] Saving file at /06_decision_trees.ipynb
+[W 20:57:41.346 NotebookApp] Notebook 06_decision_trees.ipynb is not trusted
+[I 20:59:41.347 NotebookApp] Saving file at /06_decision_trees.ipynb
+[W 20:59:41.349 NotebookApp] Notebook 06_decision_trees.ipynb is not trusted
+[W 21:35:42.035 NotebookApp] WebSocket ping timeout after 115458 ms.
+[I 21:35:47.242 NotebookApp] Starting buffering for 8a06230a-53bd-427d-801e-2748725e7ce4:975D3CF337F64C938B1FD99D2A089346
+[I 22:18:25.472 NotebookApp] Adapting to protocol v5.1 for kernel 8a06230a-53bd-427d-801e-2748725e7ce4
+[I 22:18:25.811 NotebookApp] Restoring connection for 8a06230a-53bd-427d-801e-2748725e7ce4:975D3CF337F64C938B1FD99D2A089346
+[W 00:48:25.812 NotebookApp] WebSocket ping timeout after 119998 ms.
+[I 00:48:30.998 NotebookApp] Starting buffering for 8a06230a-53bd-427d-801e-2748725e7ce4:975D3CF337F64C938B1FD99D2A089346
+[I 06:53:11.964 NotebookApp] Adapting to protocol v5.1 for kernel 8a06230a-53bd-427d-801e-2748725e7ce4
+[I 06:53:12.078 NotebookApp] Restoring connection for 8a06230a-53bd-427d-801e-2748725e7ce4:975D3CF337F64C938B1FD99D2A089346
+[W 07:09:42.079 NotebookApp] WebSocket ping timeout after 119950 ms.
+[I 07:09:47.644 NotebookApp] Starting buffering for 8a06230a-53bd-427d-801e-2748725e7ce4:975D3CF337F64C938B1FD99D2A089346
+[I 12:58:57.947 NotebookApp] Adapting to protocol v5.1 for kernel 8a06230a-53bd-427d-801e-2748725e7ce4
+[I 12:58:58.361 NotebookApp] Restoring connection for 8a06230a-53bd-427d-801e-2748725e7ce4:975D3CF337F64C938B1FD99D2A089346
+[W 13:10:58.362 NotebookApp] WebSocket ping timeout after 119976 ms.
+[I 13:11:03.761 NotebookApp] Starting buffering for 8a06230a-53bd-427d-801e-2748725e7ce4:975D3CF337F64C938B1FD99D2A089346
+[I 13:58:26.031 NotebookApp] Adapting to protocol v5.1 for kernel 8a06230a-53bd-427d-801e-2748725e7ce4
+[I 13:58:26.158 NotebookApp] Restoring connection for 8a06230a-53bd-427d-801e-2748725e7ce4:975D3CF337F64C938B1FD99D2A089346
+[W 14:20:56.158 NotebookApp] WebSocket ping timeout after 119911 ms.
+[I 14:21:01.663 NotebookApp] Starting buffering for 8a06230a-53bd-427d-801e-2748725e7ce4:975D3CF337F64C938B1FD99D2A089346
+[I 14:37:24.104 NotebookApp] Adapting to protocol v5.1 for kernel 8a06230a-53bd-427d-801e-2748725e7ce4
+[I 14:37:24.347 NotebookApp] Restoring connection for 8a06230a-53bd-427d-801e-2748725e7ce4:975D3CF337F64C938B1FD99D2A089346
+[W 14:58:24.349 NotebookApp] WebSocket ping timeout after 119934 ms.
+[I 14:58:29.534 NotebookApp] Starting buffering for 8a06230a-53bd-427d-801e-2748725e7ce4:975D3CF337F64C938B1FD99D2A089346
+[I 15:20:11.311 NotebookApp] Adapting to protocol v5.1 for kernel 8a06230a-53bd-427d-801e-2748725e7ce4
+[I 15:20:11.915 NotebookApp] Restoring connection for 8a06230a-53bd-427d-801e-2748725e7ce4:975D3CF337F64C938B1FD99D2A089346
+[W 15:41:41.915 NotebookApp] WebSocket ping timeout after 119914 ms.
+[I 15:41:47.090 NotebookApp] Starting buffering for 8a06230a-53bd-427d-801e-2748725e7ce4:975D3CF337F64C938B1FD99D2A089346
+[I 16:00:00.569 NotebookApp] Adapting to protocol v5.1 for kernel 8a06230a-53bd-427d-801e-2748725e7ce4
+[I 16:00:00.754 NotebookApp] Restoring connection for 8a06230a-53bd-427d-801e-2748725e7ce4:975D3CF337F64C938B1FD99D2A089346
+[W 16:30:00.756 NotebookApp] WebSocket ping timeout after 119902 ms.
+[I 16:30:06.441 NotebookApp] Starting buffering for 8a06230a-53bd-427d-801e-2748725e7ce4:975D3CF337F64C938B1FD99D2A089346
+[I 16:43:47.228 NotebookApp] Adapting to protocol v5.1 for kernel 8a06230a-53bd-427d-801e-2748725e7ce4
+[I 16:43:47.386 NotebookApp] Restoring connection for 8a06230a-53bd-427d-801e-2748725e7ce4:975D3CF337F64C938B1FD99D2A089346
+[W 17:05:17.386 NotebookApp] WebSocket ping timeout after 119912 ms.
+[I 17:05:22.664 NotebookApp] Starting buffering for 8a06230a-53bd-427d-801e-2748725e7ce4:975D3CF337F64C938B1FD99D2A089346
+[I 17:20:08.887 NotebookApp] Adapting to protocol v5.1 for kernel 8a06230a-53bd-427d-801e-2748725e7ce4
+[I 17:20:09.309 NotebookApp] Restoring connection for 8a06230a-53bd-427d-801e-2748725e7ce4:975D3CF337F64C938B1FD99D2A089346
+[W 17:31:39.309 NotebookApp] WebSocket ping timeout after 119958 ms.
+[I 17:31:44.840 NotebookApp] Starting buffering for 8a06230a-53bd-427d-801e-2748725e7ce4:975D3CF337F64C938B1FD99D2A089346
+[I 20:28:18.461 NotebookApp] Adapting to protocol v5.1 for kernel 8a06230a-53bd-427d-801e-2748725e7ce4
+[I 20:28:18.476 NotebookApp] Restoring connection for 8a06230a-53bd-427d-801e-2748725e7ce4:975D3CF337F64C938B1FD99D2A089346
+[W 22:06:18.477 NotebookApp] WebSocket ping timeout after 119888 ms.
+[I 22:06:23.740 NotebookApp] Starting buffering for 8a06230a-53bd-427d-801e-2748725e7ce4:975D3CF337F64C938B1FD99D2A089346
+[I 22:30:46.231 NotebookApp] Adapting to protocol v5.1 for kernel 8a06230a-53bd-427d-801e-2748725e7ce4
+[I 22:30:46.270 NotebookApp] Restoring connection for 8a06230a-53bd-427d-801e-2748725e7ce4:975D3CF337F64C938B1FD99D2A089346
+[W 01:13:16.270 NotebookApp] WebSocket ping timeout after 119986 ms.
+[I 01:13:21.847 NotebookApp] Starting buffering for 8a06230a-53bd-427d-801e-2748725e7ce4:975D3CF337F64C938B1FD99D2A089346
+[I 18:07:51.524 NotebookApp] Serving notebooks from local directory: /data/deeplearning/handson-ml
+[I 18:07:51.541 NotebookApp] 0 active kernels
+[I 18:07:51.541 NotebookApp] The Jupyter Notebook is running at:
+[I 18:07:51.541 NotebookApp] http://202.204.54.230:9312/?token=b64d3e85324cde2284de00c8e165bd32f54d679e9e071fef
+[I 18:07:51.541 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[W 18:07:51.541 NotebookApp] No web browser found: could not locate runnable browser.
+[C 18:07:51.542 NotebookApp] 
+    
+    Copy/paste this URL into your browser when you connect for the first time,
+    to login with a token:
+        http://202.204.54.230:9312/?token=b64d3e85324cde2284de00c8e165bd32f54d679e9e071fef
+[I 18:09:26.975 NotebookApp] 302 GET / (10.24.5.1) 1.14ms
+[I 18:09:26.983 NotebookApp] 302 GET /tree? (10.24.5.1) 1.60ms
+[I 18:09:27.109 NotebookApp] Kernel started: 7ef3d921-8a98-45cf-8f5c-750b4b750f53
+[W 18:09:27.137 NotebookApp] No session ID specified
+[I 18:09:27.864 NotebookApp] Adapting to protocol v5.1 for kernel 7ef3d921-8a98-45cf-8f5c-750b4b750f53
+[W 19:20:57.867 NotebookApp] WebSocket ping timeout after 119990 ms.
+[I 19:21:02.874 NotebookApp] Starting buffering for 7ef3d921-8a98-45cf-8f5c-750b4b750f53:9e7203d2-19df4fbcfcbac2786c0a54e9
+[I 22:26:25.958 NotebookApp] 302 GET / (10.13.56.211) 1.93ms
+[I 22:26:25.989 NotebookApp] 302 GET /tree? (10.13.56.211) 1.77ms
+[I 22:26:26.039 NotebookApp] Kernel started: 77566fa2-5975-433a-b65f-4a48d02ed275
+[W 22:26:26.058 NotebookApp] No session ID specified
+[I 22:26:26.734 NotebookApp] Adapting to protocol v5.1 for kernel 77566fa2-5975-433a-b65f-4a48d02ed275
+[I 22:36:13.542 NotebookApp] Kernel restarted: 7ef3d921-8a98-45cf-8f5c-750b4b750f53
+[C 23:11:27.821 NotebookApp] received signal 15, stopping
+[I 23:11:27.825 NotebookApp] Shutting down 2 kernels
+[I 23:11:27.927 NotebookApp] Kernel shutdown: 77566fa2-5975-433a-b65f-4a48d02ed275
+[I 23:11:27.928 NotebookApp] Kernel shutdown: 7ef3d921-8a98-45cf-8f5c-750b4b750f53
+[I 23:16:18.172 NotebookApp] Serving notebooks from local directory: /data/deeplearning/handson-ml
+[I 23:16:18.194 NotebookApp] 0 active kernels
+[I 23:16:18.194 NotebookApp] The Jupyter Notebook is running at:
+[I 23:16:18.194 NotebookApp] http://202.204.54.230:9312/?token=c72a21be060e7e18b5061122aecc2ae286031bbba60cc5f2
+[I 23:16:18.194 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[W 23:16:18.195 NotebookApp] No web browser found: could not locate runnable browser.
+[C 23:16:18.195 NotebookApp] 
+    
+    Copy/paste this URL into your browser when you connect for the first time,
+    to login with a token:
+        http://202.204.54.230:9312/?token=c72a21be060e7e18b5061122aecc2ae286031bbba60cc5f2
+[I 23:18:13.145 NotebookApp] 302 GET / (10.13.56.211) 1.15ms
+[I 23:18:13.253 NotebookApp] 302 GET /tree? (10.13.56.211) 1.60ms
+[W 23:18:13.399 NotebookApp] 403 POST /api/kernels (10.13.56.211): '_xsrf' argument missing from POST
+[W 23:18:13.400 NotebookApp] '_xsrf' argument missing from POST
+[W 23:18:13.400 NotebookApp] 403 POST /api/kernels (10.13.56.211) 2.07ms referer=None
+[I 23:18:24.004 NotebookApp] 302 GET / (10.13.56.211) 0.65ms
+[I 23:18:24.025 NotebookApp] 302 GET /tree? (10.13.56.211) 0.95ms
+[W 23:18:24.565 NotebookApp] 403 POST /api/kernels (10.13.56.211): '_xsrf' argument missing from POST
+[W 23:18:24.565 NotebookApp] '_xsrf' argument missing from POST
+[W 23:18:24.566 NotebookApp] 403 POST /api/kernels (10.13.56.211) 1.56ms referer=None
+[I 23:18:28.325 NotebookApp] 302 GET / (10.13.56.211) 0.61ms
+[I 23:18:28.343 NotebookApp] 302 GET /tree? (10.13.56.211) 0.89ms
+[W 23:18:28.394 NotebookApp] 403 POST /api/kernels (10.13.56.211): '_xsrf' argument missing from POST
+[W 23:18:28.395 NotebookApp] '_xsrf' argument missing from POST
+[W 23:18:28.395 NotebookApp] 403 POST /api/kernels (10.13.56.211) 1.52ms referer=None
+[I 23:18:41.221 NotebookApp] 302 GET / (10.13.56.211) 1.46ms
+[I 23:18:41.286 NotebookApp] 302 GET /tree? (10.13.56.211) 1.11ms
+[W 23:18:41.320 NotebookApp] 403 POST /api/kernels (10.13.56.211): '_xsrf' argument missing from POST
+[W 23:18:41.320 NotebookApp] '_xsrf' argument missing from POST
+[W 23:18:41.320 NotebookApp] 403 POST /api/kernels (10.13.56.211) 1.49ms referer=None
+[I 23:18:43.891 NotebookApp] 302 GET / (10.13.56.211) 0.61ms
+[I 23:18:43.899 NotebookApp] 302 GET /tree? (10.13.56.211) 0.96ms
+[W 23:18:43.918 NotebookApp] 403 POST /api/kernels (10.13.56.211): '_xsrf' argument missing from POST
+[W 23:18:43.918 NotebookApp] '_xsrf' argument missing from POST
+[W 23:18:43.919 NotebookApp] 403 POST /api/kernels (10.13.56.211) 1.38ms referer=None
+[I 23:18:45.152 NotebookApp] 302 GET / (10.13.56.211) 0.63ms
+[I 23:18:45.213 NotebookApp] 302 GET /tree? (10.13.56.211) 0.98ms
+[W 23:18:45.377 NotebookApp] 403 POST /api/kernels (10.13.56.211): '_xsrf' argument missing from POST
+[W 23:18:45.377 NotebookApp] '_xsrf' argument missing from POST
+[W 23:18:45.378 NotebookApp] 403 POST /api/kernels (10.13.56.211) 1.48ms referer=None
+[I 23:18:53.213 NotebookApp] 302 GET / (10.13.56.211) 0.61ms
+[I 23:18:53.259 NotebookApp] 302 GET /tree? (10.13.56.211) 0.89ms
+[W 23:18:53.315 NotebookApp] 403 POST /api/kernels (10.13.56.211): '_xsrf' argument missing from POST
+[W 23:18:53.315 NotebookApp] '_xsrf' argument missing from POST
+[W 23:18:53.316 NotebookApp] 403 POST /api/kernels (10.13.56.211) 1.51ms referer=None
+[I 23:18:53.777 NotebookApp] 302 GET / (10.13.56.211) 0.62ms
+[I 23:18:53.924 NotebookApp] 302 GET /tree? (10.13.56.211) 0.94ms
+[W 23:18:53.968 NotebookApp] 403 POST /api/kernels (10.13.56.211): '_xsrf' argument missing from POST
+[W 23:18:53.968 NotebookApp] '_xsrf' argument missing from POST
+[W 23:18:53.968 NotebookApp] 403 POST /api/kernels (10.13.56.211) 1.51ms referer=None
+[I 23:18:54.063 NotebookApp] 302 GET / (10.13.56.211) 0.62ms
+[I 23:18:54.082 NotebookApp] 302 GET /tree? (10.13.56.211) 0.93ms
+[W 23:18:54.108 NotebookApp] 403 POST /api/kernels (10.13.56.211): '_xsrf' argument missing from POST
+[W 23:18:54.108 NotebookApp] '_xsrf' argument missing from POST
+[W 23:18:54.109 NotebookApp] 403 POST /api/kernels (10.13.56.211) 1.45ms referer=None
+[I 23:18:54.236 NotebookApp] 302 GET / (10.13.56.211) 0.62ms
+[I 23:18:54.390 NotebookApp] 302 GET /tree? (10.13.56.211) 1.00ms
+[W 23:18:54.455 NotebookApp] 403 POST /api/kernels (10.13.56.211): '_xsrf' argument missing from POST
+[W 23:18:54.455 NotebookApp] '_xsrf' argument missing from POST
+[W 23:18:54.456 NotebookApp] 403 POST /api/kernels (10.13.56.211) 1.45ms referer=None
+[I 23:18:54.604 NotebookApp] 302 GET / (10.13.56.211) 0.61ms
+[I 23:18:54.612 NotebookApp] 302 GET /tree? (10.13.56.211) 0.94ms
+[W 23:18:54.643 NotebookApp] 403 POST /api/kernels (10.13.56.211): '_xsrf' argument missing from POST
+[W 23:18:54.643 NotebookApp] '_xsrf' argument missing from POST
+[W 23:18:54.644 NotebookApp] 403 POST /api/kernels (10.13.56.211) 1.45ms referer=None
+[I 23:18:54.796 NotebookApp] 302 GET / (10.13.56.211) 0.62ms
+[I 23:18:54.809 NotebookApp] 302 GET /tree? (10.13.56.211) 0.90ms
+[W 23:18:54.835 NotebookApp] 403 POST /api/kernels (10.13.56.211): '_xsrf' argument missing from POST
+[W 23:18:54.836 NotebookApp] '_xsrf' argument missing from POST
+[W 23:18:54.836 NotebookApp] 403 POST /api/kernels (10.13.56.211) 1.42ms referer=None
+[I 23:18:54.967 NotebookApp] 302 GET / (10.13.56.211) 0.62ms
+[I 23:18:54.977 NotebookApp] 302 GET /tree? (10.13.56.211) 0.97ms
+[W 23:18:55.290 NotebookApp] 403 POST /api/kernels (10.13.56.211): '_xsrf' argument missing from POST
+[W 23:18:55.290 NotebookApp] '_xsrf' argument missing from POST
+[W 23:18:55.290 NotebookApp] 403 POST /api/kernels (10.13.56.211) 1.54ms referer=None
+[I 23:18:58.927 NotebookApp] 302 GET / (10.13.56.211) 0.62ms
+[I 23:18:58.942 NotebookApp] 302 GET /tree? (10.13.56.211) 0.89ms
+[W 23:18:58.968 NotebookApp] 403 POST /api/kernels (10.13.56.211): '_xsrf' argument missing from POST
+[W 23:18:58.968 NotebookApp] '_xsrf' argument missing from POST
+[W 23:18:58.968 NotebookApp] 403 POST /api/kernels (10.13.56.211) 1.41ms referer=None
+[I 23:19:33.905 NotebookApp] 302 GET / (10.13.56.211) 0.84ms
+[I 23:19:33.918 NotebookApp] 302 GET /tree? (10.13.56.211) 1.05ms
+[I 23:19:34.046 NotebookApp] Kernel started: a62d4f1e-82fb-4889-8eb7-8da2e90b8a48
+[W 23:19:34.137 NotebookApp] No session ID specified
+[I 23:19:34.783 NotebookApp] Adapting to protocol v5.1 for kernel a62d4f1e-82fb-4889-8eb7-8da2e90b8a48
+[I 23:19:58.956 NotebookApp] 302 GET / (10.13.56.211) 0.99ms
+[I 23:19:58.981 NotebookApp] 302 GET /tree? (10.13.56.211) 1.24ms
+[I 23:19:59.087 NotebookApp] Kernel started: 54fe0558-225e-4a19-95dd-56d40077564b
+[W 23:19:59.149 NotebookApp] No session ID specified
+[I 23:19:59.798 NotebookApp] Adapting to protocol v5.1 for kernel 54fe0558-225e-4a19-95dd-56d40077564b
+2017-12-04 23:22:38.556128: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-04 23:22:38.556184: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-04 23:22:38.556201: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-04 23:22:38.556214: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-04 23:22:38.556226: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-04 23:22:38.932871: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: Quadro M5000
+major: 5 minor: 2 memoryClockRate (GHz) 1.038
+pciBusID 0000:03:00.0
+Total memory: 7.93GiB
+Free memory: 7.79GiB
+2017-12-04 23:22:38.932929: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 
+2017-12-04 23:22:38.932938: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y 
+2017-12-04 23:22:38.932952: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-04 23:22:43.921360: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-04 23:23:09.718956: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-04 23:26:25.631685: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-04 23:26:28.586223: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-04 23:27:41.483074: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-04 23:37:56.170273: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-04 23:38:07.644359: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-04 23:38:22.831903: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-04 23:38:24.236143: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-04 23:38:25.693340: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-04 23:38:31.949826: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-04 23:38:33.660287: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+[I 23:38:37.594 NotebookApp] Kernel restarted: 54fe0558-225e-4a19-95dd-56d40077564b
+2017-12-04 23:38:44.832388: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-04 23:38:44.832444: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-04 23:38:44.832461: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-04 23:38:44.832473: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-04 23:38:44.832485: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-04 23:38:45.140556: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: Quadro M5000
+major: 5 minor: 2 memoryClockRate (GHz) 1.038
+pciBusID 0000:03:00.0
+Total memory: 7.93GiB
+Free memory: 7.79GiB
+2017-12-04 23:38:45.140634: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 
+2017-12-04 23:38:45.140646: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y 
+2017-12-04 23:38:45.140663: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-04 23:38:46.680477: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-04 23:38:48.278911: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-04 23:38:50.231171: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-04 23:38:56.486523: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-04 23:38:57.711587: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-04 23:39:01.148277: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 00:14:20.081055: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 00:15:51.573761: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 00:16:44.675638: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 00:17:15.496709: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 00:17:22.963477: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 00:17:39.488301: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 00:29:49.438775: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 00:30:13.201538: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 00:33:10.588386: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 00:33:17.977546: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 00:33:23.454778: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 00:33:37.981931: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 00:33:41.321660: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 00:34:14.156659: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 00:34:18.272711: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+[I 00:35:28.310 NotebookApp] 302 GET /?token=c72a21be060e7e18b5061122aecc2ae286031bbba60cc5f2 (10.13.56.211) 1.43ms
+[W 00:35:32.720 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[W 00:35:32.824 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js (10.13.56.211) 8.72ms referer=http://202.204.54.230:9312/notebooks/09_up_and_running_with_tensorflow.ipynb
+[I 00:35:37.181 NotebookApp] Kernel started: 18e0c6ce-d762-48f9-91dd-d3576c1d8457
+[I 00:35:37.908 NotebookApp] Adapting to protocol v5.1 for kernel 18e0c6ce-d762-48f9-91dd-d3576c1d8457
+2017-12-05 00:35:41.816808: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-05 00:35:41.816854: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-05 00:35:41.816869: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-05 00:35:41.816879: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-05 00:35:41.816891: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-05 00:35:42.110633: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: Quadro M5000
+major: 5 minor: 2 memoryClockRate (GHz) 1.038
+pciBusID 0000:03:00.0
+Total memory: 7.93GiB
+Free memory: 263.19MiB
+2017-12-05 00:35:42.110698: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 
+2017-12-05 00:35:42.110710: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y 
+2017-12-05 00:35:42.110729: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 00:35:42.149473: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 00:35:42.185900: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 00:35:42.301975: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 00:35:43.482059: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 00:35:43.579770: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 00:35:44.435555: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 00:35:46.069877: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 00:35:47.129918: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 00:35:51.048865: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 00:35:51.827863: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 00:35:52.720292: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 00:35:53.440171: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 00:35:55.005572: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 00:35:57.013312: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 00:35:57.891692: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 00:35:58.009669: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+[I 00:37:37.983 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 00:37:37.987 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[W 08:05:29.801 NotebookApp] WebSocket ping timeout after 119984 ms.
+[W 08:05:34.786 NotebookApp] WebSocket ping timeout after 119979 ms.
+[I 08:05:34.803 NotebookApp] Starting buffering for 54fe0558-225e-4a19-95dd-56d40077564b:fdc367e3-ecc539917b67c4f1b845fb5b
+[W 08:05:37.909 NotebookApp] WebSocket ping timeout after 119928 ms.
+[I 08:05:39.788 NotebookApp] Starting buffering for a62d4f1e-82fb-4889-8eb7-8da2e90b8a48:829e8f57-7208a468c46ca6ff12daa518
+[I 08:05:42.912 NotebookApp] Starting buffering for 18e0c6ce-d762-48f9-91dd-d3576c1d8457:3451816703614BDB8F3B026DC7748898
+[I 08:28:16.266 NotebookApp] Adapting to protocol v5.1 for kernel 18e0c6ce-d762-48f9-91dd-d3576c1d8457
+[I 08:28:16.267 NotebookApp] Restoring connection for 18e0c6ce-d762-48f9-91dd-d3576c1d8457:3451816703614BDB8F3B026DC7748898
+[I 08:35:25.725 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 08:35:25.730 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 08:37:25.708 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 08:37:25.713 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 08:41:25.693 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 08:41:25.697 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+2017-12-05 08:42:22.550677: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+[I 08:43:25.702 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 08:43:25.706 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 08:45:25.680 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 08:45:25.684 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+2017-12-05 08:46:35.060642: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+[I 08:47:25.697 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 08:47:25.701 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 08:49:25.699 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 08:49:25.704 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 08:51:25.699 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 08:51:25.703 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 08:53:25.689 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 08:53:25.694 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 08:55:25.660 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 08:55:25.665 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 08:57:25.683 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 08:57:25.688 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+2017-12-05 08:58:49.103996: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+[I 08:59:25.688 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 08:59:25.692 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+2017-12-05 09:00:27.367212: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+[I 09:01:25.655 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 09:01:25.659 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 09:03:25.642 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 09:03:25.647 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 09:05:25.636 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 09:05:25.640 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 09:07:25.665 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 09:07:25.670 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 09:13:25.681 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 09:13:25.686 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 09:15:25.646 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 09:15:25.650 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 09:17:25.625 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 09:17:25.629 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 09:19:25.620 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 09:19:25.625 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 09:27:25.782 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 09:27:25.787 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 09:31:25.700 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 09:31:25.705 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 10:13:26.672 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 10:13:26.677 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 10:23:25.501 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 10:23:25.506 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 10:27:25.479 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 10:27:25.483 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 10:29:25.536 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 10:29:25.540 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 10:31:25.473 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 10:31:25.478 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+2017-12-05 10:31:42.088962: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+[I 10:33:25.470 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 10:33:25.475 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 10:35:25.466 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 10:35:25.468 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 10:37:25.482 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 10:37:25.486 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 10:39:25.463 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 10:39:25.467 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 10:41:25.449 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 10:41:25.453 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+2017-12-05 10:41:33.924191: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+[I 10:43:25.436 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 10:43:25.440 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 10:44:33.706 NotebookApp] 302 GET / (10.24.5.1) 0.74ms
+[I 10:44:33.711 NotebookApp] 302 GET /tree? (10.24.5.1) 0.82ms
+[I 10:44:33.756 NotebookApp] Kernel started: 43d208cd-e5a1-47c7-9d52-43ff70e386d7
+[W 10:44:33.768 NotebookApp] No session ID specified
+[I 10:44:34.365 NotebookApp] Adapting to protocol v5.1 for kernel 43d208cd-e5a1-47c7-9d52-43ff70e386d7
+[I 10:45:25.444 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 10:45:25.447 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 10:47:25.426 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 10:47:25.430 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 11:10:57.928 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 11:10:57.932 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 11:17:06.509 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 11:17:06.514 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+2017-12-05 11:43:17.997825: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-05 11:43:17.997907: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-05 11:43:17.997940: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-05 11:43:17.997962: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-05 11:43:17.997985: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-05 11:43:18.261015: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: Quadro M5000
+major: 5 minor: 2 memoryClockRate (GHz) 1.038
+pciBusID 0000:03:00.0
+Total memory: 7.93GiB
+Free memory: 62.06MiB
+2017-12-05 11:43:18.261062: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 
+2017-12-05 11:43:18.261071: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y 
+2017-12-05 11:43:18.261080: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 11:43:18.274013: E tensorflow/stream_executor/cuda/cuda_driver.cc:893] failed to allocate 62.06M (65077248 bytes) from device: CUDA_ERROR_OUT_OF_MEMORY
+2017-12-05 11:50:53.258304: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 11:50:53.532131: E tensorflow/stream_executor/cuda/cuda_blas.cc:365] failed to create cublas handle: CUBLAS_STATUS_NOT_INITIALIZED
+2017-12-05 11:50:53.532213: W tensorflow/stream_executor/stream.cc:1550] attempting to perform BLAS operation using StreamExecutor without BLAS support
+2017-12-05 11:55:58.295386: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 11:55:58.514124: E tensorflow/stream_executor/cuda/cuda_blas.cc:365] failed to create cublas handle: CUBLAS_STATUS_NOT_INITIALIZED
+2017-12-05 11:55:58.514157: W tensorflow/stream_executor/stream.cc:1550] attempting to perform BLAS operation using StreamExecutor without BLAS support
+2017-12-05 11:58:26.936012: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 11:58:26.959643: E tensorflow/stream_executor/cuda/cuda_driver.cc:859] could not allocate CUDA stream for context 0x5b01d50: CUDA_ERROR_OUT_OF_MEMORY
+2017-12-05 11:58:26.959678: I tensorflow/stream_executor/stream_executor_pimpl.cc:650] failed to allocate stream; live stream count: 9
+2017-12-05 11:58:26.959689: E tensorflow/stream_executor/stream.cc:261] failed to allocate stream during initialization
+2017-12-05 11:58:26.979904: E tensorflow/stream_executor/cuda/cuda_driver.cc:859] could not allocate CUDA stream for context 0x5b01d50: CUDA_ERROR_OUT_OF_MEMORY
+2017-12-05 11:58:26.979922: I tensorflow/stream_executor/stream_executor_pimpl.cc:650] failed to allocate stream; live stream count: 9
+2017-12-05 11:58:26.979930: E tensorflow/stream_executor/stream.cc:261] failed to allocate stream during initialization
+2017-12-05 11:58:26.998477: E tensorflow/stream_executor/cuda/cuda_driver.cc:859] could not allocate CUDA stream for context 0x5b01d50: CUDA_ERROR_OUT_OF_MEMORY
+2017-12-05 11:58:26.998492: I tensorflow/stream_executor/stream_executor_pimpl.cc:650] failed to allocate stream; live stream count: 9
+2017-12-05 11:58:26.998500: E tensorflow/stream_executor/stream.cc:261] failed to allocate stream during initialization
+2017-12-05 11:58:27.016012: E tensorflow/stream_executor/cuda/cuda_driver.cc:859] could not allocate CUDA stream for context 0x5b01d50: CUDA_ERROR_OUT_OF_MEMORY
+2017-12-05 11:58:27.016034: I tensorflow/stream_executor/stream_executor_pimpl.cc:650] failed to allocate stream; live stream count: 9
+2017-12-05 11:58:27.016042: E tensorflow/stream_executor/stream.cc:261] failed to allocate stream during initialization
+2017-12-05 11:58:27.026538: I tensorflow/stream_executor/stream.cc:1500] stream 0x5c49290 did not wait for stream: 0x5d977f0
+2017-12-05 11:58:27.026571: I tensorflow/stream_executor/stream.cc:4087] stream 0x5c49290 did not memcpy host-to-device; source: 0x2049e0700
+2017-12-05 11:58:27.026594: E tensorflow/stream_executor/stream.cc:289] Error recording event in stream: error recording CUDA event on stream 0xffffffffffffffff: CUDA_ERROR_INVALID_HANDLE; not marking stream as bad, as the Event object may be at fault. Monitor for further errors.
+2017-12-05 11:58:27.026666: F tensorflow/core/common_runtime/gpu/gpu_util.cc:343] CPU->GPU Memcpy failed
+[I 11:58:27.756 NotebookApp] KernelRestarter: restarting kernel (1/5)
+WARNING:root:kernel 43d208cd-e5a1-47c7-9d52-43ff70e386d7 restarted
+2017-12-05 11:59:14.252417: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-05 11:59:14.252472: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-05 11:59:14.252487: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-05 11:59:14.252498: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-05 11:59:14.252519: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-05 11:59:14.507963: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: Quadro M5000
+major: 5 minor: 2 memoryClockRate (GHz) 1.038
+pciBusID 0000:03:00.0
+Total memory: 7.93GiB
+Free memory: 62.06MiB
+2017-12-05 11:59:14.508010: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 
+2017-12-05 11:59:14.508019: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y 
+2017-12-05 11:59:14.508028: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 11:59:14.521553: E tensorflow/stream_executor/cuda/cuda_driver.cc:893] failed to allocate 62.06M (65077248 bytes) from device: CUDA_ERROR_OUT_OF_MEMORY
+2017-12-05 11:59:14.764414: E tensorflow/stream_executor/cuda/cuda_blas.cc:365] failed to create cublas handle: CUBLAS_STATUS_NOT_INITIALIZED
+2017-12-05 11:59:14.764484: W tensorflow/stream_executor/stream.cc:1550] attempting to perform BLAS operation using StreamExecutor without BLAS support
+2017-12-05 11:59:30.272621: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 11:59:30.396806: E tensorflow/stream_executor/cuda/cuda_blas.cc:365] failed to create cublas handle: CUBLAS_STATUS_NOT_INITIALIZED
+2017-12-05 11:59:30.396852: W tensorflow/stream_executor/stream.cc:1550] attempting to perform BLAS operation using StreamExecutor without BLAS support
+2017-12-05 11:59:30.425954: W tensorflow/core/framework/op_kernel.cc:1152] Internal: Blas GEMV launch failed:  m=3, n=50
+	 [[Node: logits = MatMul[T=DT_FLOAT, transpose_a=false, transpose_b=false, _device="/job:localhost/replica:0/task:0/gpu:0"](_recv_X_0/_7, Variable/read)]]
+2017-12-05 12:00:11.578999: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 12:00:34.534438: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 12:01:21.498716: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+[I 12:01:25.331 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 12:01:25.334 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+2017-12-05 12:02:20.617951: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 12:02:20.811238: E tensorflow/stream_executor/cuda/cuda_blas.cc:365] failed to create cublas handle: CUBLAS_STATUS_NOT_INITIALIZED
+2017-12-05 12:02:20.811293: W tensorflow/stream_executor/stream.cc:1550] attempting to perform BLAS operation using StreamExecutor without BLAS support
+2017-12-05 12:02:39.177485: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 12:02:39.489619: E tensorflow/stream_executor/cuda/cuda_blas.cc:365] failed to create cublas handle: CUBLAS_STATUS_NOT_INITIALIZED
+2017-12-05 12:02:39.489674: W tensorflow/stream_executor/stream.cc:1550] attempting to perform BLAS operation using StreamExecutor without BLAS support
+[I 12:03:25.315 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 12:03:25.319 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+2017-12-05 12:04:04.526835: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 12:04:34.772790: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 12:04:34.796299: E tensorflow/stream_executor/cuda/cuda_driver.cc:859] could not allocate CUDA stream for context 0x402b390: CUDA_ERROR_OUT_OF_MEMORY
+2017-12-05 12:04:34.796332: I tensorflow/stream_executor/stream_executor_pimpl.cc:650] failed to allocate stream; live stream count: 9
+2017-12-05 12:04:34.796343: E tensorflow/stream_executor/stream.cc:261] failed to allocate stream during initialization
+2017-12-05 12:04:34.815982: E tensorflow/stream_executor/cuda/cuda_driver.cc:859] could not allocate CUDA stream for context 0x402b390: CUDA_ERROR_OUT_OF_MEMORY
+2017-12-05 12:04:34.816001: I tensorflow/stream_executor/stream_executor_pimpl.cc:650] failed to allocate stream; live stream count: 9
+2017-12-05 12:04:34.816009: E tensorflow/stream_executor/stream.cc:261] failed to allocate stream during initialization
+2017-12-05 12:04:34.834450: E tensorflow/stream_executor/cuda/cuda_driver.cc:859] could not allocate CUDA stream for context 0x402b390: CUDA_ERROR_OUT_OF_MEMORY
+2017-12-05 12:04:34.834467: I tensorflow/stream_executor/stream_executor_pimpl.cc:650] failed to allocate stream; live stream count: 9
+2017-12-05 12:04:34.834475: E tensorflow/stream_executor/stream.cc:261] failed to allocate stream during initialization
+2017-12-05 12:04:34.851606: E tensorflow/stream_executor/cuda/cuda_driver.cc:859] could not allocate CUDA stream for context 0x402b390: CUDA_ERROR_OUT_OF_MEMORY
+2017-12-05 12:04:34.851622: I tensorflow/stream_executor/stream_executor_pimpl.cc:650] failed to allocate stream; live stream count: 9
+2017-12-05 12:04:34.851628: E tensorflow/stream_executor/stream.cc:261] failed to allocate stream during initialization
+2017-12-05 12:04:34.878605: I tensorflow/stream_executor/stream.cc:1500] stream 0x39588b0 did not wait for stream: 0x3962950
+2017-12-05 12:04:34.878651: I tensorflow/stream_executor/stream.cc:4087] stream 0x39588b0 did not memcpy host-to-device; source: 0x2049e0700
+2017-12-05 12:04:34.878673: E tensorflow/stream_executor/stream.cc:289] Error recording event in stream: error recording CUDA event on stream 0xffffffffffffffff: CUDA_ERROR_INVALID_HANDLE; not marking stream as bad, as the Event object may be at fault. Monitor for further errors.
+2017-12-05 12:04:34.878765: F tensorflow/core/common_runtime/gpu/gpu_util.cc:343] CPU->GPU Memcpy failed
+[I 12:04:36.766 NotebookApp] KernelRestarter: restarting kernel (1/5)
+WARNING:root:kernel 43d208cd-e5a1-47c7-9d52-43ff70e386d7 restarted
+[I 12:05:25.292 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 12:05:25.296 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+2017-12-05 12:05:29.047041: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-05 12:05:29.047092: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-05 12:05:29.047106: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-05 12:05:29.047116: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-05 12:05:29.047127: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-05 12:05:29.319321: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: Quadro M5000
+major: 5 minor: 2 memoryClockRate (GHz) 1.038
+pciBusID 0000:03:00.0
+Total memory: 7.93GiB
+Free memory: 62.06MiB
+2017-12-05 12:05:29.319381: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 
+2017-12-05 12:05:29.319390: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y 
+2017-12-05 12:05:29.319404: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 12:05:29.332330: E tensorflow/stream_executor/cuda/cuda_driver.cc:893] failed to allocate 62.06M (65077248 bytes) from device: CUDA_ERROR_OUT_OF_MEMORY
+2017-12-05 12:05:29.630642: E tensorflow/stream_executor/cuda/cuda_blas.cc:365] failed to create cublas handle: CUBLAS_STATUS_NOT_INITIALIZED
+2017-12-05 12:05:29.630706: W tensorflow/stream_executor/stream.cc:1550] attempting to perform BLAS operation using StreamExecutor without BLAS support
+2017-12-05 12:05:49.807506: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-05 12:05:50.078333: E tensorflow/stream_executor/cuda/cuda_blas.cc:365] failed to create cublas handle: CUBLAS_STATUS_NOT_INITIALIZED
+2017-12-05 12:05:50.078411: W tensorflow/stream_executor/stream.cc:1550] attempting to perform BLAS operation using StreamExecutor without BLAS support
+[W 12:33:46.267 NotebookApp] WebSocket ping timeout after 119997 ms.
+[I 12:33:51.269 NotebookApp] Starting buffering for 18e0c6ce-d762-48f9-91dd-d3576c1d8457:3451816703614BDB8F3B026DC7748898
+[W 12:34:04.367 NotebookApp] WebSocket ping timeout after 119963 ms.
+[I 12:34:09.369 NotebookApp] Starting buffering for 43d208cd-e5a1-47c7-9d52-43ff70e386d7:8f59f398-2cf32aedd7265e60ee228541
+[I 12:41:43.668 NotebookApp] Adapting to protocol v5.1 for kernel 18e0c6ce-d762-48f9-91dd-d3576c1d8457
+[I 12:41:43.669 NotebookApp] Restoring connection for 18e0c6ce-d762-48f9-91dd-d3576c1d8457:3451816703614BDB8F3B026DC7748898
+[I 12:43:06.693 NotebookApp] 302 GET / (10.24.5.1) 0.79ms
+[I 12:43:06.704 NotebookApp] 302 GET /tree? (10.24.5.1) 1.10ms
+[I 12:43:06.737 NotebookApp] Kernel started: 4169f9f9-7e78-4bd1-9a28-edfb2d1cac07
+[W 12:43:06.747 NotebookApp] No session ID specified
+[I 12:43:07.463 NotebookApp] Adapting to protocol v5.1 for kernel 4169f9f9-7e78-4bd1-9a28-edfb2d1cac07
+2017-12-05 12:43:25.148901: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-05 12:43:25.148975: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-05 12:43:25.149006: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-05 12:43:25.149028: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-05 12:43:25.149048: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-05 12:43:25.173281: E tensorflow/core/common_runtime/direct_session.cc:137] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_OUT_OF_MEMORY; total memory reported: 8512536576
+[I 13:11:53.487 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 13:11:53.492 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 13:12:59.225 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 13:12:59.229 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 13:54:05.769 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 13:54:05.773 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 13:54:36.160 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 13:54:36.164 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 14:10:38.396 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 14:10:38.401 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 14:13:37.552 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 14:13:37.557 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+2017-12-05 14:29:10.363992: E tensorflow/core/util/events_writer.cc:162] The events file tf_logs/logreg-run-20171205060239/events.out.tfevents.1512453759.fluids has disappeared.
+2017-12-05 14:29:10.364072: E tensorflow/core/util/events_writer.cc:131] Failed to flush 2326 events to tf_logs/logreg-run-20171205060239/events.out.tfevents.1512453759.fluids
+[I 14:31:10.368 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 14:31:10.371 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+2017-12-05 14:31:10.372076: E tensorflow/core/util/events_writer.cc:162] The events file tf_logs/logreg-run-20171205060239/events.out.tfevents.1512453759.fluids has disappeared.
+2017-12-05 14:31:10.372123: E tensorflow/core/util/events_writer.cc:131] Failed to flush 8258 events to tf_logs/logreg-run-20171205060239/events.out.tfevents.1512453759.fluids
+2017-12-05 14:33:10.374946: E tensorflow/core/util/events_writer.cc:162] The events file tf_logs/logreg-run-20171205060239/events.out.tfevents.1512453759.fluids has disappeared.
+2017-12-05 14:33:10.374986: E tensorflow/core/util/events_writer.cc:131] Failed to flush 14174 events to tf_logs/logreg-run-20171205060239/events.out.tfevents.1512453759.fluids
+[I 14:34:36.086 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 14:34:36.089 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+2017-12-05 14:35:10.387753: E tensorflow/core/util/events_writer.cc:162] The events file tf_logs/logreg-run-20171205060239/events.out.tfevents.1512453759.fluids has disappeared.
+2017-12-05 14:35:10.387789: E tensorflow/core/util/events_writer.cc:131] Failed to flush 20067 events to tf_logs/logreg-run-20171205060239/events.out.tfevents.1512453759.fluids
+[I 14:40:46.027 NotebookApp] Saving file at /09_up_and_running_with_tensorflow.ipynb
+[W 14:40:46.031 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[I 14:41:45.094 NotebookApp] Starting buffering for 18e0c6ce-d762-48f9-91dd-d3576c1d8457:3451816703614BDB8F3B026DC7748898
+[W 15:06:07.465 NotebookApp] WebSocket ping timeout after 119966 ms.
+[I 15:06:12.467 NotebookApp] Starting buffering for 4169f9f9-7e78-4bd1-9a28-edfb2d1cac07:c11b3edf-eeb5e039976bec27a21e6e18
+[C 10:39:22.593 NotebookApp] received signal 15, stopping
+[I 10:39:22.596 NotebookApp] Shutting down 5 kernels
+[I 10:39:22.600 NotebookApp] Kernel shutdown: a62d4f1e-82fb-4889-8eb7-8da2e90b8a48
+[I 10:39:22.702 NotebookApp] Kernel shutdown: 4169f9f9-7e78-4bd1-9a28-edfb2d1cac07
+[I 10:39:23.004 NotebookApp] Kernel shutdown: 18e0c6ce-d762-48f9-91dd-d3576c1d8457
+[I 10:39:23.005 NotebookApp] Kernel shutdown: 43d208cd-e5a1-47c7-9d52-43ff70e386d7
+[I 10:39:24.508 NotebookApp] Kernel shutdown: 54fe0558-225e-4a19-95dd-56d40077564b
+[I 10:58:12.164 NotebookApp] Writing notebook server cookie secret to /run/user/1000/jupyter/notebook_cookie_secret
+[I 10:58:12.719 NotebookApp] Serving notebooks from local directory: /data/deeplearning/handson-ml
+[I 10:58:12.719 NotebookApp] 0 active kernels
+[I 10:58:12.719 NotebookApp] The Jupyter Notebook is running at:
+[I 10:58:12.719 NotebookApp] http://202.204.54.230:9312/?token=bc309c0975e23caade135310e26e4ab040c5e9e958c7932f
+[I 10:58:12.719 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 10:58:12.720 NotebookApp] 
+    
+    Copy/paste this URL into your browser when you connect for the first time,
+    to login with a token:
+        http://202.204.54.230:9312/?token=bc309c0975e23caade135310e26e4ab040c5e9e958c7932f
+[I 10:58:13.298 NotebookApp] Accepting one-time-token-authenticated connection from 202.204.54.230
+[12935:12974:1206/105813.344637:ERROR:browser_gpu_channel_host_factory.cc(108)] Failed to launch GPU process.
+Created new window in existing browser session.
+[W 14:36:26.643 NotebookApp] 403 POST /api/kernels/4169f9f9-7e78-4bd1-9a28-edfb2d1cac07/restart (10.24.12.6): '_xsrf' argument missing from POST
+[W 14:36:30.581 NotebookApp] '_xsrf' argument missing from POST
+[W 14:36:30.582 NotebookApp] 403 POST /api/kernels/4169f9f9-7e78-4bd1-9a28-edfb2d1cac07/restart (10.24.12.6) 3939.93ms referer=None
+[I 14:36:32.628 NotebookApp] 302 GET / (10.24.12.6) 0.99ms
+[I 14:36:32.635 NotebookApp] 302 GET /tree? (10.24.12.6) 1.42ms
+[W 14:36:32.675 NotebookApp] 403 POST /api/kernels (10.24.12.6): '_xsrf' argument missing from POST
+[W 14:36:32.675 NotebookApp] '_xsrf' argument missing from POST
+[W 14:36:32.676 NotebookApp] 403 POST /api/kernels (10.24.12.6) 2.67ms referer=None
+[I 14:36:49.590 NotebookApp] 302 GET / (10.24.12.6) 0.81ms
+[I 14:36:49.595 NotebookApp] 302 GET /tree? (10.24.12.6) 1.03ms
+[W 14:36:49.609 NotebookApp] 403 POST /api/kernels (10.24.12.6): '_xsrf' argument missing from POST
+[W 14:36:49.609 NotebookApp] '_xsrf' argument missing from POST
+[W 14:36:49.610 NotebookApp] 403 POST /api/kernels (10.24.12.6) 1.56ms referer=None
+[I 14:36:51.164 NotebookApp] 302 GET / (10.24.12.6) 0.90ms
+[I 14:36:51.169 NotebookApp] 302 GET /tree? (10.24.12.6) 1.07ms
+[W 14:36:51.184 NotebookApp] 403 POST /api/kernels (10.24.12.6): '_xsrf' argument missing from POST
+[W 14:36:51.184 NotebookApp] '_xsrf' argument missing from POST
+[W 14:36:51.184 NotebookApp] 403 POST /api/kernels (10.24.12.6) 1.79ms referer=None
+[I 14:36:51.718 NotebookApp] 302 GET / (10.24.12.6) 0.90ms
+[I 14:36:51.727 NotebookApp] 302 GET /tree? (10.24.12.6) 4.91ms
+[W 14:36:51.741 NotebookApp] 403 POST /api/kernels (10.24.12.6): '_xsrf' argument missing from POST
+[W 14:36:51.742 NotebookApp] '_xsrf' argument missing from POST
+[W 14:36:51.742 NotebookApp] 403 POST /api/kernels (10.24.12.6) 1.58ms referer=None
+[I 14:36:51.891 NotebookApp] 302 GET / (10.24.12.6) 0.70ms
+[I 14:36:51.917 NotebookApp] 302 GET /tree? (10.24.12.6) 1.02ms
+[W 14:36:51.951 NotebookApp] 403 POST /api/kernels (10.24.12.6): '_xsrf' argument missing from POST
+[W 14:36:51.951 NotebookApp] '_xsrf' argument missing from POST
+[W 14:36:51.952 NotebookApp] 403 POST /api/kernels (10.24.12.6) 1.70ms referer=None
+[I 14:36:52.062 NotebookApp] 302 GET / (10.24.12.6) 0.85ms
+[I 14:36:52.067 NotebookApp] 302 GET /tree? (10.24.12.6) 0.81ms
+[W 14:36:52.081 NotebookApp] 403 POST /api/kernels (10.24.12.6): '_xsrf' argument missing from POST
+[W 14:36:52.082 NotebookApp] '_xsrf' argument missing from POST
+[W 14:36:52.082 NotebookApp] 403 POST /api/kernels (10.24.12.6) 1.30ms referer=None
+[I 14:36:56.408 NotebookApp] 302 GET / (10.24.12.6) 0.83ms
+[I 14:36:56.413 NotebookApp] 302 GET /tree? (10.24.12.6) 1.06ms
+[W 14:36:56.429 NotebookApp] 403 POST /api/kernels (10.24.12.6): '_xsrf' argument missing from POST
+[W 14:36:56.429 NotebookApp] '_xsrf' argument missing from POST
+[W 14:36:56.430 NotebookApp] 403 POST /api/kernels (10.24.12.6) 1.48ms referer=None
+[I 14:37:25.785 NotebookApp] 302 GET / (10.24.12.6) 0.76ms
+[I 14:37:25.793 NotebookApp] 302 GET /tree? (10.24.12.6) 0.95ms
+[W 14:37:25.808 NotebookApp] 403 POST /api/kernels (10.24.12.6): '_xsrf' argument missing from POST
+[W 14:37:25.808 NotebookApp] '_xsrf' argument missing from POST
+[W 14:37:25.808 NotebookApp] 403 POST /api/kernels (10.24.12.6) 1.37ms referer=None
+[I 14:37:26.787 NotebookApp] 302 GET / (10.24.12.6) 0.90ms
+[I 14:37:26.792 NotebookApp] 302 GET /tree? (10.24.12.6) 1.03ms
+[W 14:37:26.807 NotebookApp] 403 POST /api/kernels (10.24.12.6): '_xsrf' argument missing from POST
+[W 14:37:26.807 NotebookApp] '_xsrf' argument missing from POST
+[W 14:37:26.808 NotebookApp] 403 POST /api/kernels (10.24.12.6) 1.56ms referer=None
+[I 14:37:27.313 NotebookApp] 302 GET / (10.24.12.6) 0.90ms
+[I 14:37:27.319 NotebookApp] 302 GET /tree? (10.24.12.6) 1.17ms
+[W 14:37:27.333 NotebookApp] 403 POST /api/kernels (10.24.12.6): '_xsrf' argument missing from POST
+[W 14:37:27.334 NotebookApp] '_xsrf' argument missing from POST
+[W 14:37:27.334 NotebookApp] 403 POST /api/kernels (10.24.12.6) 2.16ms referer=None
+[I 14:37:27.458 NotebookApp] 302 GET / (10.24.12.6) 0.83ms
+[I 14:37:27.462 NotebookApp] 302 GET /tree? (10.24.12.6) 1.00ms
+[W 14:37:27.476 NotebookApp] 403 POST /api/kernels (10.24.12.6): '_xsrf' argument missing from POST
+[W 14:37:27.476 NotebookApp] '_xsrf' argument missing from POST
+[W 14:37:27.476 NotebookApp] 403 POST /api/kernels (10.24.12.6) 1.51ms referer=None
+[I 14:37:41.254 NotebookApp] 302 GET / (10.24.12.6) 0.89ms
+[I 14:37:41.260 NotebookApp] 302 GET /tree? (10.24.12.6) 1.15ms
+[W 14:37:41.275 NotebookApp] 403 POST /api/kernels (10.24.12.6): '_xsrf' argument missing from POST
+[W 14:37:41.275 NotebookApp] '_xsrf' argument missing from POST
+[W 14:37:41.276 NotebookApp] 403 POST /api/kernels (10.24.12.6) 1.49ms referer=None
+[I 14:37:50.941 NotebookApp] 302 GET / (10.24.12.6) 0.76ms
+[I 14:37:50.949 NotebookApp] 302 GET /tree? (10.24.12.6) 0.98ms
+[W 14:37:50.977 NotebookApp] 403 POST /api/kernels (10.24.12.6): '_xsrf' argument missing from POST
+[W 14:37:50.977 NotebookApp] '_xsrf' argument missing from POST
+[W 14:37:50.978 NotebookApp] 403 POST /api/kernels (10.24.12.6) 1.41ms referer=None
+[I 14:37:51.563 NotebookApp] 302 GET / (10.24.12.6) 0.88ms
+[I 14:37:51.570 NotebookApp] 302 GET /tree? (10.24.12.6) 0.99ms
+[W 14:37:51.585 NotebookApp] 403 POST /api/kernels (10.24.12.6): '_xsrf' argument missing from POST
+[W 14:37:51.586 NotebookApp] '_xsrf' argument missing from POST
+[W 14:37:51.586 NotebookApp] 403 POST /api/kernels (10.24.12.6) 1.52ms referer=None
+[I 14:37:51.708 NotebookApp] 302 GET / (10.24.12.6) 0.81ms
+[I 14:37:51.713 NotebookApp] 302 GET /tree? (10.24.12.6) 1.08ms
+[W 14:37:51.727 NotebookApp] 403 POST /api/kernels (10.24.12.6): '_xsrf' argument missing from POST
+[W 14:37:51.727 NotebookApp] '_xsrf' argument missing from POST
+[W 14:37:51.728 NotebookApp] 403 POST /api/kernels (10.24.12.6) 1.36ms referer=None
+[I 14:37:51.845 NotebookApp] 302 GET / (10.24.12.6) 0.84ms
+[I 14:37:51.850 NotebookApp] 302 GET /tree? (10.24.12.6) 1.02ms
+[W 14:37:51.865 NotebookApp] 403 POST /api/kernels (10.24.12.6): '_xsrf' argument missing from POST
+[W 14:37:51.865 NotebookApp] '_xsrf' argument missing from POST
+[W 14:37:51.865 NotebookApp] 403 POST /api/kernels (10.24.12.6) 2.00ms referer=None
+[I 14:37:51.982 NotebookApp] 302 GET / (10.24.12.6) 0.78ms
+[I 14:37:51.988 NotebookApp] 302 GET /tree? (10.24.12.6) 1.01ms
+[W 14:37:52.004 NotebookApp] 403 POST /api/kernels (10.24.12.6): '_xsrf' argument missing from POST
+[W 14:37:52.004 NotebookApp] '_xsrf' argument missing from POST
+[W 14:37:52.005 NotebookApp] 403 POST /api/kernels (10.24.12.6) 1.35ms referer=None
+[I 14:37:54.411 NotebookApp] 302 GET / (10.24.12.6) 0.75ms
+[I 14:37:54.418 NotebookApp] 302 GET /tree? (10.24.12.6) 0.79ms
+[W 14:37:54.433 NotebookApp] 403 POST /api/kernels (10.24.12.6): '_xsrf' argument missing from POST
+[W 14:37:54.433 NotebookApp] '_xsrf' argument missing from POST
+[W 14:37:54.434 NotebookApp] 403 POST /api/kernels (10.24.12.6) 1.08ms referer=None
+[I 14:38:54.875 NotebookApp] 302 GET / (10.24.12.6) 0.90ms
+[I 14:38:54.880 NotebookApp] 302 GET /tree? (10.24.12.6) 0.99ms
+[I 14:38:54.945 NotebookApp] Kernel started: 14a822d2-51de-4432-880c-05c51267771e
+[W 14:38:54.970 NotebookApp] No session ID specified
+[I 14:38:55.707 NotebookApp] Adapting to protocol v5.1 for kernel 14a822d2-51de-4432-880c-05c51267771e
+[I 14:42:34.067 NotebookApp] 302 GET / (202.204.54.230) 0.61ms
+[I 14:42:34.069 NotebookApp] 302 GET /tree? (202.204.54.230) 0.76ms
+[I 14:42:34.102 NotebookApp] Kernel started: b8fd0066-1603-4b83-9016-f4edc4ce154e
+[W 14:42:34.129 NotebookApp] No session ID specified
+[I 14:42:34.867 NotebookApp] Adapting to protocol v5.1 for kernel b8fd0066-1603-4b83-9016-f4edc4ce154e
+[I 14:54:21.422 NotebookApp] 302 GET / (10.24.12.6) 0.85ms
+[I 14:54:21.427 NotebookApp] 302 GET /tree? (10.24.12.6) 1.04ms
+[I 14:54:21.461 NotebookApp] Kernel started: f118f359-495d-4f67-bff2-a3bb8ca709e0
+[W 14:54:21.472 NotebookApp] No session ID specified
+[I 14:54:22.264 NotebookApp] Adapting to protocol v5.1 for kernel f118f359-495d-4f67-bff2-a3bb8ca709e0
+[I 14:56:02.112 NotebookApp] 302 GET / (10.24.12.6) 0.88ms
+[I 14:56:02.118 NotebookApp] 302 GET /tree? (10.24.12.6) 1.05ms
+[I 14:56:02.157 NotebookApp] Kernel started: c2a19b65-c057-42d1-8431-2bc126ec7756
+[W 14:56:02.175 NotebookApp] No session ID specified
+[I 14:56:02.852 NotebookApp] Adapting to protocol v5.1 for kernel c2a19b65-c057-42d1-8431-2bc126ec7756
+[I 14:59:56.326 NotebookApp] Kernel restarted: c2a19b65-c057-42d1-8431-2bc126ec7756
+[I 15:00:30.549 NotebookApp] Kernel interrupted: c2a19b65-c057-42d1-8431-2bc126ec7756
+[I 15:00:31.816 NotebookApp] Kernel interrupted: c2a19b65-c057-42d1-8431-2bc126ec7756
+[I 15:00:32.754 NotebookApp] Kernel interrupted: c2a19b65-c057-42d1-8431-2bc126ec7756
+[I 15:00:36.445 NotebookApp] Kernel restarted: c2a19b65-c057-42d1-8431-2bc126ec7756
+[W 16:16:52.266 NotebookApp] WebSocket ping timeout after 119997 ms.
+[W 16:16:55.710 NotebookApp] WebSocket ping timeout after 119917 ms.
+[I 16:16:57.270 NotebookApp] Starting buffering for f118f359-495d-4f67-bff2-a3bb8ca709e0:332d4014-6ed78eb5c8f9e12a3ce92934
+[I 16:17:00.711 NotebookApp] Starting buffering for 14a822d2-51de-4432-880c-05c51267771e:98300902-7645d5591d386088fb85d6ce
+[W 16:17:02.855 NotebookApp] WebSocket ping timeout after 119997 ms.
+[I 16:17:07.856 NotebookApp] Starting buffering for c2a19b65-c057-42d1-8431-2bc126ec7756:bff675a9-3ce0417e3c04b642889763a7
+[I 19:23:02.291 NotebookApp] 302 GET / (10.24.12.6) 1.16ms
+[I 19:23:02.298 NotebookApp] 302 GET /tree? (10.24.12.6) 1.19ms
+[I 19:23:02.339 NotebookApp] Kernel started: c349062b-61a7-41b4-9d2d-57caf96cf8d5
+[W 19:23:02.349 NotebookApp] No session ID specified
+[I 19:23:03.182 NotebookApp] Adapting to protocol v5.1 for kernel c349062b-61a7-41b4-9d2d-57caf96cf8d5
+[I 19:23:19.893 NotebookApp] 302 GET / (10.24.12.6) 0.83ms
+[I 19:23:19.899 NotebookApp] 302 GET /tree? (10.24.12.6) 1.05ms
+[I 19:23:19.937 NotebookApp] Kernel started: b011c63d-f9aa-48e6-b70a-006aff790a4d
+[W 19:23:19.946 NotebookApp] No session ID specified
+[I 19:23:20.630 NotebookApp] Adapting to protocol v5.1 for kernel b011c63d-f9aa-48e6-b70a-006aff790a4d
+[W 19:24:19.240 NotebookApp] Forbidden
+[W 19:24:19.241 NotebookApp] 403 GET /api/sessions?_=1512405329040 (10.24.12.6) 2.29ms referer=http://202.204.54.230:9312/tree
+[W 19:24:19.243 NotebookApp] Forbidden
+[W 19:24:19.243 NotebookApp] 403 GET /api/terminals?_=1512405329041 (10.24.12.6) 1.58ms referer=http://202.204.54.230:9312/tree
+[I 19:24:23.937 NotebookApp] 302 GET /notebooks/10_introduction_to_artificial_neural_networks.ipynb (10.24.12.6) 1.58ms
+[I 19:24:43.166 NotebookApp] 302 POST /login?next=%2Fnotebooks%2F10_introduction_to_artificial_neural_networks.ipynb (10.24.12.6) 2.31ms
+[W 19:24:44.234 NotebookApp] Notebook 10_introduction_to_artificial_neural_networks.ipynb is not trusted
+[W 19:24:44.299 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js (10.24.12.6) 15.15ms referer=http://202.204.54.230:9312/notebooks/10_introduction_to_artificial_neural_networks.ipynb
+[I 19:24:45.704 NotebookApp] Kernel started: 1fbc49bf-3a5c-4ca5-b36c-77e5d9d22414
+[I 19:24:46.455 NotebookApp] Adapting to protocol v5.1 for kernel 1fbc49bf-3a5c-4ca5-b36c-77e5d9d22414
+[I 19:25:39.356 NotebookApp] 302 GET / (10.24.12.6) 0.62ms
+[I 19:25:39.363 NotebookApp] 302 GET /tree? (10.24.12.6) 0.89ms
+[I 19:25:39.397 NotebookApp] Kernel started: 04edc7dd-9364-4cd3-a1c0-3b0a9b76e154
+[W 19:25:39.409 NotebookApp] No session ID specified
+[I 19:25:40.066 NotebookApp] Adapting to protocol v5.1 for kernel 04edc7dd-9364-4cd3-a1c0-3b0a9b76e154
+[I 19:26:45.763 NotebookApp] Saving file at /10_introduction_to_artificial_neural_networks.ipynb
+[W 19:26:45.766 NotebookApp] Notebook 10_introduction_to_artificial_neural_networks.ipynb is not trusted
+2017-12-06 21:03:12.626599: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-06 21:03:13.015944: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-06 21:03:13.016006: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-06 21:03:13.016020: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-06 21:03:13.016031: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-06 21:03:13.236711: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: Quadro M5000
+major: 5 minor: 2 memoryClockRate (GHz) 1.038
+pciBusID 0000:03:00.0
+Total memory: 7.93GiB
+Free memory: 3.92GiB
+2017-12-06 21:03:13.236756: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 
+2017-12-06 21:03:13.236764: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y 
+2017-12-06 21:03:13.236774: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-06 21:03:19.966859: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-06 21:03:44.147433: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-06 21:03:44.215953: W tensorflow/core/framework/op_kernel.cc:1152] Invalid argument: You must feed a value for placeholder tensor 'X' with dtype float
+	 [[Node: X = Placeholder[dtype=DT_FLOAT, shape=[], _device="/job:localhost/replica:0/task:0/gpu:0"]()]]
+2017-12-06 21:03:44.216217: W tensorflow/core/framework/op_kernel.cc:1152] Invalid argument: You must feed a value for placeholder tensor 'X' with dtype float
+	 [[Node: X = Placeholder[dtype=DT_FLOAT, shape=[], _device="/job:localhost/replica:0/task:0/gpu:0"]()]]
+2017-12-06 21:06:08.623040: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-06 21:06:08.678745: W tensorflow/core/framework/op_kernel.cc:1152] Invalid argument: You must feed a value for placeholder tensor 'X' with dtype float
+	 [[Node: X = Placeholder[dtype=DT_FLOAT, shape=[], _device="/job:localhost/replica:0/task:0/gpu:0"]()]]
+2017-12-06 21:06:23.563298: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-06 21:06:23.563358: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-06 21:06:23.563366: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-06 21:06:23.563373: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-06 21:06:23.563378: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-06 21:06:23.780553: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: Quadro M5000
+major: 5 minor: 2 memoryClockRate (GHz) 1.038
+pciBusID 0000:03:00.0
+Total memory: 7.93GiB
+Free memory: 193.06MiB
+2017-12-06 21:06:23.780596: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 
+2017-12-06 21:06:23.780604: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y 
+2017-12-06 21:06:23.780612: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-06 21:06:23.792673: E tensorflow/stream_executor/cuda/cuda_driver.cc:893] failed to allocate 193.06M (202440704 bytes) from device: CUDA_ERROR_OUT_OF_MEMORY
+2017-12-06 21:06:41.242012: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+[I 21:06:45.629 NotebookApp] Saving file at /10_introduction_to_artificial_neural_networks.ipynb
+[W 21:06:45.631 NotebookApp] Notebook 10_introduction_to_artificial_neural_networks.ipynb is not trusted
+2017-12-06 21:06:49.369463: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-06 21:06:49.384233: E tensorflow/stream_executor/cuda/cuda_driver.cc:859] could not allocate CUDA stream for context 0x61a3080: CUDA_ERROR_OUT_OF_MEMORY
+2017-12-06 21:06:49.384272: I tensorflow/stream_executor/stream_executor_pimpl.cc:650] failed to allocate stream; live stream count: 9
+2017-12-06 21:06:49.384279: E tensorflow/stream_executor/stream.cc:261] failed to allocate stream during initialization
+2017-12-06 21:06:49.398174: E tensorflow/stream_executor/cuda/cuda_driver.cc:859] could not allocate CUDA stream for context 0x61a3080: CUDA_ERROR_OUT_OF_MEMORY
+2017-12-06 21:06:49.398196: I tensorflow/stream_executor/stream_executor_pimpl.cc:650] failed to allocate stream; live stream count: 9
+2017-12-06 21:06:49.398202: E tensorflow/stream_executor/stream.cc:261] failed to allocate stream during initialization
+2017-12-06 21:06:49.412102: E tensorflow/stream_executor/cuda/cuda_driver.cc:859] could not allocate CUDA stream for context 0x61a3080: CUDA_ERROR_OUT_OF_MEMORY
+2017-12-06 21:06:49.412121: I tensorflow/stream_executor/stream_executor_pimpl.cc:650] failed to allocate stream; live stream count: 9
+2017-12-06 21:06:49.412127: E tensorflow/stream_executor/stream.cc:261] failed to allocate stream during initialization
+2017-12-06 21:06:49.425993: E tensorflow/stream_executor/cuda/cuda_driver.cc:859] could not allocate CUDA stream for context 0x61a3080: CUDA_ERROR_OUT_OF_MEMORY
+2017-12-06 21:06:49.426006: I tensorflow/stream_executor/stream_executor_pimpl.cc:650] failed to allocate stream; live stream count: 9
+2017-12-06 21:06:49.426011: E tensorflow/stream_executor/stream.cc:261] failed to allocate stream during initialization
+2017-12-06 21:06:49.451751: I tensorflow/stream_executor/stream.cc:1500] stream 0x6d66300 did not wait for stream: 0x6d81f00
+2017-12-06 21:06:49.451803: I tensorflow/stream_executor/stream.cc:4087] stream 0x6d66300 did not memcpy host-to-device; source: 0x2049e1200
+2017-12-06 21:06:49.451829: E tensorflow/stream_executor/stream.cc:289] Error recording event in stream: error recording CUDA event on stream 0xffffffffffffffff: CUDA_ERROR_INVALID_HANDLE; not marking stream as bad, as the Event object may be at fault. Monitor for further errors.
+2017-12-06 21:06:49.451875: F tensorflow/core/common_runtime/gpu/gpu_util.cc:343] CPU->GPU Memcpy failed
+[I 21:06:51.701 NotebookApp] KernelRestarter: restarting kernel (1/5)
+WARNING:root:kernel 1fbc49bf-3a5c-4ca5-b36c-77e5d9d22414 restarted
+2017-12-06 21:07:30.598925: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-06 21:07:30.598994: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-06 21:07:30.599002: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-06 21:07:30.599007: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-06 21:07:30.599013: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-06 21:07:30.834316: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: Quadro M5000
+major: 5 minor: 2 memoryClockRate (GHz) 1.038
+pciBusID 0000:03:00.0
+Total memory: 7.93GiB
+Free memory: 193.06MiB
+2017-12-06 21:07:30.834363: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 
+2017-12-06 21:07:30.834371: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y 
+2017-12-06 21:07:30.834381: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-06 21:07:30.847427: E tensorflow/stream_executor/cuda/cuda_driver.cc:893] failed to allocate 193.06M (202440704 bytes) from device: CUDA_ERROR_OUT_OF_MEMORY
+2017-12-06 21:07:42.131348: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-06 21:08:16.340213: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-06 21:08:16.880973: E tensorflow/stream_executor/cuda/cuda_blas.cc:365] failed to create cublas handle: CUBLAS_STATUS_NOT_INITIALIZED
+2017-12-06 21:08:16.881038: W tensorflow/stream_executor/stream.cc:1550] attempting to perform BLAS operation using StreamExecutor without BLAS support
+[I 21:08:46.228 NotebookApp] Saving file at /10_introduction_to_artificial_neural_networks.ipynb
+[W 21:08:46.230 NotebookApp] Notebook 10_introduction_to_artificial_neural_networks.ipynb is not trusted
+2017-12-06 21:17:27.221521: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-06 21:17:27.275009: W tensorflow/core/framework/op_kernel.cc:1152] Invalid argument: You must feed a value for placeholder tensor 'X' with dtype float
+	 [[Node: X = Placeholder[dtype=DT_FLOAT, shape=[], _device="/job:localhost/replica:0/task:0/gpu:0"]()]]
+[I 21:18:26.886 NotebookApp] Kernel restarted: 04edc7dd-9364-4cd3-a1c0-3b0a9b76e154
+2017-12-06 21:18:57.034130: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-06 21:18:57.034226: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-06 21:18:57.034281: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-06 21:18:57.034297: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-06 21:18:57.034309: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-06 21:18:57.285963: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: Quadro M5000
+major: 5 minor: 2 memoryClockRate (GHz) 1.038
+pciBusID 0000:03:00.0
+Total memory: 7.93GiB
+Free memory: 7.29GiB
+2017-12-06 21:18:57.286049: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 
+2017-12-06 21:18:57.286060: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y 
+2017-12-06 21:18:57.286081: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-06 21:19:24.270420: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+[I 21:20:46.156 NotebookApp] Saving file at /10_introduction_to_artificial_neural_networks.ipynb
+[W 21:20:46.158 NotebookApp] Notebook 10_introduction_to_artificial_neural_networks.ipynb is not trusted
+[I 21:22:14.651 NotebookApp] Kernel restarted: 04edc7dd-9364-4cd3-a1c0-3b0a9b76e154
+2017-12-06 21:22:43.898381: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-06 21:22:43.898459: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-06 21:22:43.898476: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-06 21:22:43.898487: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-06 21:22:43.898497: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-06 21:22:44.108533: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: Quadro M5000
+major: 5 minor: 2 memoryClockRate (GHz) 1.038
+pciBusID 0000:03:00.0
+Total memory: 7.93GiB
+Free memory: 7.23GiB
+2017-12-06 21:22:44.108585: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 
+2017-12-06 21:22:44.108593: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y 
+2017-12-06 21:22:44.108602: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+[W 21:28:10.069 NotebookApp] WebSocket ping timeout after 119984 ms.
+[E 21:28:10.425 NotebookApp] Uncaught exception GET /api/kernels/04edc7dd-9364-4cd3-a1c0-3b0a9b76e154/channels (10.24.12.6)
+    HTTPServerRequest(protocol='http', host='202.204.54.230:9312', method='GET', uri='/api/kernels/04edc7dd-9364-4cd3-a1c0-3b0a9b76e154/channels', version='HTTP/1.1', remote_ip='10.24.12.6', headers={'Connection': 'Upgrade', 'Sec-Websocket-Version': '13', 'Origin': 'http://202.204.54.230:9312', 'Host': '202.204.54.230:9312', 'Sec-Websocket-Key': 'uAgIcwsuAeIq/al9y04c+g==', 'Authorization': 'token bc309c0975e23caade135310e26e4ab040c5e9e958c7932f', 'Upgrade': 'websocket'})
+    Traceback (most recent call last):
+      File "/home/f1001/.pyenv/versions/3.5.4/lib/python3.5/site-packages/tornado/web.py", line 1467, in _stack_context_handle_exception
+        raise_exc_info((type, value, traceback))
+      File "<string>", line 4, in raise_exc_info
+      File "/home/f1001/.pyenv/versions/3.5.4/lib/python3.5/site-packages/tornado/stack_context.py", line 316, in wrapped
+        ret = fn(*args, **kwargs)
+      File "/home/f1001/.pyenv/versions/3.5.4/lib/python3.5/site-packages/zmq/eventloop/zmqstream.py", line 191, in <lambda>
+        self.on_recv(lambda msg: callback(self, msg), copy=copy)
+      File "/home/f1001/.pyenv/versions/3.5.4/lib/python3.5/site-packages/notebook/services/kernels/handlers.py", line 418, in _on_zmq_reply
+        super(ZMQChannelsHandler, self)._on_zmq_reply(stream, msg)
+      File "/home/f1001/.pyenv/versions/3.5.4/lib/python3.5/site-packages/notebook/base/zmqhandlers.py", line 250, in _on_zmq_reply
+        self.write_message(msg, binary=isinstance(msg, bytes))
+      File "/home/f1001/.pyenv/versions/3.5.4/lib/python3.5/site-packages/tornado/websocket.py", line 249, in write_message
+        raise WebSocketClosedError()
+    tornado.websocket.WebSocketClosedError
+[E 21:28:12.182 NotebookApp] Uncaught exception GET /api/kernels/04edc7dd-9364-4cd3-a1c0-3b0a9b76e154/channels (10.24.12.6)
+    HTTPServerRequest(protocol='http', host='202.204.54.230:9312', method='GET', uri='/api/kernels/04edc7dd-9364-4cd3-a1c0-3b0a9b76e154/channels', version='HTTP/1.1', remote_ip='10.24.12.6', headers={'Connection': 'Upgrade', 'Sec-Websocket-Version': '13', 'Origin': 'http://202.204.54.230:9312', 'Host': '202.204.54.230:9312', 'Sec-Websocket-Key': 'uAgIcwsuAeIq/al9y04c+g==', 'Authorization': 'token bc309c0975e23caade135310e26e4ab040c5e9e958c7932f', 'Upgrade': 'websocket'})
+    Traceback (most recent call last):
+      File "/home/f1001/.pyenv/versions/3.5.4/lib/python3.5/site-packages/tornado/web.py", line 1467, in _stack_context_handle_exception
+        raise_exc_info((type, value, traceback))
+      File "<string>", line 4, in raise_exc_info
+      File "/home/f1001/.pyenv/versions/3.5.4/lib/python3.5/site-packages/tornado/stack_context.py", line 316, in wrapped
+        ret = fn(*args, **kwargs)
+      File "/home/f1001/.pyenv/versions/3.5.4/lib/python3.5/site-packages/zmq/eventloop/zmqstream.py", line 191, in <lambda>
+        self.on_recv(lambda msg: callback(self, msg), copy=copy)
+      File "/home/f1001/.pyenv/versions/3.5.4/lib/python3.5/site-packages/notebook/services/kernels/handlers.py", line 418, in _on_zmq_reply
+        super(ZMQChannelsHandler, self)._on_zmq_reply(stream, msg)
+      File "/home/f1001/.pyenv/versions/3.5.4/lib/python3.5/site-packages/notebook/base/zmqhandlers.py", line 250, in _on_zmq_reply
+        self.write_message(msg, binary=isinstance(msg, bytes))
+      File "/home/f1001/.pyenv/versions/3.5.4/lib/python3.5/site-packages/tornado/websocket.py", line 249, in write_message
+        raise WebSocketClosedError()
+    tornado.websocket.WebSocketClosedError
+[E 21:28:13.906 NotebookApp] Uncaught exception GET /api/kernels/04edc7dd-9364-4cd3-a1c0-3b0a9b76e154/channels (10.24.12.6)
+    HTTPServerRequest(protocol='http', host='202.204.54.230:9312', method='GET', uri='/api/kernels/04edc7dd-9364-4cd3-a1c0-3b0a9b76e154/channels', version='HTTP/1.1', remote_ip='10.24.12.6', headers={'Connection': 'Upgrade', 'Sec-Websocket-Version': '13', 'Origin': 'http://202.204.54.230:9312', 'Host': '202.204.54.230:9312', 'Sec-Websocket-Key': 'uAgIcwsuAeIq/al9y04c+g==', 'Authorization': 'token bc309c0975e23caade135310e26e4ab040c5e9e958c7932f', 'Upgrade': 'websocket'})
+    Traceback (most recent call last):
+      File "/home/f1001/.pyenv/versions/3.5.4/lib/python3.5/site-packages/tornado/web.py", line 1467, in _stack_context_handle_exception
+        raise_exc_info((type, value, traceback))
+      File "<string>", line 4, in raise_exc_info
+      File "/home/f1001/.pyenv/versions/3.5.4/lib/python3.5/site-packages/tornado/stack_context.py", line 316, in wrapped
+        ret = fn(*args, **kwargs)
+      File "/home/f1001/.pyenv/versions/3.5.4/lib/python3.5/site-packages/zmq/eventloop/zmqstream.py", line 191, in <lambda>
+        self.on_recv(lambda msg: callback(self, msg), copy=copy)
+      File "/home/f1001/.pyenv/versions/3.5.4/lib/python3.5/site-packages/notebook/services/kernels/handlers.py", line 418, in _on_zmq_reply
+        super(ZMQChannelsHandler, self)._on_zmq_reply(stream, msg)
+      File "/home/f1001/.pyenv/versions/3.5.4/lib/python3.5/site-packages/notebook/base/zmqhandlers.py", line 250, in _on_zmq_reply
+        self.write_message(msg, binary=isinstance(msg, bytes))
+      File "/home/f1001/.pyenv/versions/3.5.4/lib/python3.5/site-packages/tornado/websocket.py", line 249, in write_message
+        raise WebSocketClosedError()
+    tornado.websocket.WebSocketClosedError
+[I 21:28:15.069 NotebookApp] Starting buffering for 04edc7dd-9364-4cd3-a1c0-3b0a9b76e154:aef71898-6f19ebc914c49682eeea6a5b
+[W 21:28:16.457 NotebookApp] WebSocket ping timeout after 119995 ms.
+[W 21:28:20.631 NotebookApp] WebSocket ping timeout after 119884 ms.
+[I 21:28:21.458 NotebookApp] Starting buffering for 1fbc49bf-3a5c-4ca5-b36c-77e5d9d22414:0ACDDEBDF8634452836DF09045A48A7D
+[I 21:28:25.633 NotebookApp] Starting buffering for b011c63d-f9aa-48e6-b70a-006aff790a4d:044b159c-724ca4bb4d9bf07e57299cf5
+[W 21:28:33.183 NotebookApp] WebSocket ping timeout after 119944 ms.
+[I 21:28:38.185 NotebookApp] Starting buffering for c349062b-61a7-41b4-9d2d-57caf96cf8d5:4a033b1e-c95fac3fd8f65b5647265ad7
+[I 21:48:56.673 NotebookApp] Adapting to protocol v5.1 for kernel 1fbc49bf-3a5c-4ca5-b36c-77e5d9d22414
+[I 21:48:56.674 NotebookApp] Restoring connection for 1fbc49bf-3a5c-4ca5-b36c-77e5d9d22414:0ACDDEBDF8634452836DF09045A48A7D
+[I 00:51:38.323 NotebookApp] Kernel restarted: 04edc7dd-9364-4cd3-a1c0-3b0a9b76e154
+[I 00:51:56.742 NotebookApp] 302 GET / (10.13.56.211) 1.01ms
+[I 00:51:56.749 NotebookApp] 302 GET /tree? (10.13.56.211) 1.26ms
+[I 00:51:56.791 NotebookApp] Kernel started: 410e5c49-f122-4a2f-92dd-92b09a1187c9
+[W 00:51:56.803 NotebookApp] No session ID specified
+[I 00:51:57.495 NotebookApp] Adapting to protocol v5.1 for kernel 410e5c49-f122-4a2f-92dd-92b09a1187c9
+2017-12-07 00:52:12.435536: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-07 00:52:12.435618: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-07 00:52:12.435636: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-07 00:52:12.435647: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-07 00:52:12.435658: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-07 00:52:12.681338: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: Quadro M5000
+major: 5 minor: 2 memoryClockRate (GHz) 1.038
+pciBusID 0000:03:00.0
+Total memory: 7.93GiB
+Free memory: 7.19GiB
+2017-12-07 00:52:12.681435: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 
+2017-12-07 00:52:12.681451: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y 
+2017-12-07 00:52:12.681479: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+[I 01:22:10.346 NotebookApp] Kernel restarted: 410e5c49-f122-4a2f-92dd-92b09a1187c9
+[I 01:27:34.260 NotebookApp] Kernel restarted: 410e5c49-f122-4a2f-92dd-92b09a1187c9
+[I 01:28:57.495 NotebookApp] Kernel restarted: 410e5c49-f122-4a2f-92dd-92b09a1187c9
+[I 01:30:36.956 NotebookApp] Kernel restarted: 410e5c49-f122-4a2f-92dd-92b09a1187c9
+[I 01:31:25.594 NotebookApp] Kernel restarted: 410e5c49-f122-4a2f-92dd-92b09a1187c9
+[I 01:33:57.048 NotebookApp] Kernel restarted: 410e5c49-f122-4a2f-92dd-92b09a1187c9
+[W 01:42:36.811 NotebookApp] Notebook 09_up_and_running_with_tensorflow.ipynb is not trusted
+[W 01:42:36.897 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js (10.13.56.211) 1.42ms referer=http://202.204.54.230:9312/notebooks/09_up_and_running_with_tensorflow.ipynb
+[I 01:42:41.650 NotebookApp] Kernel started: b6091c84-e25f-449a-a005-ca256bc18df5
+[I 01:42:42.357 NotebookApp] Adapting to protocol v5.1 for kernel b6091c84-e25f-449a-a005-ca256bc18df5
+2017-12-07 01:50:24.897214: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-07 01:50:24.897277: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-07 01:50:24.897290: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-07 01:50:24.897298: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-07 01:50:24.897306: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-07 01:50:25.120682: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: Quadro M5000
+major: 5 minor: 2 memoryClockRate (GHz) 1.038
+pciBusID 0000:03:00.0
+Total memory: 7.93GiB
+Free memory: 7.19GiB
+2017-12-07 01:50:25.120760: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 
+2017-12-07 01:50:25.120775: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y 
+2017-12-07 01:50:25.120797: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-07 01:50:37.761203: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-07 01:50:43.081567: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-07 01:51:24.636526: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-07 01:51:35.895067: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-07 01:52:40.179556: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-07 01:58:13.177893: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-07 02:04:08.035492: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+[W 08:21:12.361 NotebookApp] WebSocket ping timeout after 119945 ms.
+[I 08:21:17.362 NotebookApp] Starting buffering for b6091c84-e25f-449a-a005-ca256bc18df5:8EEBC8832C5347C68961CB991325C07B
+[W 08:21:26.674 NotebookApp] WebSocket ping timeout after 119972 ms.
+[W 08:21:27.497 NotebookApp] WebSocket ping timeout after 119982 ms.
+[I 08:21:31.676 NotebookApp] Starting buffering for 1fbc49bf-3a5c-4ca5-b36c-77e5d9d22414:0ACDDEBDF8634452836DF09045A48A7D
+[I 08:21:32.498 NotebookApp] Starting buffering for 410e5c49-f122-4a2f-92dd-92b09a1187c9:d7f08dc5-b181db6593ce3e36acf64d00
+[I 12:47:25.419 NotebookApp] Adapting to protocol v5.1 for kernel b6091c84-e25f-449a-a005-ca256bc18df5
+[I 12:47:25.420 NotebookApp] Restoring connection for b6091c84-e25f-449a-a005-ca256bc18df5:8EEBC8832C5347C68961CB991325C07B
+[I 12:47:41.387 NotebookApp] Adapting to protocol v5.1 for kernel 1fbc49bf-3a5c-4ca5-b36c-77e5d9d22414
+[I 12:47:41.388 NotebookApp] Restoring connection for 1fbc49bf-3a5c-4ca5-b36c-77e5d9d22414:0ACDDEBDF8634452836DF09045A48A7D
+[W 13:39:11.388 NotebookApp] WebSocket ping timeout after 119925 ms.
+[I 13:39:16.406 NotebookApp] Starting buffering for 1fbc49bf-3a5c-4ca5-b36c-77e5d9d22414:0ACDDEBDF8634452836DF09045A48A7D
+[W 13:39:25.420 NotebookApp] WebSocket ping timeout after 119930 ms.
+[I 13:39:30.421 NotebookApp] Starting buffering for b6091c84-e25f-449a-a005-ca256bc18df5:8EEBC8832C5347C68961CB991325C07B
+[I 14:09:32.863 NotebookApp] Adapting to protocol v5.1 for kernel 1fbc49bf-3a5c-4ca5-b36c-77e5d9d22414
+[I 14:09:32.864 NotebookApp] Restoring connection for 1fbc49bf-3a5c-4ca5-b36c-77e5d9d22414:0ACDDEBDF8634452836DF09045A48A7D
+[I 14:09:46.840 NotebookApp] Adapting to protocol v5.1 for kernel b6091c84-e25f-449a-a005-ca256bc18df5
+[I 14:09:46.841 NotebookApp] Restoring connection for b6091c84-e25f-449a-a005-ca256bc18df5:8EEBC8832C5347C68961CB991325C07B
+[W 14:19:46.842 NotebookApp] WebSocket ping timeout after 119962 ms.
+[I 14:19:51.843 NotebookApp] Starting buffering for b6091c84-e25f-449a-a005-ca256bc18df5:8EEBC8832C5347C68961CB991325C07B
+[W 14:20:02.864 NotebookApp] WebSocket ping timeout after 119997 ms.
+[I 14:20:07.865 NotebookApp] Starting buffering for 1fbc49bf-3a5c-4ca5-b36c-77e5d9d22414:0ACDDEBDF8634452836DF09045A48A7D
+[I 15:18:41.875 NotebookApp] Adapting to protocol v5.1 for kernel b6091c84-e25f-449a-a005-ca256bc18df5
+[I 15:18:41.876 NotebookApp] Restoring connection for b6091c84-e25f-449a-a005-ca256bc18df5:8EEBC8832C5347C68961CB991325C07B
+[I 15:18:57.815 NotebookApp] Adapting to protocol v5.1 for kernel 1fbc49bf-3a5c-4ca5-b36c-77e5d9d22414
+[I 15:18:57.816 NotebookApp] Restoring connection for 1fbc49bf-3a5c-4ca5-b36c-77e5d9d22414:0ACDDEBDF8634452836DF09045A48A7D
+[W 16:13:11.876 NotebookApp] WebSocket ping timeout after 119970 ms.
+[I 16:13:16.878 NotebookApp] Starting buffering for b6091c84-e25f-449a-a005-ca256bc18df5:8EEBC8832C5347C68961CB991325C07B
+[W 16:13:27.817 NotebookApp] WebSocket ping timeout after 119937 ms.
+[I 16:13:32.818 NotebookApp] Starting buffering for 1fbc49bf-3a5c-4ca5-b36c-77e5d9d22414:0ACDDEBDF8634452836DF09045A48A7D
+[I 16:36:12.448 NotebookApp] Adapting to protocol v5.1 for kernel b6091c84-e25f-449a-a005-ca256bc18df5
+[I 16:36:12.449 NotebookApp] Restoring connection for b6091c84-e25f-449a-a005-ca256bc18df5:8EEBC8832C5347C68961CB991325C07B
+[I 16:36:28.451 NotebookApp] Adapting to protocol v5.1 for kernel 1fbc49bf-3a5c-4ca5-b36c-77e5d9d22414
+[I 16:36:28.452 NotebookApp] Restoring connection for 1fbc49bf-3a5c-4ca5-b36c-77e5d9d22414:0ACDDEBDF8634452836DF09045A48A7D
+[W 16:51:58.452 NotebookApp] WebSocket ping timeout after 119992 ms.
+[I 16:52:03.453 NotebookApp] Starting buffering for 1fbc49bf-3a5c-4ca5-b36c-77e5d9d22414:0ACDDEBDF8634452836DF09045A48A7D
+[W 16:52:12.449 NotebookApp] WebSocket ping timeout after 119952 ms.
+[I 16:52:17.450 NotebookApp] Starting buffering for b6091c84-e25f-449a-a005-ca256bc18df5:8EEBC8832C5347C68961CB991325C07B
+[I 16:53:33.942 NotebookApp] Adapting to protocol v5.1 for kernel 1fbc49bf-3a5c-4ca5-b36c-77e5d9d22414
+[I 16:53:33.943 NotebookApp] Restoring connection for 1fbc49bf-3a5c-4ca5-b36c-77e5d9d22414:0ACDDEBDF8634452836DF09045A48A7D
+[I 16:53:47.935 NotebookApp] Adapting to protocol v5.1 for kernel b6091c84-e25f-449a-a005-ca256bc18df5
+[I 16:53:47.936 NotebookApp] Restoring connection for b6091c84-e25f-449a-a005-ca256bc18df5:8EEBC8832C5347C68961CB991325C07B
+[W 16:55:03.943 NotebookApp] WebSocket ping timeout after 90000 ms.
+[I 16:55:08.944 NotebookApp] Starting buffering for 1fbc49bf-3a5c-4ca5-b36c-77e5d9d22414:0ACDDEBDF8634452836DF09045A48A7D
+[W 16:55:17.936 NotebookApp] WebSocket ping timeout after 90000 ms.
+[I 16:55:22.937 NotebookApp] Starting buffering for b6091c84-e25f-449a-a005-ca256bc18df5:8EEBC8832C5347C68961CB991325C07B
+[I 17:20:23.680 NotebookApp] Adapting to protocol v5.1 for kernel 1fbc49bf-3a5c-4ca5-b36c-77e5d9d22414
+[I 17:20:23.681 NotebookApp] Restoring connection for 1fbc49bf-3a5c-4ca5-b36c-77e5d9d22414:0ACDDEBDF8634452836DF09045A48A7D
+[I 17:20:37.657 NotebookApp] Adapting to protocol v5.1 for kernel b6091c84-e25f-449a-a005-ca256bc18df5
+[I 17:20:37.658 NotebookApp] Restoring connection for b6091c84-e25f-449a-a005-ca256bc18df5:8EEBC8832C5347C68961CB991325C07B
+[W 17:22:53.682 NotebookApp] WebSocket ping timeout after 119839 ms.
+[I 17:22:58.683 NotebookApp] Starting buffering for 1fbc49bf-3a5c-4ca5-b36c-77e5d9d22414:0ACDDEBDF8634452836DF09045A48A7D
+[W 17:23:07.658 NotebookApp] WebSocket ping timeout after 119973 ms.
+[I 17:23:12.659 NotebookApp] Starting buffering for b6091c84-e25f-449a-a005-ca256bc18df5:8EEBC8832C5347C68961CB991325C07B
+[I 17:31:25.312 NotebookApp] Adapting to protocol v5.1 for kernel 1fbc49bf-3a5c-4ca5-b36c-77e5d9d22414
+[I 17:31:25.313 NotebookApp] Restoring connection for 1fbc49bf-3a5c-4ca5-b36c-77e5d9d22414:0ACDDEBDF8634452836DF09045A48A7D
+[I 17:31:39.311 NotebookApp] Adapting to protocol v5.1 for kernel b6091c84-e25f-449a-a005-ca256bc18df5
+[I 17:31:39.312 NotebookApp] Restoring connection for b6091c84-e25f-449a-a005-ca256bc18df5:8EEBC8832C5347C68961CB991325C07B
+[W 17:39:25.313 NotebookApp] WebSocket ping timeout after 119828 ms.
+[I 17:39:30.314 NotebookApp] Starting buffering for 1fbc49bf-3a5c-4ca5-b36c-77e5d9d22414:0ACDDEBDF8634452836DF09045A48A7D
+[W 17:39:39.312 NotebookApp] WebSocket ping timeout after 119696 ms.
+[I 17:39:44.314 NotebookApp] Starting buffering for b6091c84-e25f-449a-a005-ca256bc18df5:8EEBC8832C5347C68961CB991325C07B
+[I 22:01:56.817 NotebookApp] Adapting to protocol v5.1 for kernel 1fbc49bf-3a5c-4ca5-b36c-77e5d9d22414
+[I 22:01:56.819 NotebookApp] Restoring connection for 1fbc49bf-3a5c-4ca5-b36c-77e5d9d22414:0ACDDEBDF8634452836DF09045A48A7D
+[I 22:02:11.772 NotebookApp] Adapting to protocol v5.1 for kernel b6091c84-e25f-449a-a005-ca256bc18df5
+[I 22:02:11.774 NotebookApp] Restoring connection for b6091c84-e25f-449a-a005-ca256bc18df5:8EEBC8832C5347C68961CB991325C07B
+[I 08:24:07.622 NotebookApp] Starting buffering for 1fbc49bf-3a5c-4ca5-b36c-77e5d9d22414:0ACDDEBDF8634452836DF09045A48A7D
+[I 08:24:10.631 NotebookApp] Starting buffering for b6091c84-e25f-449a-a005-ca256bc18df5:8EEBC8832C5347C68961CB991325C07B
+[I 13:51:57.869 NotebookApp] 302 GET /?token=bc309c0975e23caade135310e26e4ab040c5e9e958c7932f (10.24.12.6) 1.36ms
+[W 13:52:04.124 NotebookApp] Notebook 11_deep_learning.ipynb is not trusted
+[W 13:52:04.254 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js (10.24.12.6) 1.35ms referer=http://202.204.54.230:9312/notebooks/11_deep_learning.ipynb
+[I 13:52:12.899 NotebookApp] Kernel started: 4574aa33-aa72-44da-baac-84af2a1e0130
+[I 13:52:13.614 NotebookApp] Adapting to protocol v5.1 for kernel 4574aa33-aa72-44da-baac-84af2a1e0130
+[I 13:54:13.998 NotebookApp] Saving file at /11_deep_learning.ipynb
+[W 13:54:14.003 NotebookApp] Notebook 11_deep_learning.ipynb is not trusted
+[I 14:02:54.165 NotebookApp] 302 GET / (10.24.12.6) 0.85ms
+[I 14:02:54.170 NotebookApp] 302 GET /tree? (10.24.12.6) 1.12ms
+[I 14:02:54.209 NotebookApp] Kernel started: e423e94a-11a0-42a5-9d50-985d808decdf
+[W 14:02:54.233 NotebookApp] No session ID specified
+[I 14:02:54.905 NotebookApp] Adapting to protocol v5.1 for kernel e423e94a-11a0-42a5-9d50-985d808decdf
+[I 14:04:13.733 NotebookApp] Saving file at /11_deep_learning.ipynb
+[W 14:04:13.737 NotebookApp] Notebook 11_deep_learning.ipynb is not trusted
+[W 16:29:13.616 NotebookApp] WebSocket ping timeout after 119937 ms.
+[I 16:29:18.617 NotebookApp] Starting buffering for 4574aa33-aa72-44da-baac-84af2a1e0130:1B470A335E3A4CA281D175A633E2EB31
+[W 16:29:24.907 NotebookApp] WebSocket ping timeout after 119997 ms.
+[I 16:29:29.907 NotebookApp] Starting buffering for e423e94a-11a0-42a5-9d50-985d808decdf:fded3488-ddf6ea60742a852a182f0c0a
+[I 17:11:51.935 NotebookApp] Adapting to protocol v5.1 for kernel 4574aa33-aa72-44da-baac-84af2a1e0130
+[I 17:11:51.937 NotebookApp] Restoring connection for 4574aa33-aa72-44da-baac-84af2a1e0130:1B470A335E3A4CA281D175A633E2EB31
+[W 17:29:51.937 NotebookApp] WebSocket ping timeout after 119970 ms.
+[I 17:29:56.938 NotebookApp] Starting buffering for 4574aa33-aa72-44da-baac-84af2a1e0130:1B470A335E3A4CA281D175A633E2EB31
+[I 17:46:38.377 NotebookApp] Adapting to protocol v5.1 for kernel 4574aa33-aa72-44da-baac-84af2a1e0130
+[I 17:46:38.378 NotebookApp] Restoring connection for 4574aa33-aa72-44da-baac-84af2a1e0130:1B470A335E3A4CA281D175A633E2EB31
+[W 20:24:36.308 NotebookApp] Notebook 11_deep_learning.ipynb is not trusted
+[W 20:24:36.437 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js (10.24.12.6) 1.39ms referer=http://202.204.54.230:9312/notebooks/11_deep_learning.ipynb
+[I 20:24:46.668 NotebookApp] Adapting to protocol v5.1 for kernel 4574aa33-aa72-44da-baac-84af2a1e0130
+[I 20:24:47.667 NotebookApp] Starting buffering for 4574aa33-aa72-44da-baac-84af2a1e0130:4EF5B6102E684C5E870C8780F8A19BA4
+[W 20:24:48.326 NotebookApp] Notebook 11_deep_learning.ipynb is not trusted
+[W 20:24:48.455 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js (10.24.12.6) 1.47ms referer=http://202.204.54.230:9312/notebooks/11_deep_learning.ipynb
+[I 20:24:57.430 NotebookApp] Adapting to protocol v5.1 for kernel 4574aa33-aa72-44da-baac-84af2a1e0130
+[I 20:38:57.048 NotebookApp] KernelRestarter: restarting kernel (1/5)
+[I 20:47:58.777 NotebookApp] 302 GET / (10.24.12.6) 1.13ms
+[I 20:47:58.801 NotebookApp] 302 GET /tree? (10.24.12.6) 1.23ms
+[I 20:47:58.843 NotebookApp] Kernel started: 56410de2-f139-4b20-8cbb-da05fc51e392
+[W 20:47:58.855 NotebookApp] No session ID specified
+[I 20:47:59.556 NotebookApp] Adapting to protocol v5.1 for kernel 56410de2-f139-4b20-8cbb-da05fc51e392
+[I 21:02:04.511 NotebookApp] Kernel restarted: 56410de2-f139-4b20-8cbb-da05fc51e392
+[W 21:36:27.431 NotebookApp] WebSocket ping timeout after 119997 ms.
+[W 21:36:29.558 NotebookApp] WebSocket ping timeout after 119943 ms.
+[I 21:36:32.432 NotebookApp] Starting buffering for 4574aa33-aa72-44da-baac-84af2a1e0130:3A4C37603590431E90FBBBB8366CC05C
+[I 21:36:34.559 NotebookApp] Starting buffering for 56410de2-f139-4b20-8cbb-da05fc51e392:f2c07511-8cf9f9514efc95bf837dcd17
+[I 21:55:26.435 NotebookApp] Adapting to protocol v5.1 for kernel 4574aa33-aa72-44da-baac-84af2a1e0130
+[I 21:55:26.436 NotebookApp] Restoring connection for 4574aa33-aa72-44da-baac-84af2a1e0130:3A4C37603590431E90FBBBB8366CC05C
+[I 00:24:42.205 NotebookApp] Kernel restarted: 56410de2-f139-4b20-8cbb-da05fc51e392
+[I 00:24:45.647 NotebookApp] 302 GET / (10.13.56.211) 1.15ms
+[I 00:24:45.652 NotebookApp] 302 GET /tree? (10.13.56.211) 1.25ms
+[I 00:24:45.711 NotebookApp] Kernel started: dd8ed203-9904-4330-9e2b-efb7e35e2d11
+[W 00:24:45.723 NotebookApp] No session ID specified
+[I 00:24:46.431 NotebookApp] Adapting to protocol v5.1 for kernel dd8ed203-9904-4330-9e2b-efb7e35e2d11
+2017-12-09 00:58:46.031759: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-09 00:58:46.031824: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-09 00:58:46.031841: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-09 00:58:46.031852: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-09 00:58:46.031863: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-09 00:58:46.257834: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: Quadro M5000
+major: 5 minor: 2 memoryClockRate (GHz) 1.038
+pciBusID 0000:03:00.0
+Total memory: 7.93GiB
+Free memory: 6.89GiB
+2017-12-09 00:58:46.257918: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 
+2017-12-09 00:58:46.257931: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y 
+2017-12-09 00:58:46.257948: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 00:59:39.340238: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 00:59:57.418794: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 01:02:09.423149: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+[W 01:06:26.436 NotebookApp] WebSocket ping timeout after 119912 ms.
+[I 01:06:31.438 NotebookApp] Starting buffering for 4574aa33-aa72-44da-baac-84af2a1e0130:3A4C37603590431E90FBBBB8366CC05C
+[W 01:06:46.433 NotebookApp] WebSocket ping timeout after 119954 ms.
+[I 01:06:51.434 NotebookApp] Starting buffering for dd8ed203-9904-4330-9e2b-efb7e35e2d11:b032fdfe-045589354b5852e8d2bfed59
+[I 08:19:19.452 NotebookApp] Adapting to protocol v5.1 for kernel 4574aa33-aa72-44da-baac-84af2a1e0130
+[I 08:19:19.453 NotebookApp] Restoring connection for 4574aa33-aa72-44da-baac-84af2a1e0130:3A4C37603590431E90FBBBB8366CC05C
+[W 08:54:19.453 NotebookApp] WebSocket ping timeout after 119890 ms.
+[I 08:54:24.454 NotebookApp] Starting buffering for 4574aa33-aa72-44da-baac-84af2a1e0130:3A4C37603590431E90FBBBB8366CC05C
+[I 09:13:32.973 NotebookApp] Adapting to protocol v5.1 for kernel 4574aa33-aa72-44da-baac-84af2a1e0130
+[I 09:13:32.974 NotebookApp] Restoring connection for 4574aa33-aa72-44da-baac-84af2a1e0130:3A4C37603590431E90FBBBB8366CC05C
+[I 09:34:25.327 NotebookApp] Kernel restarted: dd8ed203-9904-4330-9e2b-efb7e35e2d11
+[I 09:34:39.995 NotebookApp] 302 GET / (10.24.12.6) 1.10ms
+[I 09:34:40.000 NotebookApp] 302 GET /tree? (10.24.12.6) 1.16ms
+[I 09:34:40.032 NotebookApp] Kernel started: aa7845ed-12a8-4e10-8625-365fe57e5727
+[W 09:34:40.042 NotebookApp] No session ID specified
+[I 09:34:40.783 NotebookApp] Adapting to protocol v5.1 for kernel aa7845ed-12a8-4e10-8625-365fe57e5727
+[I 09:39:27.071 NotebookApp] Saving file at /11_deep_learning.ipynb
+[W 09:39:27.077 NotebookApp] Notebook 11_deep_learning.ipynb is not trusted
+[I 09:47:40.833 NotebookApp] Saving file at /11_deep_learning.ipynb
+[W 09:47:40.838 NotebookApp] Notebook 11_deep_learning.ipynb is not trusted
+[I 09:53:03.115 NotebookApp] Saving file at /11_deep_learning.ipynb
+[W 09:53:03.121 NotebookApp] Notebook 11_deep_learning.ipynb is not trusted
+[I 10:44:04.319 NotebookApp] Kernel restarted: aa7845ed-12a8-4e10-8625-365fe57e5727
+2017-12-09 10:45:47.807719: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-09 10:45:47.807786: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-09 10:45:47.807795: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-09 10:45:47.807802: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-09 10:45:47.807808: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-09 10:45:48.017719: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: Quadro M5000
+major: 5 minor: 2 memoryClockRate (GHz) 1.038
+pciBusID 0000:03:00.0
+Total memory: 7.93GiB
+Free memory: 6.89GiB
+2017-12-09 10:45:48.017788: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 
+2017-12-09 10:45:48.017797: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y 
+2017-12-09 10:45:48.017806: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 10:46:13.410744: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 10:58:28.156951: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 11:02:14.594910: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 11:05:54.551283: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 11:07:01.382647: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 11:11:13.267810: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 11:11:23.426022: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 11:11:34.615998: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 11:11:46.199801: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 11:11:51.537042: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 11:11:55.621046: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 11:12:00.371087: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 11:12:24.966453: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 11:12:49.516080: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 11:13:19.747491: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 11:13:46.420086: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 11:14:22.211123: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 11:14:51.919083: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 11:14:58.043479: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 11:15:04.012018: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 11:15:13.110088: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 11:15:19.768118: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 11:15:25.959253: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 11:15:31.842494: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 11:15:36.565506: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 11:15:41.154825: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 11:15:47.583551: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 11:17:47.271479: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 11:20:48.570254: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 11:23:29.488835: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 11:23:41.545967: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 11:23:51.344192: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 11:24:07.138712: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 11:24:18.964681: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 11:24:39.223180: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 11:24:52.165856: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+[I 11:25:17.999 NotebookApp] Kernel interrupted: aa7845ed-12a8-4e10-8625-365fe57e5727
+[I 11:25:19.804 NotebookApp] Kernel interrupted: aa7845ed-12a8-4e10-8625-365fe57e5727
+[I 11:25:20.225 NotebookApp] Kernel interrupted: aa7845ed-12a8-4e10-8625-365fe57e5727
+[I 11:25:46.059 NotebookApp] Kernel restarted: aa7845ed-12a8-4e10-8625-365fe57e5727
+2017-12-09 11:26:28.780409: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-09 11:26:28.780476: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-09 11:26:28.780485: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-09 11:26:28.780492: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-09 11:26:28.780511: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-09 11:26:29.006282: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: Quadro M5000
+major: 5 minor: 2 memoryClockRate (GHz) 1.038
+pciBusID 0000:03:00.0
+Total memory: 7.93GiB
+Free memory: 6.89GiB
+2017-12-09 11:26:29.006352: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 
+2017-12-09 11:26:29.006365: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y 
+2017-12-09 11:26:29.006382: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+2017-12-09 11:35:48.166523: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+[I 11:43:52.263 NotebookApp] Starting buffering for 4574aa33-aa72-44da-baac-84af2a1e0130:3A4C37603590431E90FBBBB8366CC05C
+[W 11:44:03.277 NotebookApp] Notebook 11_deep_learning.ipynb is not trusted
+[W 11:44:03.406 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js (10.24.12.6) 1.52ms referer=http://202.204.54.230:9312/notebooks/11_deep_learning.ipynb
+[I 11:44:05.277 NotebookApp] Starting buffering for aa7845ed-12a8-4e10-8625-365fe57e5727:d8970da3-dbdc9303520402a94dad3971
+[I 11:44:07.713 NotebookApp] Kernel shutdown: aa7845ed-12a8-4e10-8625-365fe57e5727
+[I 11:44:17.221 NotebookApp] Adapting to protocol v5.1 for kernel 4574aa33-aa72-44da-baac-84af2a1e0130
+[I 11:45:43.417 NotebookApp] 302 GET / (10.24.12.6) 0.86ms
+[I 11:45:43.422 NotebookApp] 302 GET /tree? (10.24.12.6) 1.10ms
+[I 11:45:43.454 NotebookApp] Kernel started: 1e562538-5476-4448-a905-f63ea1c824fa
+[W 11:45:43.465 NotebookApp] No session ID specified
+[I 11:45:44.172 NotebookApp] Adapting to protocol v5.1 for kernel 1e562538-5476-4448-a905-f63ea1c824fa
+2017-12-09 11:46:09.271472: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-09 11:46:09.271540: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-09 11:46:09.271549: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-09 11:46:09.271556: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-09 11:46:09.271563: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-09 11:46:09.496344: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: Quadro M5000
+major: 5 minor: 2 memoryClockRate (GHz) 1.038
+pciBusID 0000:03:00.0
+Total memory: 7.93GiB
+Free memory: 6.89GiB
+2017-12-09 11:46:09.496397: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 
+2017-12-09 11:46:09.496406: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y 
+2017-12-09 11:46:09.496416: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M5000, pci bus id: 0000:03:00.0)
+[I 11:50:16.663 NotebookApp] Saving file at /11_deep_learning.ipynb
+[W 11:50:16.668 NotebookApp] Notebook 11_deep_learning.ipynb is not trusted
+[W 12:11:44.174 NotebookApp] WebSocket ping timeout after 119910 ms.
+[W 12:11:47.222 NotebookApp] WebSocket ping timeout after 119887 ms.
+[I 12:11:49.175 NotebookApp] Starting buffering for 1e562538-5476-4448-a905-f63ea1c824fa:3206d51d-465cacb35747dff79817f116
+[I 12:11:52.223 NotebookApp] Starting buffering for 4574aa33-aa72-44da-baac-84af2a1e0130:868EC50FCA8C462C86ED58F187788D1E
+[I 13:02:54.315 NotebookApp] Adapting to protocol v5.1 for kernel 4574aa33-aa72-44da-baac-84af2a1e0130
+[I 13:02:54.316 NotebookApp] Restoring connection for 4574aa33-aa72-44da-baac-84af2a1e0130:868EC50FCA8C462C86ED58F187788D1E
+[W 13:56:24.316 NotebookApp] WebSocket ping timeout after 119996 ms.
+[I 13:56:29.318 NotebookApp] Starting buffering for 4574aa33-aa72-44da-baac-84af2a1e0130:868EC50FCA8C462C86ED58F187788D1E
+[I 14:45:31.064 NotebookApp] Adapting to protocol v5.1 for kernel 4574aa33-aa72-44da-baac-84af2a1e0130
+[I 14:45:31.066 NotebookApp] Restoring connection for 4574aa33-aa72-44da-baac-84af2a1e0130:868EC50FCA8C462C86ED58F187788D1E
+[W 15:08:01.066 NotebookApp] WebSocket ping timeout after 119996 ms.
+[I 15:08:06.067 NotebookApp] Starting buffering for 4574aa33-aa72-44da-baac-84af2a1e0130:868EC50FCA8C462C86ED58F187788D1E
+[I 15:29:07.798 NotebookApp] Adapting to protocol v5.1 for kernel 4574aa33-aa72-44da-baac-84af2a1e0130
+[I 15:29:07.800 NotebookApp] Restoring connection for 4574aa33-aa72-44da-baac-84af2a1e0130:868EC50FCA8C462C86ED58F187788D1E
+[W 15:50:37.800 NotebookApp] WebSocket ping timeout after 119919 ms.
+[I 15:50:42.801 NotebookApp] Starting buffering for 4574aa33-aa72-44da-baac-84af2a1e0130:868EC50FCA8C462C86ED58F187788D1E
+[I 16:06:32.760 NotebookApp] Adapting to protocol v5.1 for kernel 4574aa33-aa72-44da-baac-84af2a1e0130
+[I 16:06:32.761 NotebookApp] Restoring connection for 4574aa33-aa72-44da-baac-84af2a1e0130:868EC50FCA8C462C86ED58F187788D1E
+[W 16:27:32.761 NotebookApp] WebSocket ping timeout after 119968 ms.
+[I 16:27:37.763 NotebookApp] Starting buffering for 4574aa33-aa72-44da-baac-84af2a1e0130:868EC50FCA8C462C86ED58F187788D1E
+[I 16:46:56.705 NotebookApp] Adapting to protocol v5.1 for kernel 4574aa33-aa72-44da-baac-84af2a1e0130
+[I 16:46:56.706 NotebookApp] Restoring connection for 4574aa33-aa72-44da-baac-84af2a1e0130:868EC50FCA8C462C86ED58F187788D1E
+[W 16:48:26.707 NotebookApp] WebSocket ping timeout after 90000 ms.
+[I 16:48:31.708 NotebookApp] Starting buffering for 4574aa33-aa72-44da-baac-84af2a1e0130:868EC50FCA8C462C86ED58F187788D1E
+[I 17:27:11.094 NotebookApp] 302 GET / (10.24.12.6) 0.96ms
+[I 17:27:11.101 NotebookApp] 302 GET /tree? (10.24.12.6) 1.17ms
+[I 17:27:11.143 NotebookApp] Kernel started: 56bd0310-97ec-41e2-b0c1-25088bc2ce9d
+[W 17:27:11.154 NotebookApp] No session ID specified
+[I 17:27:11.887 NotebookApp] Adapting to protocol v5.1 for kernel 56bd0310-97ec-41e2-b0c1-25088bc2ce9d
+[I 17:33:23.139 NotebookApp] Adapting to protocol v5.1 for kernel 4574aa33-aa72-44da-baac-84af2a1e0130
+[I 17:33:23.140 NotebookApp] Restoring connection for 4574aa33-aa72-44da-baac-84af2a1e0130:868EC50FCA8C462C86ED58F187788D1E
+[I 17:54:19.451 NotebookApp] KernelRestarter: restarting kernel (1/5)
+[I 17:54:47.118 NotebookApp] Starting buffering for b8fd0066-1603-4b83-9016-f4edc4ce154e:224abdd5-68f9653aecc6ba3ebfb7bece
+[I 17:54:54.710 NotebookApp] KernelRestarter: restarting kernel (1/5)
+[I 19:01:22.580 NotebookApp] Kernel restarted: 56bd0310-97ec-41e2-b0c1-25088bc2ce9d
+[I 19:02:21.999 NotebookApp] Kernel interrupted: 56bd0310-97ec-41e2-b0c1-25088bc2ce9d
+[I 19:02:22.923 NotebookApp] Kernel interrupted: 56bd0310-97ec-41e2-b0c1-25088bc2ce9d
+[I 19:02:25.085 NotebookApp] Kernel restarted: 56bd0310-97ec-41e2-b0c1-25088bc2ce9d
+[I 19:07:08.137 NotebookApp] Discarding 1 buffered messages for 1e562538-5476-4448-a905-f63ea1c824fa:3206d51d-465cacb35747dff79817f116
+[I 19:07:08.439 NotebookApp] Kernel shutdown: 1e562538-5476-4448-a905-f63ea1c824fa
+[I 19:07:08.530 NotebookApp] Starting buffering for 56bd0310-97ec-41e2-b0c1-25088bc2ce9d:4f711c9a-32819436190abb8e69e1b365
+[I 19:07:08.836 NotebookApp] Kernel shutdown: 56bd0310-97ec-41e2-b0c1-25088bc2ce9d
+[W 22:20:53.141 NotebookApp] WebSocket ping timeout after 119930 ms.
+[I 22:20:58.142 NotebookApp] Starting buffering for 4574aa33-aa72-44da-baac-84af2a1e0130:868EC50FCA8C462C86ED58F187788D1E
+[I 22:40:17.489 NotebookApp] Adapting to protocol v5.1 for kernel 4574aa33-aa72-44da-baac-84af2a1e0130
+[I 22:40:17.490 NotebookApp] Restoring connection for 4574aa33-aa72-44da-baac-84af2a1e0130:868EC50FCA8C462C86ED58F187788D1E
+[W 08:54:47.490 NotebookApp] WebSocket ping timeout after 119995 ms.
+[I 08:54:52.492 NotebookApp] Starting buffering for 4574aa33-aa72-44da-baac-84af2a1e0130:868EC50FCA8C462C86ED58F187788D1E
+[I 09:15:56.784 NotebookApp] Adapting to protocol v5.1 for kernel 4574aa33-aa72-44da-baac-84af2a1e0130
+[I 09:15:56.785 NotebookApp] Restoring connection for 4574aa33-aa72-44da-baac-84af2a1e0130:868EC50FCA8C462C86ED58F187788D1E
+[W 12:21:56.785 NotebookApp] WebSocket ping timeout after 119921 ms.
+[I 12:22:01.786 NotebookApp] Starting buffering for 4574aa33-aa72-44da-baac-84af2a1e0130:868EC50FCA8C462C86ED58F187788D1E
+[I 12:49:39.645 NotebookApp] Adapting to protocol v5.1 for kernel 4574aa33-aa72-44da-baac-84af2a1e0130
+[I 12:49:39.646 NotebookApp] Restoring connection for 4574aa33-aa72-44da-baac-84af2a1e0130:868EC50FCA8C462C86ED58F187788D1E
+[W 14:04:09.646 NotebookApp] WebSocket ping timeout after 119990 ms.
+[I 14:04:14.648 NotebookApp] Starting buffering for 4574aa33-aa72-44da-baac-84af2a1e0130:868EC50FCA8C462C86ED58F187788D1E
+[I 14:22:56.545 NotebookApp] Adapting to protocol v5.1 for kernel 4574aa33-aa72-44da-baac-84af2a1e0130
+[I 14:22:56.547 NotebookApp] Restoring connection for 4574aa33-aa72-44da-baac-84af2a1e0130:868EC50FCA8C462C86ED58F187788D1E
+[W 14:24:26.547 NotebookApp] WebSocket ping timeout after 90000 ms.
+[I 14:24:31.548 NotebookApp] Starting buffering for 4574aa33-aa72-44da-baac-84af2a1e0130:868EC50FCA8C462C86ED58F187788D1E
+[I 16:00:23.356 NotebookApp] Adapting to protocol v5.1 for kernel 4574aa33-aa72-44da-baac-84af2a1e0130
+[I 16:00:23.357 NotebookApp] Restoring connection for 4574aa33-aa72-44da-baac-84af2a1e0130:868EC50FCA8C462C86ED58F187788D1E
+[W 16:15:23.357 NotebookApp] WebSocket ping timeout after 119899 ms.
+[I 16:15:28.358 NotebookApp] Starting buffering for 4574aa33-aa72-44da-baac-84af2a1e0130:868EC50FCA8C462C86ED58F187788D1E
+[I 16:38:45.093 NotebookApp] Adapting to protocol v5.1 for kernel 4574aa33-aa72-44da-baac-84af2a1e0130
+[I 16:38:45.094 NotebookApp] Restoring connection for 4574aa33-aa72-44da-baac-84af2a1e0130:868EC50FCA8C462C86ED58F187788D1E
+[W 17:59:15.095 NotebookApp] WebSocket ping timeout after 119995 ms.
+[I 17:59:20.096 NotebookApp] Starting buffering for 4574aa33-aa72-44da-baac-84af2a1e0130:868EC50FCA8C462C86ED58F187788D1E
+[I 18:19:56.686 NotebookApp] Adapting to protocol v5.1 for kernel 4574aa33-aa72-44da-baac-84af2a1e0130
+[I 18:19:56.687 NotebookApp] Restoring connection for 4574aa33-aa72-44da-baac-84af2a1e0130:868EC50FCA8C462C86ED58F187788D1E
+[W 18:41:41.414 NotebookApp] Notebook 16_reinforcement_learning.ipynb is not trusted
+[W 18:41:41.491 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js (10.24.12.6) 1.47ms referer=http://202.204.54.230:9312/notebooks/16_reinforcement_learning.ipynb
+[I 18:41:44.227 NotebookApp] Kernel started: 99b01f19-e2f7-4dd6-a8ef-85e4418087b5
+[I 18:41:44.950 NotebookApp] Adapting to protocol v5.1 for kernel 99b01f19-e2f7-4dd6-a8ef-85e4418087b5
+[I 18:43:44.339 NotebookApp] Saving file at /16_reinforcement_learning.ipynb
+[W 18:43:44.343 NotebookApp] Notebook 16_reinforcement_learning.ipynb is not trusted
+[W 19:39:26.687 NotebookApp] WebSocket ping timeout after 119976 ms.
+[I 19:39:31.688 NotebookApp] Starting buffering for 4574aa33-aa72-44da-baac-84af2a1e0130:868EC50FCA8C462C86ED58F187788D1E
+[W 19:39:44.952 NotebookApp] WebSocket ping timeout after 119911 ms.
+[I 19:39:49.953 NotebookApp] Starting buffering for 99b01f19-e2f7-4dd6-a8ef-85e4418087b5:8180E86B22AB418F88F36EE825CC9FA5
+[I 22:30:51.336 NotebookApp] Saving file at /16_reinforcement_learning.ipynb
+[W 22:30:51.340 NotebookApp] Notebook 16_reinforcement_learning.ipynb is not trusted
+[I 22:47:42.657 NotebookApp] 302 GET /?token=bc309c0975e23caade135310e26e4ab040c5e9e958c7932f (202.204.54.230) 1.40ms
+[C 22:58:47.721 NotebookApp] received signal 15, stopping
+[I 22:58:47.722 NotebookApp] Shutting down 15 kernels
+[I 22:58:48.028 NotebookApp] Kernel shutdown: b6091c84-e25f-449a-a005-ca256bc18df5
+[I 22:58:48.229 NotebookApp] Kernel shutdown: f118f359-495d-4f67-bff2-a3bb8ca709e0
+[I 22:58:48.430 NotebookApp] Kernel shutdown: b011c63d-f9aa-48e6-b70a-006aff790a4d
+[I 22:58:48.431 NotebookApp] Kernel shutdown: 56410de2-f139-4b20-8cbb-da05fc51e392
+[I 22:58:48.432 NotebookApp] Kernel shutdown: 410e5c49-f122-4a2f-92dd-92b09a1187c9
+[I 22:58:48.432 NotebookApp] Kernel shutdown: 4574aa33-aa72-44da-baac-84af2a1e0130
+[I 22:58:48.433 NotebookApp] Kernel shutdown: 04edc7dd-9364-4cd3-a1c0-3b0a9b76e154
+[I 22:58:48.433 NotebookApp] Kernel shutdown: e423e94a-11a0-42a5-9d50-985d808decdf
+[I 22:58:48.835 NotebookApp] Kernel shutdown: c349062b-61a7-41b4-9d2d-57caf96cf8d5
+[I 22:58:48.836 NotebookApp] Kernel shutdown: 1fbc49bf-3a5c-4ca5-b36c-77e5d9d22414
+[I 22:58:48.836 NotebookApp] Kernel shutdown: 99b01f19-e2f7-4dd6-a8ef-85e4418087b5
+[I 22:58:48.837 NotebookApp] Kernel shutdown: 14a822d2-51de-4432-880c-05c51267771e
+[I 22:58:48.838 NotebookApp] Kernel shutdown: b8fd0066-1603-4b83-9016-f4edc4ce154e
+[I 22:58:48.838 NotebookApp] Kernel shutdown: c2a19b65-c057-42d1-8431-2bc126ec7756
+[I 22:58:48.839 NotebookApp] Kernel shutdown: dd8ed203-9904-4330-9e2b-efb7e35e2d11
+[I 15:23:35.689 NotebookApp] Serving notebooks from local directory: /data/deeplearning/handson-ml
+[I 15:23:35.689 NotebookApp] 0 active kernels
+[I 15:23:35.689 NotebookApp] The Jupyter Notebook is running at:
+[I 15:23:35.689 NotebookApp] http://202.204.54.230:1212/?token=afa846a29d743cfd05f50462349f6d00836b066f9c6e22f0
+[I 15:23:35.689 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[W 15:23:35.690 NotebookApp] No web browser found: could not locate runnable browser.
+[C 15:23:35.690 NotebookApp] 
+    
+    Copy/paste this URL into your browser when you connect for the first time,
+    to login with a token:
+        http://202.204.54.230:1212/?token=afa846a29d743cfd05f50462349f6d00836b066f9c6e22f0
+[I 15:25:44.745 NotebookApp] 302 GET / (10.24.60.210) 1.14ms
+[I 15:25:44.751 NotebookApp] 302 GET /tree? (10.24.60.210) 1.56ms
+[I 15:25:44.878 NotebookApp] Kernel started: 2925e71e-65e2-4d45-8f2e-a33eae47d062
+[W 15:25:44.889 NotebookApp] No session ID specified
+[I 15:25:45.623 NotebookApp] Adapting to protocol v5.1 for kernel 2925e71e-65e2-4d45-8f2e-a33eae47d062
+[I 16:13:33.615 NotebookApp] 302 GET /?token=afa846a29d743cfd05f50462349f6d00836b066f9c6e22f0 (10.24.60.210) 1.58ms
+[W 16:13:38.803 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[W 16:13:38.974 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js (10.24.60.210) 7.68ms referer=http://202.204.54.230:1212/notebooks/13_convolutional_neural_networks.ipynb
+[I 16:13:45.878 NotebookApp] Kernel started: ca124377-d846-41e9-bfe6-4e2f5fb72ba4
+[I 16:13:46.642 NotebookApp] Adapting to protocol v5.1 for kernel ca124377-d846-41e9-bfe6-4e2f5fb72ba4
+[W 16:43:15.625 NotebookApp] WebSocket ping timeout after 119940 ms.
+[W 16:43:16.645 NotebookApp] WebSocket ping timeout after 119936 ms.
+[I 16:43:20.628 NotebookApp] Starting buffering for 2925e71e-65e2-4d45-8f2e-a33eae47d062:d4ab6062-da1dc311667c5de776dfa369
+[I 16:43:21.646 NotebookApp] Starting buffering for ca124377-d846-41e9-bfe6-4e2f5fb72ba4:1235C0AD1CF34015808DE3A75274415D
+[I 17:27:46.592 NotebookApp] Adapting to protocol v5.1 for kernel ca124377-d846-41e9-bfe6-4e2f5fb72ba4
+[I 17:27:46.594 NotebookApp] Restoring connection for ca124377-d846-41e9-bfe6-4e2f5fb72ba4:1235C0AD1CF34015808DE3A75274415D
+[W 01:19:46.594 NotebookApp] WebSocket ping timeout after 119905 ms.
+[I 01:19:51.596 NotebookApp] Starting buffering for ca124377-d846-41e9-bfe6-4e2f5fb72ba4:1235C0AD1CF34015808DE3A75274415D
+[I 08:05:51.273 NotebookApp] Adapting to protocol v5.1 for kernel ca124377-d846-41e9-bfe6-4e2f5fb72ba4
+[I 08:05:51.274 NotebookApp] Restoring connection for ca124377-d846-41e9-bfe6-4e2f5fb72ba4:1235C0AD1CF34015808DE3A75274415D
+[W 08:31:51.275 NotebookApp] WebSocket ping timeout after 119997 ms.
+[I 08:31:56.276 NotebookApp] Starting buffering for ca124377-d846-41e9-bfe6-4e2f5fb72ba4:1235C0AD1CF34015808DE3A75274415D
+[I 08:58:47.541 NotebookApp] Adapting to protocol v5.1 for kernel ca124377-d846-41e9-bfe6-4e2f5fb72ba4
+[I 08:58:47.542 NotebookApp] Restoring connection for ca124377-d846-41e9-bfe6-4e2f5fb72ba4:1235C0AD1CF34015808DE3A75274415D
+[W 12:39:47.544 NotebookApp] WebSocket ping timeout after 119940 ms.
+[I 12:39:52.545 NotebookApp] Starting buffering for ca124377-d846-41e9-bfe6-4e2f5fb72ba4:1235C0AD1CF34015808DE3A75274415D
+[I 12:51:03.926 NotebookApp] Adapting to protocol v5.1 for kernel ca124377-d846-41e9-bfe6-4e2f5fb72ba4
+[I 12:51:03.927 NotebookApp] Restoring connection for ca124377-d846-41e9-bfe6-4e2f5fb72ba4:1235C0AD1CF34015808DE3A75274415D
+[W 16:32:33.927 NotebookApp] WebSocket ping timeout after 119865 ms.
+[I 16:32:38.928 NotebookApp] Starting buffering for ca124377-d846-41e9-bfe6-4e2f5fb72ba4:1235C0AD1CF34015808DE3A75274415D
+[I 17:19:34.297 NotebookApp] Adapting to protocol v5.1 for kernel ca124377-d846-41e9-bfe6-4e2f5fb72ba4
+[I 17:19:34.298 NotebookApp] Restoring connection for ca124377-d846-41e9-bfe6-4e2f5fb72ba4:1235C0AD1CF34015808DE3A75274415D
+[W 18:11:04.298 NotebookApp] WebSocket ping timeout after 119932 ms.
+[I 18:11:09.299 NotebookApp] Starting buffering for ca124377-d846-41e9-bfe6-4e2f5fb72ba4:1235C0AD1CF34015808DE3A75274415D
+[I 18:29:08.807 NotebookApp] Adapting to protocol v5.1 for kernel ca124377-d846-41e9-bfe6-4e2f5fb72ba4
+[I 18:29:08.808 NotebookApp] Restoring connection for ca124377-d846-41e9-bfe6-4e2f5fb72ba4:1235C0AD1CF34015808DE3A75274415D
+[W 19:40:38.810 NotebookApp] WebSocket ping timeout after 119997 ms.
+[I 19:40:43.811 NotebookApp] Starting buffering for ca124377-d846-41e9-bfe6-4e2f5fb72ba4:1235C0AD1CF34015808DE3A75274415D
+[I 19:49:28.969 NotebookApp] Adapting to protocol v5.1 for kernel ca124377-d846-41e9-bfe6-4e2f5fb72ba4
+[I 19:49:28.971 NotebookApp] Restoring connection for ca124377-d846-41e9-bfe6-4e2f5fb72ba4:1235C0AD1CF34015808DE3A75274415D
+[W 21:26:58.972 NotebookApp] WebSocket ping timeout after 119996 ms.
+[I 21:27:03.973 NotebookApp] Starting buffering for ca124377-d846-41e9-bfe6-4e2f5fb72ba4:1235C0AD1CF34015808DE3A75274415D
+[I 09:02:55.859 NotebookApp] 302 GET / (10.13.56.211) 1.40ms
+[I 09:02:55.916 NotebookApp] 302 GET /tree? (10.13.56.211) 1.42ms
+[I 09:02:55.954 NotebookApp] Kernel started: 3f6d996d-fd26-41da-9bc1-8b207fe31dab
+[W 09:02:55.967 NotebookApp] No session ID specified
+[I 09:02:56.746 NotebookApp] Adapting to protocol v5.1 for kernel 3f6d996d-fd26-41da-9bc1-8b207fe31dab
+[W 11:09:26.748 NotebookApp] WebSocket ping timeout after 119996 ms.
+[I 11:09:31.750 NotebookApp] Starting buffering for 3f6d996d-fd26-41da-9bc1-8b207fe31dab:2bc55938-a03b0603bf17cfb2c37b2cb1
+[I 15:35:35.986 NotebookApp] Kernel shutdown: 2925e71e-65e2-4d45-8f2e-a33eae47d062
+[W 09:03:56.329 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[W 09:03:56.890 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js (10.13.56.211) 3.00ms referer=http://202.204.54.230:1212/notebooks/13_convolutional_neural_networks.ipynb
+[I 09:04:01.396 NotebookApp] Adapting to protocol v5.1 for kernel ca124377-d846-41e9-bfe6-4e2f5fb72ba4
+[W 09:07:31.398 NotebookApp] WebSocket ping timeout after 117914 ms.
+[I 09:07:36.400 NotebookApp] Starting buffering for ca124377-d846-41e9-bfe6-4e2f5fb72ba4:0C3C035A9F0B4568951B09C4E297DA1E
+[I 11:07:07.448 NotebookApp] 302 GET /?token=afa846a29d743cfd05f50462349f6d00836b066f9c6e22f0 (10.24.56.234) 0.97ms
+[W 11:07:14.462 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[W 11:07:14.622 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js (10.24.56.234) 1.46ms referer=http://202.204.54.230:1212/notebooks/13_convolutional_neural_networks.ipynb
+[I 11:07:22.363 NotebookApp] Adapting to protocol v5.1 for kernel ca124377-d846-41e9-bfe6-4e2f5fb72ba4
+[I 11:07:22.477 NotebookApp] Starting buffering for ca124377-d846-41e9-bfe6-4e2f5fb72ba4:8DD2B0691C3845CAAC9DF5790F3EAAC0
+[W 11:07:27.525 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[W 11:07:27.686 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js (10.24.56.234) 1.42ms referer=http://202.204.54.230:1212/notebooks/13_convolutional_neural_networks.ipynb
+[I 11:07:36.151 NotebookApp] Adapting to protocol v5.1 for kernel ca124377-d846-41e9-bfe6-4e2f5fb72ba4
+[I 11:09:42.207 NotebookApp] Saving file at /13_convolutional_neural_networks.ipynb
+[W 11:09:42.211 NotebookApp] Notebook 13_convolutional_neural_networks.ipynb is not trusted
+[W 12:18:36.153 NotebookApp] WebSocket ping timeout after 119943 ms.
+[I 12:18:41.154 NotebookApp] Starting buffering for ca124377-d846-41e9-bfe6-4e2f5fb72ba4:DBCD1BACCEC8410F9E0A328BCAA83AE2
+[I 13:12:21.561 NotebookApp] Adapting to protocol v5.1 for kernel ca124377-d846-41e9-bfe6-4e2f5fb72ba4
+[I 13:12:21.562 NotebookApp] Restoring connection for ca124377-d846-41e9-bfe6-4e2f5fb72ba4:DBCD1BACCEC8410F9E0A328BCAA83AE2
+[W 16:25:51.563 NotebookApp] WebSocket ping timeout after 119997 ms.
+[I 16:25:56.565 NotebookApp] Starting buffering for ca124377-d846-41e9-bfe6-4e2f5fb72ba4:DBCD1BACCEC8410F9E0A328BCAA83AE2
+[I 17:25:11.517 NotebookApp] Adapting to protocol v5.1 for kernel ca124377-d846-41e9-bfe6-4e2f5fb72ba4
+[I 17:25:11.518 NotebookApp] Restoring connection for ca124377-d846-41e9-bfe6-4e2f5fb72ba4:DBCD1BACCEC8410F9E0A328BCAA83AE2
+[W 18:22:41.519 NotebookApp] WebSocket ping timeout after 119124 ms.
+[I 18:22:46.520 NotebookApp] Starting buffering for ca124377-d846-41e9-bfe6-4e2f5fb72ba4:DBCD1BACCEC8410F9E0A328BCAA83AE2
+[I 18:40:55.487 NotebookApp] Adapting to protocol v5.1 for kernel ca124377-d846-41e9-bfe6-4e2f5fb72ba4
+[I 18:40:55.488 NotebookApp] Restoring connection for ca124377-d846-41e9-bfe6-4e2f5fb72ba4:DBCD1BACCEC8410F9E0A328BCAA83AE2
+[W 20:02:55.489 NotebookApp] WebSocket ping timeout after 119906 ms.
+[I 20:03:00.491 NotebookApp] Starting buffering for ca124377-d846-41e9-bfe6-4e2f5fb72ba4:DBCD1BACCEC8410F9E0A328BCAA83AE2
+[I 20:39:36.770 NotebookApp] Adapting to protocol v5.1 for kernel ca124377-d846-41e9-bfe6-4e2f5fb72ba4
+[I 20:39:36.771 NotebookApp] Restoring connection for ca124377-d846-41e9-bfe6-4e2f5fb72ba4:DBCD1BACCEC8410F9E0A328BCAA83AE2
+[W 21:22:36.772 NotebookApp] WebSocket ping timeout after 119969 ms.
+[I 21:22:41.774 NotebookApp] Starting buffering for ca124377-d846-41e9-bfe6-4e2f5fb72ba4:DBCD1BACCEC8410F9E0A328BCAA83AE2
+[I 22:12:54.612 NotebookApp] Adapting to protocol v5.1 for kernel ca124377-d846-41e9-bfe6-4e2f5fb72ba4
+[I 22:12:54.621 NotebookApp] Restoring connection for ca124377-d846-41e9-bfe6-4e2f5fb72ba4:DBCD1BACCEC8410F9E0A328BCAA83AE2
+[I 00:38:05.736 NotebookApp] Starting buffering for ca124377-d846-41e9-bfe6-4e2f5fb72ba4:DBCD1BACCEC8410F9E0A328BCAA83AE2
+[C 08:44:11.896 NotebookApp] received signal 15, stopping
+[I 08:44:12.019 NotebookApp] Shutting down 2 kernels
+[I 08:44:12.020 NotebookApp] Kernel shutdown: 3f6d996d-fd26-41da-9bc1-8b207fe31dab
+[I 08:44:12.021 NotebookApp] Kernel shutdown: ca124377-d846-41e9-bfe6-4e2f5fb72ba4
